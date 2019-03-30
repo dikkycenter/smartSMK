@@ -47,7 +47,7 @@
 
                   <div class="col-sm-10">
                     <select class="form-control" style="width: 100%;" name="kategori_user">
-                      <option value="none" selected disabled>----------------Pilih Agama-----------------</option>
+                      <option value="none" selected disabled>-----Pilih Kategori-----</option>
                       <?php foreach ($kategori as $u):?>
                       <option value="<?php echo $u->id_kategori ?>"><?php echo $u->user_kategori ?></option>
                       <!-- <option value="2">Wali Kelas</option>
