@@ -48,7 +48,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="<?php echo site_url('pengajar/listPengajar'); ?>"><i class="fa fa-circle-o"></i> Daftar Pengajar</a></li>
+            <li class=""><a href="<?php echo site_url('pengajar/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Pengajar</a></li>
             <li class=""><a href="<?php echo site_url('pengajar/tambahPengajar'); ?>"><i class="fa fa-circle-o"></i> Tambah Pengajar</a></li>
           </ul>
         </li>
