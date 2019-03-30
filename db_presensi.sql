@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2019 at 01:59 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 5.6.40
+-- Generation Time: Mar 30, 2019 at 07:53 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 5.6.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -101,6 +101,17 @@ CREATE TABLE `data_pengajar` (
   `status_pengajar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `data_pengajar`
+--
+
+INSERT INTO `data_pengajar` (`nip_pengajar`, `nama_depan`, `nama_belakang`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `agama`, `email`, `gelar`, `foto_pengajar`, `status_pengajar`) VALUES
+('2171', 'DIKY', 'SATRIA', 'DUMAI', '1996-04-08', 'BATAM CENTRE', 'ISLAM', 'dikkycenter@gmail.com', 'S.Tr.T', 'foto.jpg', 1),
+('2172', 'SUCI', 'NOVITASARI', 'BATAM', '0000-00-00', 'Batam', 'Islam', 'soecinovitasari@yahoo.com', 'S.I', '119182.jpg', 1),
+('2173', 'ANANDA', 'ROY', 'BATAM', '0000-00-00', 'DUMAI', 'Islam', 'sucinovitasari96@gmail.com', 'S.I', '119181.jpg', 1),
+('2174', '', 'ROMI', 'ALI JASMANTO', '0000-00-00', 'BATAM', 'Islam', 'romi96@gmail.com', 'S.I', '119181.jpg', 1),
+('2175', 'KEVIN', 'JULIONO', 'DUMAI', '2019-03-14', 'BATAM', 'Islam', 'kevin@gmail.com', 'S.I', '119182.jpg', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -111,10 +122,16 @@ CREATE TABLE `data_siswa` (
   `nis` varchar(20) NOT NULL,
   `nama_depan` varchar(50) NOT NULL,
   `nama_belakang` varchar(100) NOT NULL,
+  `tempat_lahir` varchar(30) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
   `nama_wali` varchar(100) NOT NULL,
   `email_wali` text NOT NULL,
   `agama` varchar(50) NOT NULL,
-  `alamat` text NOT NULL
+  `alamat` text NOT NULL,
+  `kelas` varchar(30) NOT NULL,
+  `foto` text NOT NULL,
+  `password` text NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -174,6 +191,17 @@ CREATE TABLE `user` (
   `kategori_user` int(11) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `kategori_user`, `status`) VALUES
+(6, '2171', '3165163', 3, 1),
+(9, '2172', 'sadasdasdsad', 3, 1),
+(10, '2173', 'SADASDASDAS', 3, 1),
+(11, '2174', 'asdasdasdas', 3, 1),
+(12, '2175', 'sadasdasd', 3, 1);
 
 --
 -- Indexes for dumped tables
@@ -245,6 +273,7 @@ ALTER TABLE `mata_pelajaran`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`) USING BTREE,
+  ADD UNIQUE KEY `username_2` (`username`),
   ADD KEY `username` (`username`,`kategori_user`),
   ADD KEY `kategori_user` (`kategori_user`);
 
@@ -274,7 +303,7 @@ ALTER TABLE `kategori_user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -313,8 +342,7 @@ ALTER TABLE `data_walikelas`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`kategori_user`) REFERENCES `kategori_user` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`username`) REFERENCES `data_pengajar` (`nip_pengajar`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_ibfk_3` FOREIGN KEY (`username`) REFERENCES `data_siswa` (`nis`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`username`) REFERENCES `data_pengajar` (`nip_pengajar`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

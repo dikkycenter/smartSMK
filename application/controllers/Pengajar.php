@@ -2,10 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pengajar extends MY_Controller {
+	function __construct(){
+		parent::__construct();		
+		$this->load->model('data_pengajar');
+		$this->load->helper('url');
+ 
+	}
 
 	public function index()
 	{
 		$data['title'] = 'Data Pengajar | SmartSMK';
+		$data['data_pengajar'] = $this->data_pengajar->tampil_data();
 
 		$this->render_page('pengajar/listPengajar', $data);
 	}
@@ -17,4 +24,71 @@ class Pengajar extends MY_Controller {
 		$this->render_page('pengajar/tambahPengajar', $data);
 	}
 
+	public function tambah_aksi() {
+		$nip_pengajar		= $this->input->post('nip_pengajar');
+		$nama_depan			= $this->input->post('nama_depan');
+		$nama_belakang		= $this->input->post('nama_belakang');
+		$tempat_lahir		= $this->input->post('tempat_lahir');
+		$newDate 			= date("Y-m-d", strtotime($this->input->post('tanggal_lahir')));
+		$alamat				= $this->input->post('alamat');
+		$agama				= $this->input->post('agama');
+		$email				= $this->input->post('email');
+		$gelar				= $this->input->post('gelar');
+		// $foto				= $this->input->post('foto_pengajar');
+
+		$config['upload_path']          = './assets/pengajar/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 1000;
+		$config['max_width']            = 1024;
+		$config['max_height']           = 1024;
+	
+		$this->load->library('upload', $config);
+	
+		if ( ! $this->upload->do_upload('foto_pengajar')){
+			$error = array('error' => $this->upload->display_errors());
+			redirect(site_url('pengajar/tambahPengajar'));
+		}else{
+			$data = $this->upload->data($config);
+			$data = array(
+				'foto_pengajar' 	=> $this->upload->data($config),
+				'nip_pengajar'		=> $nip_pengajar,
+				'nama_depan' 		=> $nama_depan,
+				'nama_belakang' 	=> $nama_belakang,
+				'tempat_lahir'  	=> $tempat_lahir,
+				'tanggal_lahir'		=> $newDate,
+				'alamat'			=> $alamat,
+				'agama'				=> $agama,
+				'email'				=> $email,
+				'gelar'				=> $gelar,
+				'status_pengajar'	=> '1'
+		);
+			echo "<script>alert('Data berhasil disimpan')";
+			redirect(site_url('pengajar/index'));
+		}
+		$data = array(
+			
+			);
+
+		$password 		= $this->input->post('password');
+
+		$data2 = array(
+			'username'		=> $nip_pengajar,
+			'password' 		=> $password,
+			'kategori_user' => '3',
+			'status'  		=> '1'
+			);
+		
+		$query = $this->data_pengajar->input_data($data, 'data_pengajar');
+		$query = $this->data_pengajar->input_data($data2, 'user');
+		
+		// Cek apakah query insert nya sukses atau gagal
+		// if($query){ // Jika sukses
+		// 	echo "<script>alert('Data berhasil disimpan');window.location = '".site_url('pengajar/index')."';</script>";
+		// } 
+		// else { // Jika gagal
+		// 	echo "<script>alert('Data gagal disimpan');window.location = '".site_url('pengajar/tambahPengajar')."';</script>";
+		// }
+	}
+
+	
 }

@@ -24,13 +24,13 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" action="<?php echo site_url('pengajar/tambah_aksi'); ?> post="method">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('pengajar/tambah_aksi'); ?>">
               <div class="box-body">
                 <div class="form-group">
                   <label for="NIP" class="col-sm-2 control-label">NIP</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nip" placeholder="Masukkan NIP" name="nip">
+                    <input type="text" class="form-control" id="nip" placeholder="Masukkan NIP" name="nip_pengajar">
                   </div>
                 </div>
                 <div class="form-group">

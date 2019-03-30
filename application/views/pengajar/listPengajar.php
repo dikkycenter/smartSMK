@@ -34,18 +34,19 @@
                   <th>Nama Lengkap</th>
                   <th>Tempat, Tanggal Lahir</th>
                   <th>Email</th>
+                  <th>Foto</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($data_pengajar as $u): ?>
                 <tr>
                   <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
+                  <td><?php echo $u->nip_pengajar; ?></td>
+                  <td><?php echo $u->nama_depan; ?> <?php  echo $u->nama_belakang; ?>, <?php  echo $u->gelar; ?></td>
+                  <td><?php echo $u->tempat_lahir;?>, <?php echo $u->tanggal_lahir; ?></td>
+                  <td><?php echo $u->email; ?></td>
+                  <td><img src="<?php base_url();?>assets/image/pengajar/<?php echo $u->foto_pengajar; ?>" width="50"></td>
                   <td>
                     <a class="btn">
                       <i class="fa fa-eye"></i> Lihat
@@ -58,7 +59,8 @@
                     </a>
                   </td>
                 </tr>
-                <tr>
+                <?php endforeach; ?>
+                <!-- <tr>
                   <td>Trident</td>
                   <td>Internet
                     Explorer 5.0
@@ -243,7 +245,7 @@
                       <i class="fa fa-remove"></i> Hapus
                     </a>
                   </td>
-                </tr>                
+                </tr>                 -->
                 </tbody>
                 <!-- <tfoot>
                 <tr>
