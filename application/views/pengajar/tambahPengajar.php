@@ -24,34 +24,34 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="<?php echo site_url('pengajar/tambah_aksi'); ?> post="method">
               <div class="box-body">
                 <div class="form-group">
                   <label for="NIP" class="col-sm-2 control-label">NIP</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nip" placeholder="Masukkan NIP">
+                    <input type="text" class="form-control" id="nip" placeholder="Masukkan NIP" name="nip">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaDepan" class="col-sm-2 control-label">Nama Depan</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="namadepan" placeholder="Masukkan Nama Depan">
+                    <input type="text" class="form-control" id="namadepan" placeholder="Masukkan Nama Depan" name="nama_depan">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaBelakang" class="col-sm-2 control-label">Nama Belakang</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="namabelakang" placeholder="Masukkan Nama Belakang">
+                    <input type="text" class="form-control" id="namabelakang" placeholder="Masukkan Nama Belakang" name="nama_belakang">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="TempatLahir" class="col-sm-2 control-label">Tempat Lahir</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="tempatlahir" placeholder="Masukkan Tempat Lahir">
+                    <input type="text" class="form-control" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir>
                   </div>
                 </div>
                 <div class="form-group">
@@ -62,7 +62,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="datepicker">
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir">
                     </div>
                   </div>
                 </div>
@@ -71,7 +71,7 @@
                   <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" placeholder="Masukkan Alamat"></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Masukkan Alamat" name="alamat"></textarea>
                   </div>
                 </div>
 
@@ -79,7 +79,7 @@
                   <label for="agama" class="col-sm-2 control-label">Agama</label>
 
                   <div class="col-sm-10">
-                    <select class="form-control" style="width: 100%;">
+                    <select class="form-control" style="width: 100%;" name="agama">
                       <option value="Islam">Islam</option>
                       <option value="Kristen Khatolik">Kristen Khatolik</option>
                       <option value="Kristen Protestan">Kristen Protestan</option>
@@ -94,14 +94,14 @@
                   <label for="gelar" class="col-sm-2 control-label">Gelar</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="gelar" placeholder="Masukkan Gelar">
+                    <input type="text" class="form-control" id="gelar" placeholder="Masukkan Gelar" name="gelar">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputFoto" class="col-sm-2 control-label">Input Foto</label>
                   <div class="col-sm-10">
-                    <input type="file" id="exampleInputFile">
+                    <input type="file" id="exampleInputFile" name="foto_pengajar">
                   </div>
                 </div>
 
@@ -109,7 +109,7 @@
                   <label for="email" class="col-sm-2 control-label">Email</label>
 
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" placeholder="Masukkan Email">
+                    <input type="email" class="form-control" id="email" placeholder="Masukkan Email" name="email">
                   </div>
                 </div>
 
@@ -117,7 +117,7 @@
                   <label for="password" class="col-sm-2 control-label">Password</label>
 
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                   </div>
                 </div>
               </div>  
@@ -129,8 +129,14 @@
             </form>
           </div>
           <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
   <div class="control-sidebar-bg"></div>
-</div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
@@ -161,5 +167,4 @@ $ (function () {
 });
 
 </script>
-</body>
-</html>
+

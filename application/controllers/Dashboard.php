@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Dashboard extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,14 +20,15 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('template/header');
-		$this->load->view('home');
-		$this->load->view('template/footer');
+		$data['title'] = 'Dashboard | SmartSMK';
+
+		$this->render_page('home', $data);
 	}
 
 	public function index2()
 	{
-		$this->load->view('template/header');
-		$this->load->view('home2.php');
+		$data['title'] = 'Dashboard 2 | SmartSMK';
+
+		$this->render_page('home2', $data);
 	}
 }

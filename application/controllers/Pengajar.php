@@ -1,18 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pengajar extends CI_Controller {
+class Pengajar extends MY_Controller {
 
 	public function listPengajar()
 	{
-		$this->load->view('template/header');
-		$this->load->view('pengajar/listPengajar');
+		$data['title'] = 'List Pengajar | SmartSMK';
+
+		$this->render_page('pengajar/listPengajar', $data);
 	}
 
 	public function tambahPengajar()
 	{
-		$this->load->view('template/header');
-		$this->load->view('pengajar/tambahPengajar');
+		$data['title'] = 'Tambah Pengajar | SmartSMK';
+
+		$this->render_page('pengajar/tambahPengajar', $data);
 	}
 
 }
