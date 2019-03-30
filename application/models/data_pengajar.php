@@ -7,8 +7,8 @@ class data_pengajar extends CI_Model
         return $query->result();
     }
 
-    function tampil_data_detail() {
-        $this->db->where('nip', $nip);
+    function data_detail($id) {
+        return $this->db->get_where('data_pengajar', array('nip_pengajar' => $id))->result_array();
     }
 
     function input_data($data,$table){
