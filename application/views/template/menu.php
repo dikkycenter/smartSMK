@@ -55,6 +55,20 @@
 
         <li class="treeview">
           <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Data Siswa</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php echo site_url('Siswa/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Siswa</a></li>
+            <li class=""><a href="<?php echo site_url('Siswa/tambahSiswa'); ?>"><i class="fa fa-circle-o"></i> Tambah Siswa</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
             <i class="fa fa-user"></i>
             <span>Kelola User</span>
             <span class="pull-right-container">
