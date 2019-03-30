@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Siswa extends MY_Controller {
 
-	public function listSiswa()
+	public function index()
 	{
-		$data['title'] = 'List Siswa | SmartSMK';
+		$data['title'] = 'Data Siswa | SmartSMK';
 
 		$this->render_page('siswa/listSiswa', $data);
 	}
