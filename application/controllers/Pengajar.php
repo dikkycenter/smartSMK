@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pengajar extends MY_Controller {
 
-	public function listPengajar()
+	public function index()
 	{
-		$data['title'] = 'List Pengajar | SmartSMK';
+		$data['title'] = 'Data Pengajar | SmartSMK';
 
 		$this->render_page('pengajar/listPengajar', $data);
 	}

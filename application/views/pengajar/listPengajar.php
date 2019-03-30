@@ -461,7 +461,14 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-
+  <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+        <b>Version</b> 2.3.8
+        </div>
+        <strong>Copyright &copy; 2019 <a href="#">SmartSMK</a>.</strong> All rights
+        reserved.
+    </footer>
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
@@ -493,3 +500,6 @@
     });
   });
 </script>
+
+</body>
+</html>

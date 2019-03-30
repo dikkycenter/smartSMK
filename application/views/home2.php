@@ -1023,7 +1023,14 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-
+  <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+        <b>Version</b> 2.3.8
+        </div>
+        <strong>Copyright &copy; 2019 <a href="#">SmartSMK</a>.</strong> All rights
+        reserved.
+    </footer>
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
@@ -1047,3 +1054,6 @@
 <script src="<?php echo base_url();?>assets/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>assets/dist/js/demo.js"></script>
+
+</body>
+</html>

@@ -51,7 +51,7 @@
                   <label for="TempatLahir" class="col-sm-2 control-label">Tempat Lahir</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir>
+                    <input type="text" class="form-control" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir">
                   </div>
                 </div>
                 <div class="form-group">
@@ -135,7 +135,16 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
+  </div>
   <div class="control-sidebar-bg"></div>
+  <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+      <b>Version</b> 2.3.8
+      </div>
+      <strong>Copyright &copy; 2019 <a href="#">SmartSMK</a>.</strong> All rights
+      reserved.
+  </footer>
+</div>
 
 <!-- ./wrapper -->
 
@@ -168,3 +177,5 @@ $ (function () {
 
 </script>
 
+</body>
+</html>
