@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Pengajar</a></li>
-        <li class="active">Tambah Pengajar</li>
+        <li class="active">Ubah Data Pengajar</li>
       </ol>
     </section>
   
@@ -20,7 +20,7 @@
           <!-- general form elements -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Form Tambah Pengajar</h3>
+              <h3 class="box-title">Form Ubah Data</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

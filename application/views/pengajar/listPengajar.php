@@ -56,7 +56,7 @@
                     <a class="btn">
                       <i class="fa fa-edit"></i> Edit
                     </a>
-                    <a class="btn">
+                    <a class="btn"  id=btn-confirm>
                       <i class="fa fa-remove"></i> Hapus
                     </a>
                   </td>
@@ -71,6 +71,25 @@
         </div>
         <!-- /.col -->
       </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal_confirm">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Konfirmasi Hapus Data</h4>
+      </div>
+      <div class="modal-body">
+        <p>Apakah anda yakin ingin menghapus data ini ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="modal-btn-yes" data-dismiss="modal">Iya</button>
+        <button type="button" class="btn btn-default" id="modal-btn-no" >Tidak</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -118,6 +137,34 @@
       "autoWidth": false
     });
   });
+
+  //fungsi konfirmasi hapus
+  var modalConfirm = function(callback){
+  
+  $("#btn-confirm").on("click", function(){
+    $("#modal_confirm").modal('show');
+  });
+
+  $("#modal-btn-yes").on("click", function(){
+    callback(true);
+    $("#mi-modal").modal('hide');
+  });
+  
+  $("#modal-btn-no").on("click", function(){
+    callback(false);
+    $("#mi-modal").modal('hide');
+  });
+};
+
+modalConfirm(function(confirm){
+  if(confirm){
+    //Acciones si el usuario confirma
+    window.location = "<?php echo site_url('pengajar/deletePengajar/'.$u->nip_pengajar); ?>";
+  }else{
+    //Acciones si el usuario no confirma
+    $("#mi-modal").modal('hide');
+  }
+});
 </script>
 
 </body>

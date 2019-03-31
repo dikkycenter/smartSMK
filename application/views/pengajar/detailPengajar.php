@@ -34,7 +34,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="NamaDepan" class="col-sm-2 control-label">Nama Depan</label>
+                  <label for="NamaDepan" class="col-sm-2 control-label">Nama</label>
 
                   <div class="col-sm-10">
                   : <?php echo $details['nama_depan']; ?> <?php echo $details['nama_belakang']; ?>, <?php echo $details['gelar']; ?>
@@ -49,19 +49,20 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
-
-                  <div class="col-sm-10">
-                  : <?php echo $details['alamat']; ?>
-                  </div>
-                </div>
 
                 <div class="form-group">
                   <label for="agama" class="col-sm-2 control-label">Agama</label>
 
                   <div class="col-sm-10">
                   : <?php echo $details['agama']; ?>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
+
+                  <div class="col-sm-10">
+                  : <?php echo $details['alamat']; ?>
                   </div>
                 </div>
 

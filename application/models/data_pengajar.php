@@ -13,8 +13,11 @@ class data_pengajar extends CI_Model
 
     function input_data($data,$table){
 		$this->db->insert($table,$data);
-	}
+    }
 
+    function delete_data($id) {
+        return $this->db->delete('data_pengajar', array('nip_pengajar' => $id));
+    }
 }
 
 ?>

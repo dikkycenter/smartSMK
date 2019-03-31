@@ -23,7 +23,19 @@ class Pengajar extends MY_Controller {
 
 		$data['detail'] = $this->data_pengajar->data_detail($id);
 		$this->render_page('pengajar/detailPengajar', $data);
+	}
 
+	public function deletePengajar($id) 
+	{
+		$data['delete'] = $this->data_pengajar->delete_data($id);
+
+		// Cek apakah query delete nya sukses atau gagal		
+		if($query == FALSE){ // Jika sukses
+			echo "<script>alert('Data berhasil dihapus');window.location = '".site_url('pengajar/index')."';</script>";
+		} 
+		else { // Jika gagal
+			echo "<script>alert('Data gagal dihapus');window.location = '".site_url('pengajar/index')."';</script>";
+		}
 	}
 
 	public function tambahPengajar()
