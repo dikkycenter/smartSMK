@@ -30,35 +30,22 @@
                 <div class="form-group">
                   <label for="NIP" class="col-sm-2 control-label">NIP</label>                  
                   <div class="col-sm-10">
-                    : <?php echo $details->nip_pengajar; ?>
+                   : <?php echo $details['nip_pengajar']; ?>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaDepan" class="col-sm-2 control-label">Nama Depan</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details->nama_depan; ?> 
+                  : <?php echo $details['nama_depan']; ?> <?php echo $details['nama_belakang']; ?>, <?php echo $details['gelar']; ?>
                   </div>
                 </div>
+
                 <div class="form-group">
-                  <label for="NamaBelakang" class="col-sm-2 control-label">Nama Belakang</label>
+                  <label for="TempatLahir" class="col-sm-2 control-label">Tempat, Tanggal Lahir</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details->nama_belakang; ?>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="TempatLahir" class="col-sm-2 control-label">Tempat Lahir</label>
-
-                  <div class="col-sm-10">
-                  : <?php echo $details->tempat_lahir; ?>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="tanggalLahir" class="col-sm-2 control-label">Tanggal Lahir</label>
-
-                  <div class="col-sm-10">
-                  : <?php echo $details->tanggal_lahir; ?>
+                  : <?php echo $details['tempat_lahir']; ?>, <?php echo $details['tanggal_lahir']; ?>
                   </div>
                 </div>
 
@@ -66,7 +53,7 @@
                   <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details->alamat; ?>
+                  : <?php echo $details['alamat']; ?>
                   </div>
                 </div>
 
@@ -74,22 +61,14 @@
                   <label for="agama" class="col-sm-2 control-label">Agama</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details->agama; ?>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="gelar" class="col-sm-2 control-label">Gelar</label>
-
-                  <div class="col-sm-10">
-                  : <?php echo $details->gelar; ?>
+                  : <?php echo $details['agama']; ?>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputFoto" class="col-sm-2 control-label">Foto Profil</label>
                   <div class="col-sm-10">
-                  : <?php echo $details->foto_pengajar; ?>
+                   <img src="<?php echo base_url();?>assets/images/pengajar/<?php echo $details['foto_pengajar']; ?>" width="100">
                   </div>
                 </div>
 
@@ -97,7 +76,7 @@
                   <label for="email" class="col-sm-2 control-label">Email</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details->email; ?>
+                  : <?php echo $details['email']; ?>
                   </div>
                 </div>
 
@@ -113,7 +92,8 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary pull-right" name="simpan">Simpan</button>
+                <a href="<?php echo site_url('pengajar/index'); ?>">
+                <button type="submit" class="btn btn-success pull-right" name="back">Back</button></a>
               </div>
             </form>
           </div>

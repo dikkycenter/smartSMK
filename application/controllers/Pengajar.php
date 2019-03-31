@@ -13,7 +13,6 @@ class Pengajar extends MY_Controller {
 	{
 		$data['title'] = 'Data Pengajar | SmartSMK';
 		$data['data_pengajar'] = $this->data_pengajar->tampil_data();
-
 		$this->render_page('pengajar/listPengajar', $data);
 	}
 
@@ -23,7 +22,6 @@ class Pengajar extends MY_Controller {
 		$data['info'] = 'Data Detail Pengajar';
 
 		$data['detail'] = $this->data_pengajar->data_detail($id);
-		print_r($data);
 		$this->render_page('pengajar/detailPengajar', $data);
 
 	}
