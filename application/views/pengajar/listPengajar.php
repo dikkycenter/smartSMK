@@ -56,23 +56,14 @@
                     <a class="btn">
                       <i class="fa fa-edit"></i> Edit
                     </a>
-                    <a class="btn"  id=btn-confirm>
+                    <a class="btn" data-toggle="modal" data-target="#delete"> 
                       <i class="fa fa-remove"></i> Hapus
                     </a>
                   </td>
                 </tr>
-                <?php $i++; endforeach; ?>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modal_confirm">
+<!--Modal-->
+<div class="modal fade" tabindex="-1" role="dialog" id="delete">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -83,13 +74,25 @@
         <p>Apakah anda yakin ingin menghapus data ini ?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="modal-btn-yes" data-dismiss="modal">Iya</button>
-        <button type="button" class="btn btn-default" id="modal-btn-no" >Tidak</button>
+      <a href="<?php echo site_url('pengajar/deletePengajar/'.$u->nip_pengajar); ?>">  
+      <button type="button" class="btn btn-primary" id="modal-btn-yes">
+        Iya</button></a>
+        <button type="button" class="btn btn-default" id="modal-btn-no" data-dismiss="modal">Tidak</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+                <?php $i++; endforeach; ?>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -136,35 +139,7 @@
       "info": true,
       "autoWidth": false
     });
-  });
-
-  //fungsi konfirmasi hapus
-  var modalConfirm = function(callback){
-  
-  $("#btn-confirm").on("click", function(){
-    $("#modal_confirm").modal('show');
-  });
-
-  $("#modal-btn-yes").on("click", function(){
-    callback(true);
-    $("#mi-modal").modal('hide');
-  });
-  
-  $("#modal-btn-no").on("click", function(){
-    callback(false);
-    $("#mi-modal").modal('hide');
-  });
-};
-
-modalConfirm(function(confirm){
-  if(confirm){
-    //Acciones si el usuario confirma
-    window.location = "<?php echo site_url('pengajar/deletePengajar/'.$u->nip_pengajar); ?>";
-  }else{
-    //Acciones si el usuario no confirma
-    $("#mi-modal").modal('hide');
-  }
-});
+  }); 
 </script>
 
 </body>
