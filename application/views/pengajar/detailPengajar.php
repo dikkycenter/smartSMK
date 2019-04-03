@@ -93,8 +93,7 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <a href="<?php echo site_url('pengajar/index'); ?>">
-                <button type="submit" class="btn btn-success pull-right" name="back">Back</button></a>
+                <button type="button" class="btn btn-success pull-right" name="back" onClick="goBack()">Back</button>
               </div>
             </form>
           </div>
@@ -144,6 +143,10 @@ $ (function () {
       autoclose: true
     });
 });
+
+function goBack() {
+  window.history.back();
+}
 
 </script>
 

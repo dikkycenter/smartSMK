@@ -23,28 +23,30 @@
               <h3 class="box-title">Form Ubah Data</h3>
             </div>
             <!-- /.box-header -->
+            <?php foreach($detail as $data):?>
             <!-- form start -->
-            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('pengajar/tambah_aksi'); ?>">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('pengajar/update_aksi/'.$data['nip_pengajar']); ?>">
               <div class="box-body">
+
                 <div class="form-group">
                   <label for="NIP" class="col-sm-2 control-label">NIP</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nip" placeholder="Masukkan NIP" name="nip_pengajar">
+                    <input type="text" class="form-control" id="nip" placeholder="" name="nip_pengajar" value="<?php echo $data['nip_pengajar']; ?>" disabled>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaDepan" class="col-sm-2 control-label">Nama Depan</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="namadepan" placeholder="Masukkan Nama Depan" name="nama_depan">
+                    <input type="text" class="form-control" id="namadepan" placeholder="Masukkan Nama Depan" name="nama_depan"  value="<?php echo $data['nama_depan']; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaBelakang" class="col-sm-2 control-label">Nama Belakang</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="namabelakang" placeholder="Masukkan Nama Belakang" name="nama_belakang">
+                    <input type="text" class="form-control" id="namabelakang" placeholder="Masukkan Nama Belakang" name="nama_belakang" value="<?php echo $data['nama_belakang']; ?>">
                   </div>
                 </div>
                 
@@ -52,7 +54,7 @@
                   <label for="gelar" class="col-sm-2 control-label">Gelar</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="gelar" placeholder="Masukkan Gelar" name="gelar">
+                    <input type="text" class="form-control" id="gelar" placeholder="Masukkan Gelar" name="gelar" value="<?php echo $data['gelar']; ?>">
                   </div>
                 </div>
 
@@ -60,7 +62,7 @@
                   <label for="TempatLahir" class="col-sm-2 control-label">Tempat Lahir</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir">
+                    <input type="text" class="form-control" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" value="<?php echo $data['tempat_lahir']; ?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -71,7 +73,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir">
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir" value="<?php echo $data['tanggal_lahir']; ?>">
                     </div>
                   </div>
                 </div>
@@ -81,6 +83,7 @@
 
                   <div class="col-sm-10">
                     <select class="form-control" style="width: 100%;" name="agama">
+                      <option value="<?php echo $data['agama']; ?>" selected disabled><?php echo $data['agama']; ?></option>
                       <option value="Islam">Islam</option>
                       <option value="Kristen Khatolik">Kristen Khatolik</option>
                       <option value="Kristen Protestan">Kristen Protestan</option>
@@ -95,14 +98,15 @@
                   <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" placeholder="Masukkan Alamat" name="alamat"></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Masukkan Alamat" name="alamat"><?php echo $data['alamat']; ?></textarea>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputFoto" class="col-sm-2 control-label">Input Foto</label>
                   <div class="col-sm-10">
-                    <input type="file" id="exampleInputFile" name="foto_pengajar">
+                    <input type="file" id="exampleInputFile" name="foto_pengajar" value="<?php echo $data['foto_pengajar']; ?>">
+                    <input type="hidden" name="old_image" value="<?php echo $data['foto_pengajar']; ?>">                    
                   </div>
                 </div>
 
@@ -110,22 +114,14 @@
                   <label for="email" class="col-sm-2 control-label">Email</label>
 
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" placeholder="Masukkan Email" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="Masukkan Email" name="email" value="<?php echo $data['email']; ?>">
                   </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="password" class="col-sm-2 control-label">Password</label>
-
-                  <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                  </div>
-                </div>
-              </div>  
+                </div> 
               <!-- /.box-body -->
+                <?php endforeach; ?>
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary pull-right" name="simpan">Simpan</button>
+                <button type="submit" class="btn btn-primary pull-right" name="update">Update</button>
               </div>
             </form>
           </div>

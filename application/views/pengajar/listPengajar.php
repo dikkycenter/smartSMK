@@ -13,6 +13,20 @@
       </ol>
     </section>
 
+    
+    <?php 
+      $data = $this->session->flashdata('sukses');
+      if($data!="") { ?>
+      <div class="alert alert-success" role="alert"><Strong>Sukses!</Strong>
+        <?php echo $data; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div> 
+      <?php };
+    ?>
+    <div class="alert-success"></div>
+
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -53,17 +67,17 @@
                     <a class="btn" href="<?php echo site_url('pengajar/dataDetail/'.$u->nip_pengajar); ?>">
                       <i class="fa fa-eye"></i> Lihat
                     </a>
-                    <a class="btn">
+                    <a class="btn" href="<?php echo site_url('pengajar/updatePengajar/'.$u->nip_pengajar); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>
-                    <a class="btn" data-toggle="modal" data-target="#delete"> 
+                    <a class="btn" href="<?php echo site_url('pengajar/deletePengajar/'.$u->nip_pengajar); ?>"> 
                       <i class="fa fa-remove"></i> Hapus
                     </a>
                   </td>
                 </tr>
 
 <!--Modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="delete">
+<div class="modal fade" tabindex="" role="dialog" id="delete">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -140,6 +154,26 @@
       "autoWidth": false
     });
   }); 
+
+  $(".remove").click(function(){
+        var id = $(this).parents("tr").attr("id");
+
+
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+               url: '/item-list/'+id,
+               type: 'DELETE',
+               error: function() {
+                  alert('Something is wrong');
+               },
+               success: function(data) {
+                    $("#"+id).remove();
+                    alert("Record removed successfully");  
+               }
+            });
+        }
+    });
 </script>
 
 </body>
