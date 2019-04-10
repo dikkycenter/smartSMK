@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Kelas</a></li>
-        <li class="active">Tambah Kelas</li>
+        <li class="active">Ubah Data </li>
       </ol>
     </section>
   
@@ -20,25 +20,26 @@
           <!-- general form elements -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Form Tambah Kelas</h3>
+              <h3 class="box-title">Form Ubah Data</h3>
             </div>
             <!-- /.box-header -->
+            <?php foreach($detail as $data):?>
             <!-- form start -->
-            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('kelas/tambah_aksi'); ?>">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('kelas/update_aksi/'.$data['id_kelas']); ?>">
               <div class="box-body">
+
                 <div class="form-group">
-                  <label for="Kode Kelas" class="col-sm-2 control-label">Kode Kelas*</label>
+                  <label for="id_kelas" class="col-sm-2 control-label">Kode Kelas*</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: uppercase;" id="kode_kelas" placeholder="Masukkan Kode Kelas" name="id_kelas" required>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="id_kelas" placeholder="" name="id_kelas" value="<?php echo $data['id_kelas']; ?>" required>
                   </div>
                 </div>
-
                 <div class="form-group">
-                  <label for="Nama Kelas" class="col-sm-2 control-label">Kode Kelas*</label>
+                  <label for="nama_kelas" class="col-sm-2 control-label">Nama Kelas*</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: uppercase;" id="nama_kelas" placeholder="Masukkan Nama Kelas" name="nama_kelas" required>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="nama_kelas" placeholder="" name="nama_kelas"  value="<?php echo $data['nama_kelas']; ?>" required>
                   </div>
                 </div>
 
@@ -47,35 +48,33 @@
 
                   <div class="col-sm-10">
                     <select class="form-control" style="width: 100%;" name="nama_jurusan" required> 
-                      <option selected disabled>---Pilih Jurusan---</option>
-                      <option value="Teknik Pengelasan Kapal">Teknik Pengelasan Kapal</option>
-                      <option value="Teknik Kelistrikan Kapal">Teknik Kelistrikan Kapal</option>
-                      <option value="Teknik G.Rancang Bangun Kapal">Teknik G.Rancang Bangun Kapal</option>
-                      <option value="Teknik Instalasi Pemesinan Kapal">Teknik Instalasi Pemesinan Kapal</option>
-                      <option value="Multimedia">Multimedia</option>
-                      <option value="Teknik Pemesinan">Teknik Pemesinan</option>
-                      <option value="Program Studi Teknik Ketenagalistrikan">Program Studi Teknik Ketenagalistrikan</option>
-                      <option value="Teknik Inst.Pemanfaatan Tenaga Listrik">Teknik Inst.Pemanfaatan Tenaga Listrik</option>
-                      <option value="Produksi Grafika">Produksi Grafika</option>
-                      <option value="Teknik Elektronika Industri">Teknik Elektronika Industri</option>
+                      <option <?php echo ($data['nama_jurusan']=='Teknik Pengelasan Kapal')?'selected="selected"':''; ?>>Teknik Pengelasan Kapal</option>
+                      <option <?php echo ($data['nama_jurusan']=='Teknik Kelistrikan Kapal')?'selected="selected"':''; ?>>Teknik Kelistrikan Kapal</option>
+                      <option <?php echo ($data['nama_jurusan']=='Teknik G.Rancang Bangun Kapal')?'selected="selected"':''; ?>>Teknik G.Rancang Bangun Kapal</option>
+                      <option <?php echo ($data['nama_jurusan']=='Teknik Instalasi Pemesinan Kapal')?'selected="selected"':''; ?>>Teknik Instalasi Pemesinan Kapal</option>
+                      <option <?php echo ($data['nama_jurusan']=='Multimedia')?'selected="selected"':''; ?>>Multimedia</option>
+                      <option <?php echo ($data['nama_jurusan']=='Teknik Pemesinan')?'selected="selected"':''; ?>>Teknik Pemesinan</option>
+                      <option <?php echo ($data['nama_jurusan']=='Program Studi Teknik Ketenagalistrikan')?'selected="selected"':''; ?>>Program Studi Teknik Ketenagalistrikan</option>
+                      <option <?php echo ($data['nama_jurusan']=='Teknik Inst.Pemanfaatan Tenaga Listrik')?'selected="selected"':''; ?>>Teknik Inst.Pemanfaatan Tenaga Listrik</option>
+                      <option <?php echo ($data['nama_jurusan']=='Produksi Grafika')?'selected="selected"':''; ?>>Produksi Grafika</option>
+                      <option <?php echo ($data['nama_jurusan']=='Teknik Elektronika Industri')?'selected="selected"':''; ?>>Teknik Elektronika Industri</option>
                     </select>
                   </div>
                 </div>
 
-                <div class="form-group">
+              <div class="form-group">
                   <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" style="text-transform: capitalize;" rows="3" placeholder="Masukkan Keterangan" name="keterangan"></textarea>
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="keterangan" placeholder="" name="keterangan"  value="<?php echo $data['keterangan']; ?>">
                   </div>
                 </div>
-
               </div>
-
               <!-- /.box-body -->
+                <?php endforeach; ?>
 
-              <div class="box-footer">                
-                <button type="submit" class="btn btn-primary pull-right" name="simpan">Simpan</button>
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right" name="update">Update</button>
               </div>
             </form>
           </div>

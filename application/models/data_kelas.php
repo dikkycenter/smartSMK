@@ -7,9 +7,9 @@ class data_kelas extends CI_Model
         return $query->result();
     }
 
-    // function data_detail($id) {
-    //     return $this->db->get_where('data_kelas', array('id_kelas' => $id))->result_array();
-    // }
+    function data_detail($id) {
+        return $this->db->get_where('data_kelas', array('id_kelas' => $id))->result_array();
+    }
 
     function input_data($data){
 		$this->db->insert('data_kelas',$data);
@@ -20,8 +20,8 @@ class data_kelas extends CI_Model
     }
 
     function update_data($id, $data) {
-        $query = $this->db->where('nip_pengajar', $id);
-        $query = $this->db->update('data_pengajar', $data);
+        $query = $this->db->where('id_kelas', $id);
+        $query = $this->db->update('data_kelas', $data);
     }
 }
 

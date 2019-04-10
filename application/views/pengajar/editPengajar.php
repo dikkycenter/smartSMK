@@ -83,13 +83,12 @@
 
                   <div class="col-sm-10">
                     <select class="form-control" style="width: 100%;" name="agama">
-                      <option value="<?php echo $data['agama']; ?>" selected disabled><?php echo $data['agama']; ?></option>
-                      <option value="Islam">Islam</option>
-                      <option value="Kristen Khatolik">Kristen Khatolik</option>
-                      <option value="Kristen Protestan">Kristen Protestan</option>
-                      <option value="Budha">Budha</option>
-                      <option value="Hindu">Hindu</option>
-                      <option value="Konghucu">Konghucu</option>
+                      <option <?php echo ($data['agama']=='Islam')?'selected="selected"':''; ?>>Islam</option>
+                      <option <?php echo ($data['agama']=='Kristen Khatolik')?'selected="selected"':''; ?>>Kristen Khatolik</option>
+                      <option <?php echo ($data['agama']=='Kristen Protestan')?'selected="selected"':''; ?>>Kristen Protestan</option>
+                      <option <?php echo ($data['agama']=='Budha')?'selected="selected"':''; ?>>Budha</option>
+                      <option <?php echo ($data['agama']=='Hindu')?'selected="selected"':''; ?>>Hindu</option>
+                      <option <?php echo ($data['agama']=='Konghucu')?'selected="selected"':''; ?>>Konghucu</option>
                     </select>
                   </div>
                 </div>

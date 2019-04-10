@@ -46,6 +46,7 @@
                   <th>No.</th>
                   <th>Nama Jurusan</th>
                   <th>Kode Kelas</th>
+                  <th>Nama Kelas</th>
                   <th>Keterangan</th>
                   <th>Action</th>
                 </tr>
@@ -56,11 +57,12 @@
                 foreach ($data_kelas as $u): ?>
                 <tr>
                   <td><?php echo $i; ?></td>
-                  <td><?php echo $u->nama_jurusan; ?></td>
-                  <td><?php echo $u->nama_kelas; ?></td>
-                  <td><?php echo $u->keterangan;?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->nama_jurusan; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->nama_kelas; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->keterangan;?></td>
                   <td>
-                    <a class="btn" href="<?php //echo site_url('kelas/updateKelas/'.$u->nip_pengajar); ?>">
+                    <a class="btn" href="<?php echo site_url('kelas/updateKelas/'.$u->id_kelas); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>
                     <a class="btn" href="<?php echo site_url('kelas/deleteKelas/'.$u->id_kelas); ?>"> 
@@ -68,27 +70,6 @@
                     </a>
                   </td>
                 </tr>
-
-<!--Modal-->
-<div class="modal fade" tabindex="" role="dialog" id="delete">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Konfirmasi Hapus Data</h4>
-      </div>
-      <div class="modal-body">
-        <p>Apakah anda yakin ingin menghapus data ini ?</p>
-      </div>
-      <div class="modal-footer">
-      <a href="<?php echo site_url('pengajar/deletePengajar/'.$u->nip_pengajar); ?>">  
-      <button type="button" class="btn btn-primary" id="modal-btn-yes">
-        Iya</button></a>
-        <button type="button" class="btn btn-default" id="modal-btn-no" data-dismiss="modal">Tidak</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
                 <?php $i++; endforeach; ?>
                 </tbody>
