@@ -50,7 +50,7 @@ class Pengajar extends MY_Controller {
 		$agama				= $this->input->post('agama');
 		$email				= $this->input->post('email');
 		$gelar				= $this->input->post('gelar');
-		$password 			= $this->input->post('password');
+		$password 			= md5($this->input->post('password'));
 		$foto_pengajar		= $this->input->post('foto_pengajar');
 
 		if (!empty($_FILES['foto_pengajar']['name'])) {
@@ -73,12 +73,12 @@ class Pengajar extends MY_Controller {
 				$uploadData = $this->upload->data();
 				$foto_pengajar = $uploadData['file_name'];
 			} else {
-				$foto_pengajar = '';
+				$foto_pengajar = 'avatar.png';
 				$error = array('error' => $this->upload->display_errors());
 				echo "<script>alert('JPG, JPEG, PNG and GIF type of file only is allowed and atleast 10MB of size');</script>";
 			}
 		} else {
-			$foto_pengajar = '';
+			$foto_pengajar = 'avatar.png';
 		}
 		
 		$data = array(
@@ -149,7 +149,7 @@ class Pengajar extends MY_Controller {
 				$uploadData = $this->upload->data();
 				$foto_pengajar = $uploadData['file_name'];
 			} else {
-				$foto_pengajar = '';
+				$foto_pengajar = 'avatar.png';
 				$error = array('error' => $this->upload->display_errors());
 				echo "<script>alert('JPG, JPEG, PNG and GIF type of file only is allowed and atleast 10MB of size');</script>";
 			}

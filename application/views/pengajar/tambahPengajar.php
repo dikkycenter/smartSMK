@@ -27,24 +27,24 @@
             <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('pengajar/tambah_aksi'); ?>">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="NIP" class="col-sm-2 control-label">NIP</label>
+                  <label for="NIP" class="col-sm-2 control-label">NIP*</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nip" placeholder="Masukkan NIP" name="nip_pengajar">
+                    <input type="number" class="form-control" id="nip" placeholder="Masukkan NIP" name="nip_pengajar" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="NamaDepan" class="col-sm-2 control-label">Nama Depan</label>
+                  <label for="NamaDepan" class="col-sm-2 control-label">Nama Depan*</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="namadepan" placeholder="Masukkan Nama Depan" name="nama_depan">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="namadepan" placeholder="Masukkan Nama Depan" name="nama_depan" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaBelakang" class="col-sm-2 control-label">Nama Belakang</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="namabelakang" placeholder="Masukkan Nama Belakang" name="nama_belakang">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="namabelakang" placeholder="Masukkan Nama Belakang" name="nama_belakang"> 
                   </div>
                 </div>
                 
@@ -57,30 +57,31 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="TempatLahir" class="col-sm-2 control-label">Tempat Lahir</label>
+                  <label for="TempatLahir" class="col-sm-2 control-label">Tempat Lahir*</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="tanggalLahir" class="col-sm-2 control-label">Tanggal Lahir</label>
+                  <label for="tanggalLahir" class="col-sm-2 control-label">Tanggal Lahir*</label>
 
                   <div class="col-sm-10">
                     <div class="input-group date">
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir">
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir" required>
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="agama" class="col-sm-2 control-label">Agama</label>
+                  <label for="agama" class="col-sm-2 control-label">Agama*</label>
 
                   <div class="col-sm-10">
-                    <select class="form-control" style="width: 100%;" name="agama">
+                    <select class="form-control" style="width: 100%;" name="agama" required> 
+                      <option selected disabled>---Pilih Agama---</option>
                       <option value="Islam">Islam</option>
                       <option value="Kristen Khatolik">Kristen Khatolik</option>
                       <option value="Kristen Protestan">Kristen Protestan</option>
@@ -95,7 +96,7 @@
                   <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" placeholder="Masukkan Alamat" name="alamat"></textarea>
+                    <textarea class="form-control" style="text-transform: capitalize;" rows="3" placeholder="Masukkan Alamat" name="alamat"></textarea>
                   </div>
                 </div>
 
@@ -107,24 +108,25 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="email" class="col-sm-2 control-label">Email</label>
+                  <label for="email" class="col-sm-2 control-label">Email*</label>
 
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" placeholder="Masukkan Email" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="Masukkan Email" name="email" required>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="password" class="col-sm-2 control-label">Password</label>
+                  <label for="password" class="col-sm-2 control-label">Password*</label>
 
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
                   </div>
                 </div>
-              </div>  
+              </div>
+
               <!-- /.box-body -->
 
-              <div class="box-footer">
+              <div class="box-footer">                
                 <button type="submit" class="btn btn-primary pull-right" name="simpan">Simpan</button>
               </div>
             </form>

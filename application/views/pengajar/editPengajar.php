@@ -29,24 +29,24 @@
               <div class="box-body">
 
                 <div class="form-group">
-                  <label for="NIP" class="col-sm-2 control-label">NIP</label>
+                  <label for="NIP" class="col-sm-2 control-label">NIP*</label>
 
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="nip" placeholder="" name="nip_pengajar" value="<?php echo $data['nip_pengajar']; ?>" disabled>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="NamaDepan" class="col-sm-2 control-label">Nama Depan</label>
+                  <label for="NamaDepan" class="col-sm-2 control-label">Nama Depan*</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="namadepan" placeholder="Masukkan Nama Depan" name="nama_depan"  value="<?php echo $data['nama_depan']; ?>">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="namadepan" placeholder="Masukkan Nama Depan" name="nama_depan"  value="<?php echo $data['nama_depan']; ?>" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaBelakang" class="col-sm-2 control-label">Nama Belakang</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="namabelakang" placeholder="Masukkan Nama Belakang" name="nama_belakang" value="<?php echo $data['nama_belakang']; ?>">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="namabelakang" placeholder="Masukkan Nama Belakang" name="nama_belakang" value="<?php echo $data['nama_belakang']; ?>">
                   </div>
                 </div>
                 
@@ -59,21 +59,21 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="TempatLahir" class="col-sm-2 control-label">Tempat Lahir</label>
+                  <label for="TempatLahir" class="col-sm-2 control-label">Tempat Lahir*</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" value="<?php echo $data['tempat_lahir']; ?>">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" value="<?php echo $data['tempat_lahir']; ?>" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="tanggalLahir" class="col-sm-2 control-label">Tanggal Lahir</label>
+                  <label for="tanggalLahir" class="col-sm-2 control-label">Tanggal Lahir*</label>
 
                   <div class="col-sm-10">
                     <div class="input-group date">
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir" value="<?php echo $data['tanggal_lahir']; ?>">
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir" value="<?php echo $data['tanggal_lahir']; ?>" required>
                     </div>
                   </div>
                 </div>
@@ -98,7 +98,7 @@
                   <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" placeholder="Masukkan Alamat" name="alamat"><?php echo $data['alamat']; ?></textarea>
+                    <textarea class="form-control" style="text-transform: capitalize;" rows="3" placeholder="Masukkan Alamat" name="alamat"><?php echo $data['alamat']; ?></textarea>
                   </div>
                 </div>
 
@@ -111,10 +111,10 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="email" class="col-sm-2 control-label">Email</label>
+                  <label for="email" class="col-sm-2 control-label">Email*</label>
 
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" placeholder="Masukkan Email" name="email" value="<?php echo $data['email']; ?>">
+                    <input type="email" class="form-control" id="email" placeholder="Masukkan Email" name="email" value="<?php echo $data['email']; ?>" required>
                   </div>
                 </div> 
               <!-- /.box-body -->
