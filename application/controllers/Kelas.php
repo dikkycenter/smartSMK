@@ -42,12 +42,12 @@ class Kelas extends MY_Controller {
 
 	public function tambah_aksi() {
 		$nama_kelas			= $this->input->post('nama_kelas');
-		$jurusan			= $this->input->post('jurusan');
+		$nama_jurusan			= $this->input->post('nama_jurusan');
 		$keterangan			= $this->input->post('keterangan');
 		
 		$data = array(
 			'nama_kelas'		=> $nama_kelas,
-			'jurusan'			=> $jurusan,
+			'nama_jurusan'			=> $nama_jurusan,
 			'keterangan'		=> $keterangan,
 		);		
 		

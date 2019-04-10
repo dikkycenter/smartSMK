@@ -35,10 +35,10 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="jurusan" class="col-sm-2 control-label">Jurusan*</label>
+                  <label for="nama_jurusan" class="col-sm-2 control-label">Jurusan*</label>
 
                   <div class="col-sm-10">
-                    <select class="form-control" style="width: 100%;" name="jurusan" required> 
+                    <select class="form-control" style="width: 100%;" name="nama_jurusan" required> 
                       <option selected disabled>---Pilih Jurusan---</option>
                       <option value="Teknik Pengelasan Kapal">Teknik Pengelasan Kapal</option>
                       <option value="Teknik Kelistrikan Kapal">Teknik Kelistrikan Kapal</option>
