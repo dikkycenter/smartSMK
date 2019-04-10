@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pengajar
+        Data Kelas
         <small>Tambah Data</small>
       </h1>
       <ol class="breadcrumb">
@@ -24,13 +24,13 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php //echo site_url('pengajar/tambah_aksi'); ?>">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('kelas/tambah_aksi'); ?>">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="NIP" class="col-sm-2 control-label">NIP*</label>
+                  <label for="Nama Kelas" class="col-sm-2 control-label">Kode Kelas*</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: uppercase;" id="" placeholder="Masukkan NIP" name="nip_pengajar" required>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="nama_kelas" placeholder="Masukkan Kode Kelas" name="nama_kelas" required>
                   </div>
                 </div>
 
