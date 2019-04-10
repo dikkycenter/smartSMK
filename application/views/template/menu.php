@@ -69,6 +69,76 @@
 
         <li class="treeview">
           <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Data Kelas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php echo site_url('Kelas/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Kelas</a></li>
+            <li class=""><a href="<?php echo site_url('Kelas/tambahKelas'); ?>"><i class="fa fa-circle-o"></i> Tambah Kelas</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Data Mata Pelajaran</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php echo site_url('Mapel/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Mata Pelajaran</a></li>
+            <li class=""><a href="<?php echo site_url('Mapel/tambahMapel'); ?>"><i class="fa fa-circle-o"></i> Tambah Mata Pelajaran</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Data Jadwal</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php echo site_url('Jadwal/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Jadwal</a></li>
+            <li class=""><a href="<?php echo site_url('Jadwal/tambahJadwal'); ?>"><i class="fa fa-circle-o"></i> Tambah Jadwal</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Data Presensi</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php echo site_url('Presensi/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Presesi</a></li>
+            <li class=""><a href="<?php echo site_url('Presensi/tambahPresensi'); ?>"><i class="fa fa-circle-o"></i> Tambah Presensi</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Laporan</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php echo site_url('Jadwal/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Presensi</a></li>
+            <li class=""><a href="<?php echo site_url('Jadwal/tambahJadwal'); ?>"><i class="fa fa-circle-o"></i> Cetak Presensi</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
             <i class="fa fa-user"></i>
             <span>Kelola User</span>
             <span class="pull-right-container">
