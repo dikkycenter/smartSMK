@@ -33,7 +33,7 @@ class Kelas extends MY_Controller {
 		redirect('kelas/index');
 	}
 
-	public function tambahPengajar()
+	public function tambahKelas()
 	{
 		$data['title'] = 'Tambah Kelas | SmartSMK';
 
