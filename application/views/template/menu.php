@@ -90,8 +90,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="<?php echo site_url('Mapel/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Mata Pelajaran</a></li>
-            <li class=""><a href="<?php echo site_url('Mapel/tambahMapel'); ?>"><i class="fa fa-circle-o"></i> Tambah Mata Pelajaran</a></li>
+            <li class=""><a href="<?php echo site_url('mapel/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Mata Pelajaran</a></li>
+            <li class=""><a href="<?php echo site_url('mapel/tambahMapel'); ?>"><i class="fa fa-circle-o"></i> Tambah Mata Pelajaran</a></li>
           </ul>
         </li>
 
