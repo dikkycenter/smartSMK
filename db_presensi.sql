@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2019 at 07:53 PM
+-- Generation Time: Apr 11, 2019 at 04:52 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -71,6 +71,7 @@ CREATE TABLE `data_jadwal` (
 CREATE TABLE `data_kelas` (
   `id_kelas` varchar(20) NOT NULL,
   `nama_kelas` varchar(50) NOT NULL,
+  `nama_jurusan` varchar(100) NOT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -78,8 +79,10 @@ CREATE TABLE `data_kelas` (
 -- Dumping data for table `data_kelas`
 --
 
-INSERT INTO `data_kelas` (`id_kelas`, `nama_kelas`, `keterangan`) VALUES
-('1', 'mja', 'mja');
+INSERT INTO `data_kelas` (`id_kelas`, `nama_kelas`, `nama_jurusan`, `keterangan`) VALUES
+('mj3a', 'mj3a', 'Multimedia', 'diky bodok'),
+('mj42', 'mj42', 'Teknik Pengelasan Kapal', ''),
+('mj4a', 'mj4a', 'Teknik Pengelasan Kapal', '');
 
 -- --------------------------------------------------------
 
@@ -106,11 +109,13 @@ CREATE TABLE `data_pengajar` (
 --
 
 INSERT INTO `data_pengajar` (`nip_pengajar`, `nama_depan`, `nama_belakang`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `agama`, `email`, `gelar`, `foto_pengajar`, `status_pengajar`) VALUES
-('2171', 'DIKY', 'SATRIA', 'DUMAI', '1996-04-08', 'BATAM CENTRE', 'ISLAM', 'dikkycenter@gmail.com', 'S.Tr.T', 'foto.jpg', 1),
-('2172', 'SUCI', 'NOVITASARI', 'BATAM', '0000-00-00', 'Batam', 'Islam', 'soecinovitasari@yahoo.com', 'S.I', '119182.jpg', 1),
+('2171', 'DIKY', 'SATRIA', 'DUMAI', '1996-04-08', 'BATAM CENTRE', '', 'dikkycenter@gmail.com', 'S.Tr.T', '155490447101_3000.jpg', 1),
+('2172', 'SUCI', 'NOVITASARI', 'BATAM', '1970-01-01', 'Batam', 'Budha', 'soecinovitasari@yahoo.com', 'S.I', '119182.jpg', 1),
 ('2173', 'ANANDA', 'ROY', 'BATAM', '0000-00-00', 'DUMAI', 'Islam', 'sucinovitasari96@gmail.com', 'S.I', '119181.jpg', 1),
-('2174', '', 'ROMI', 'ALI JASMANTO', '0000-00-00', 'BATAM', 'Islam', 'romi96@gmail.com', 'S.I', '119181.jpg', 1),
-('2175', 'KEVIN', 'JULIONO', 'DUMAI', '2019-03-14', 'BATAM', 'Islam', 'kevin@gmail.com', 'S.I', '119182.jpg', 1);
+('2176', 'SUCI', 'JULIONO', 'BATAM', '2019-03-07', 'Batam', '', 'administrator@admin.com', 'S.IP', 'Key-01.png', 1),
+('2177', 'DIKY', 'CAVE', 'DUMAI', '2019-03-29', 'BATAM', 'Islam', 'dikygazali@gmail.com', 'S.IP', 'batam2.jpg', 1),
+('2178', 'ROY', 'ANANDA', 'BATAM', '2019-03-22', 'BATAM', 'Islam', 'administrator@admin.com', 'S.IP', '1553977670awan-di-langit_20180416_203622.jpg', 1),
+('2179', 'KEVIN', 'ANANDA', 'BATAM', '2019-03-08', 'Batam', 'Islam', 'administrator@admin.com', 'S.IP', '155398008801_3000.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -130,7 +135,9 @@ CREATE TABLE `data_siswa` (
   `alamat` text NOT NULL,
   `kelas` varchar(30) NOT NULL,
   `foto` text NOT NULL,
-  `password` text NOT NULL,
+  `input_date` date NOT NULL,
+  `update_date` date NOT NULL,
+  `update_by` varchar(50) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -178,6 +185,14 @@ CREATE TABLE `mata_pelajaran` (
   `mapel` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `mata_pelajaran`
+--
+
+INSERT INTO `mata_pelajaran` (`id_mapel`, `mapel`) VALUES
+('MP001', 'Teknik Jaringan'),
+('MP002', 'Matematika teknik');
+
 -- --------------------------------------------------------
 
 --
@@ -200,8 +215,10 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `kategori_user`, `status`
 (6, '2171', '3165163', 3, 1),
 (9, '2172', 'sadasdasdsad', 3, 1),
 (10, '2173', 'SADASDASDAS', 3, 1),
-(11, '2174', 'asdasdasdas', 3, 1),
-(12, '2175', 'sadasdasd', 3, 1);
+(14, '2176', 'asfasfas', 3, 1),
+(15, '2177', 'asdasdasdas', 3, 1),
+(16, '2178', 'SADASDAS', 3, 1),
+(17, '2179', 'adada', 3, 1);
 
 --
 -- Indexes for dumped tables
@@ -303,7 +320,7 @@ ALTER TABLE `kategori_user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
@@ -341,8 +358,7 @@ ALTER TABLE `data_walikelas`
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`kategori_user`) REFERENCES `kategori_user` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`username`) REFERENCES `data_pengajar` (`nip_pengajar`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`kategori_user`) REFERENCES `kategori_user` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
