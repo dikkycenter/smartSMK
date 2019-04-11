@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2019 at 04:52 PM
+-- Generation Time: Apr 11, 2019 at 05:33 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -56,7 +56,7 @@ CREATE TABLE `data_isikelas` (
 
 CREATE TABLE `data_jadwal` (
   `id_jadwal` varchar(20) NOT NULL,
-  `hari` varchar(20) NOT NULL,
+  `tanggal` datetime NOT NULL,
   `id_mapel` varchar(50) NOT NULL,
   `id_kelas` int(11) NOT NULL,
   `id_pengajar` varchar(50) NOT NULL
@@ -135,8 +135,8 @@ CREATE TABLE `data_siswa` (
   `alamat` text NOT NULL,
   `kelas` varchar(30) NOT NULL,
   `foto` text NOT NULL,
-  `input_date` date NOT NULL,
-  `update_date` date NOT NULL,
+  `input_date` datetime NOT NULL,
+  `update_date` datetime NOT NULL,
   `update_by` varchar(50) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -320,7 +320,7 @@ ALTER TABLE `kategori_user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
