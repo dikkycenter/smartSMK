@@ -3,7 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kelas extends MY_Controller {
 	function __construct(){
-		parent::__construct();		
+		parent::__construct();
+		
+		// Cek apakah user sudah login
+		$this->cekLogin();
+		// Cek Hak Akses apakah user sebagai admin
+		$this->isAdmin();
+
 		$this->load->model('data_kelas');
 		$this->load->helper('url');
  

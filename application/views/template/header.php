@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="<?php echo base_url() ?>/assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="<?php echo base_url() ?>/assets/dist/img/avatar5.png" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -256,41 +256,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url() ?>/assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+            <?php if($this->session->userdata('hak_akses')=='1') {?>
+              <img src="<?php echo base_url() ?>/assets/dist/img/avatar5.png" class="user-image" alt="User Image">
+              <span class="hidden-xs" style="text-transform: capitalize;"><?php echo $this->session->userdata("username"); ?></span>
+            <?php } else { ?>
+              <img src="<?php echo base_url() ?>/assets/images/pengajar/<?php echo $this->session->userdata('foto_pengajar'); ?>" class="user-image" alt="User Image">
+              <span class="hidden-xs" style="text-transform: capitalize;"><?php echo $this->session->userdata("nama_depan"); ?></span>
+            <?php } ?>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url() ?>/assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
+                <?php if($this->session->userdata('hak_akses')=='1') {?>
+                  <img src="<?php echo base_url() ?>/assets//dist/img/avatar5.png" class="img-circle" alt="User Image">
+                  <p style="text-transform: capitalize;">
+                    <?php echo $this->session->userdata("username"); ?>
+                    <small>
+                      <?php if ($this->session->userdata('hak_akses')=='1') {
+                        echo "Administrator";
+                       } elseif ($this->session->userdata('hak_akses')=='2') {
+                         echo "Wali Kelas";
+                       } elseif ($this->session->userdata('hak_akses')=='3') {
+                         echo "Pengajar";
+                       } else {
+                         echo "Siswa";
+                       } ?>
+                    </small>
+                  </p>
+                <?php } else { ?>
+                  <img src="<?php echo base_url() ?>/assets/images/pengajar/<?php echo $this->session->userdata('foto_pengajar'); ?>" class="img-circle" alt="User Image">
+                  <p style="text-transform: capitalize;">
+                    <?php echo $this->session->userdata("nama_depan");?> <?php echo $this->session->userdata("nama_belakang"); ?>
+                    <small>
+                      <?php if ($this->session->userdata('hak_akses')=='1') {
+                        echo "Administrator";
+                       } elseif ($this->session->userdata('hak_akses')=='2') {
+                         echo "Wali Kelas";
+                       } elseif ($this->session->userdata('hak_akses')=='3') {
+                         echo "Pengajar";
+                       } else {
+                         echo "Siswa";
+                       } ?>
+                    </small>
+                  </p>
+                <?php } ?>
+                
               </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
+              
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo site_url('auth/logout')?>" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
