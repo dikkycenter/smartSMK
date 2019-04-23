@@ -3,7 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Siswa extends MY_Controller {
 	function __construct(){
-		parent::__construct();		
+		parent::__construct();	
+		
+		// Cek Apakah sudah Login
+		$this->cekLogin();
+
+		// Cek Apakah Sebagai Admin
+		$this->isAdmin();
+		
 		$this->load->model('data_siswa');
 		$this->load->helper('url');
  
