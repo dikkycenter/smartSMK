@@ -8,7 +8,7 @@ class data_siswa extends CI_Model
     }
 
     function data_detail($id) {
-        return $this->db->get_where('data_pengajar', array('nip_pengajar' => $id))->result_array();
+        return $this->db->get_where('data_siswa', array('nis' => $id))->result_array();
     }
 
     function input_data($data,$table){
@@ -21,8 +21,8 @@ class data_siswa extends CI_Model
     }
 
     function update_data($id, $data) {
-        $query = $this->db->where('nip_pengajar', $id);
-        $query = $this->db->update('data_pengajar', $data);
+        $query = $this->db->where('nis', $id);
+        $query = $this->db->update('data_siswa', $data);
     }
 
     function tampil_kelas(){

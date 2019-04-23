@@ -3,12 +3,12 @@
     <section class="content-header">
       <h1>
         Data Siswa
-        <small>Tambah Data</small>
+        <small>Ubah Data</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Siswa</a></li>
-        <li class="active">Tambah Siswa</li>
+        <li class="active">Ubah Data Siswa</li>
       </ol>
     </section>
   
@@ -20,49 +20,52 @@
           <!-- general form elements -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Form Tambah Siswa</h3>
+              <h3 class="box-title">Form Ubah Data</h3>
             </div>
             <!-- /.box-header -->
+            <?php foreach($detail as $data):?>
             <!-- form start -->
-            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('siswa/tambah_aksi'); ?>">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('siswa/update_aksi/'.$data['nis']); ?>">
               <div class="box-body">
 
                 <div class="form-group">
-                  <label for="NIS" class="col-sm-2 control-label">NIS*</label>
+                  <label for="NIP" class="col-sm-2 control-label">NIS*</label>
+
                   <div class="col-sm-10">
-                    <input type="number" class="form-control" id="nip" placeholder="Masukkan NIS" name="nis" required>
+                    <input type="text" class="form-control" id="nip" placeholder="" name="nis" value="<?php echo $data['nis']; ?>" disabled>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label for="NamaDepan" class="col-sm-2 control-label">Nama Depan*</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="namadepan" placeholder="Masukkan Nama Depan" name="nama_depan" required>
-                  </div>
 
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="namadepan" placeholder="Masukkan Nama Depan" name="nama_depan"  value="<?php echo $data['nama_depan']; ?>" required>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaBelakang" class="col-sm-2 control-label">Nama Belakang</label>
+
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="namabelakang" placeholder="Masukkan Nama Belakang" name="nama_belakang"> 
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="namabelakang" placeholder="Masukkan Nama Belakang" name="nama_belakang" value="<?php echo $data['nama_belakang']; ?>">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="TempatLahir" class="col-sm-2 control-label">Tempat Lahir*</label>
+
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" required>
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="tempatlahir" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" value="<?php echo $data['tempat_lahir']; ?>" required>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label for="tanggalLahir" class="col-sm-2 control-label">Tanggal Lahir*</label>
+
                   <div class="col-sm-10">
                     <div class="input-group date">
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir" required>
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir" value="<?php echo $data['tanggal_lahir']; ?>" required>
                     </div>
                   </div>
                 </div>
@@ -70,7 +73,7 @@
                 <div class="form-group">
                   <label for="nama_wali" class="col-sm-2 control-label">Nama Wali*</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="nama_wali" placeholder="Masukkan Nama Wali" name="nama_wali" required>
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="nama_wali" name="nama_wali" value="<?php echo $data['nama_wali']; ?>" required>
                   </div>
                 </div>
 
@@ -78,22 +81,21 @@
                   <label for="email_wali" class="col-sm-2 control-label">Email Wali*</label>
 
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email_wali" placeholder="Masukkan Email" name="email_wali" required>
+                    <input type="email" class="form-control" id="email_wali" name="email_wali" value="<?php echo $data['email_wali']; ?>" required>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="agama" class="col-sm-2 control-label">Agama*</label>
+                  <label for="agama" class="col-sm-2 control-label">Agama</label>
 
                   <div class="col-sm-10">
-                    <select class="form-control" style="width: 100%;" name="agama" required> 
-                      <option selected disabled>---Pilih Agama---</option>
-                      <option value="Islam">Islam</option>
-                      <option value="Kristen Khatolik">Kristen Khatolik</option>
-                      <option value="Kristen Protestan">Kristen Protestan</option>
-                      <option value="Budha">Budha</option>
-                      <option value="Hindu">Hindu</option>
-                      <option value="Konghucu">Konghucu</option>
+                    <select class="form-control" style="width: 100%;" name="agama">
+                      <option <?php echo ($data['agama']=='Islam')?'selected="selected"':''; ?>>Islam</option>
+                      <option <?php echo ($data['agama']=='Kristen Khatolik')?'selected="selected"':''; ?>>Kristen Khatolik</option>
+                      <option <?php echo ($data['agama']=='Kristen Protestan')?'selected="selected"':''; ?>>Kristen Protestan</option>
+                      <option <?php echo ($data['agama']=='Budha')?'selected="selected"':''; ?>>Budha</option>
+                      <option <?php echo ($data['agama']=='Hindu')?'selected="selected"':''; ?>>Hindu</option>
+                      <option <?php echo ($data['agama']=='Konghucu')?'selected="selected"':''; ?>>Konghucu</option>
                     </select>
                   </div>
                 </div>
@@ -102,7 +104,7 @@
                   <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" style="text-transform: capitalize;" rows="3" placeholder="Masukkan Alamat" name="alamat"></textarea>
+                    <textarea class="form-control" style="text-transform: capitalize;" rows="3" placeholder="Masukkan Alamat" name="alamat"><?php echo $data['alamat']; ?></textarea>
                   </div>
                 </div>
 
@@ -111,9 +113,8 @@
 
                   <div class="col-sm-10">
                     <select class="form-control" style="width: 100%;" name="kelas" required> 
-                      <option selected disabled>---Pilih Kelas---</option>
                       <?php foreach ($kelas as $u): ?>
-                      <option value='<?php echo $u->nama_kelas; ?>'><?php echo $u->nama_kelas; ?></option>
+                      <option <?php echo ($u->nama_kelas==$u->nama_kelas)?'selected="selected"':''; ?>><?php echo $u->nama_kelas; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
@@ -122,23 +123,16 @@
                 <div class="form-group">
                   <label for="inputFoto" class="col-sm-2 control-label">Input Foto</label>
                   <div class="col-sm-10">
-                    <input type="file" id="exampleInputFile" name="foto">
+                    <input type="file" id="exampleInputFile" name="foto" value="<?php echo $data['foto']; ?>">
+                    <input type="hidden" name="old_image" value="<?php echo $data['foto']; ?>">                    
                   </div>
                 </div>
-
-                <div class="form-group">
-                  <label for="password" class="col-sm-2 control-label">Password*</label>
-
-                  <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
-                  </div>
-                </div>
-              </div>
 
               <!-- /.box-body -->
+                <?php endforeach; ?>
 
-              <div class="box-footer">                
-                <button type="submit" class="btn btn-primary pull-right" name="simpan">Simpan</button>
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right" name="update">Update</button>
               </div>
             </form>
           </div>

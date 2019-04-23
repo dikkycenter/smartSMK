@@ -46,6 +46,7 @@
                   <th>No.</th>
                   <th>NIS</th>
                   <th>Nama Lengkap</th>
+                  <th>Kelas</th>
                   <th>Tempat, Tanggal Lahir</th>
                   <th>Nama Wali</th>
                   <th>Foto</th>
@@ -60,6 +61,7 @@
                   <td><?php echo $i; ?></td>
                   <td><?php echo $u->nis; ?></td>
                   <td><?php echo $u->nama_depan; ?> <?php  echo $u->nama_belakang; ?> </td>
+                  <td><?php echo $u->kelas; ?></td>
                   <td><?php echo $u->tempat_lahir;?>, <?php echo $u->tanggal_lahir; ?></td>
                   <td><?php echo $u->nama_wali; ?></td>
                   <td><img src="<?php echo base_url();?>assets/images/siswa/<?php echo $u->foto; ?>" width="50"></td>
@@ -67,7 +69,7 @@
                     <a class="btn" href="<?php //echo site_url('pengajar/dataDetail/'.$u->nip_pengajar); ?>">
                       <i class="fa fa-eye"></i> Lihat
                     </a>
-                    <a class="btn" href="<?php //echo site_url('pengajar/updatePengajar/'.$u->nip_pengajar); ?>">
+                    <a class="btn" href="<?php echo site_url('siswa/updateSiswa/'.$u->nis); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>
                     <a class="btn" href="<?php //echo site_url('pengajar/deletePengajar/'.$u->nip_pengajar); ?>"> 
