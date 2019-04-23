@@ -146,7 +146,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="<?php echo site_url('user/listUser'); ?>"><i class="fa fa-circle-o"></i> Data User</a></li>
+            <li class=""><a href="<?php echo site_url('user/index'); ?>"><i class="fa fa-circle-o"></i> Data User</a></li>
             <li class=""><a href="<?php echo site_url('user/tambahUser'); ?>"><i class="fa fa-circle-o"></i> Tambah User</a></li>
           </ul>
         </li>

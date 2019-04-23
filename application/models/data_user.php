@@ -2,7 +2,7 @@
  
 class data_user extends CI_Model{
 	function tampil_data(){
-		return $this->db->get('user');
+		return $this->db->get('user')->result();
 	}
  
 	function input_data($data,$table){
@@ -14,4 +14,9 @@ class data_user extends CI_Model{
 		$query_result = $query->result();
 		return $query_result;
 	}
+
+	function takedown_data($id, $data) {
+        $query = $this->db->where('username', $id);
+        $query = $this->db->update('user', $data);
+    }
 }
