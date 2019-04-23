@@ -9,9 +9,10 @@ class User extends MY_Controller {
  
 	}
 
-	public function listUser()
+	public function Index()
 	{
 		$data['title'] = 'Kelola User | SmartSMK';
+		$data['data_user'] = $this->data_user->tampil_data();
 
 		$this->render_page('user/listUser', $data);
 	}
@@ -25,7 +26,7 @@ class User extends MY_Controller {
 
 	function tambah_aksi(){
 		$username 		= $this->input->post('username');
-		$password 		= $this->input->post('password');
+		$password 		= md5($this->input->post('password'));
 		$kategori_user	= $this->input->post('kategori_user');
  
 		$data = array(
@@ -38,8 +39,24 @@ class User extends MY_Controller {
 		redirect('user/listUser');
 	}
 
-	function tampil_kategori(){
+	function takedown($id='') {
+		$data = array(			
+			'status'	=> '0'
+		);
 
+		$this->data_user->takedown_data($id, $data);
+		$this->session->set_flashdata('sukses',"User telah di non-aktifkan");
+		redirect('user/index');
+	}
+
+	function takeup($id='') {
+		$data = array(			
+			'status'	=> '1'
+		);
+
+		$this->data_user->takedown_data($id, $data);
+		$this->session->set_flashdata('sukses',"User telah diaktifkan");
+		redirect('user/index');
 	}
 
 }
