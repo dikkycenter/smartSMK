@@ -3,15 +3,27 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
+      <?php if($this->session->userdata('hak_akses')=='1') {?>
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url() ?>/assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url() ?>/assets/dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
+        <div class="pull-left info" style="text-transform: capitalize">
+          <p><?php echo $this->session->userdata("username"); ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
+      <?php } else { ?>
+        <div class="user-panel">
+        <div class="pull-left image">
+        <img src="<?php echo base_url() ?>/assets/images/pengajar/<?php echo $this->session->userdata('foto_pengajar'); ?>" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info" style="text-transform: capitalize">
+          <p><?php echo $this->session->userdata("nama_depan"); ?> <?php echo $this->session->userdata("nama_belakang"); ?></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <?php } ?>
       <!-- search form -->
       <!-- <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
@@ -33,12 +45,18 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li class="<?php echo activate_menu('index'); ?>"><a href="<?php echo site_url('dashboard/index');?>"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li class="<?php echo activate_menu('index2'); ?>"><a href="<?php echo site_url('dashboard/index2');?>"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-          </ul>
+          <?php if($this->session->userdata('hak_akses')=='1') {?>
+            <ul class="treeview-menu">
+              <li class="<?php echo activate_menu('index'); ?>"><a href="<?php echo site_url('dashboard/index');?>"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+              <li class="<?php echo activate_menu('index2'); ?>"><a href="<?php echo site_url('dashboard/index2');?>"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            </ul>
+          <?php } else { ?>
+            <ul class="treeview-menu">              
+              <li class="<?php echo activate_menu('index2'); ?>"><a href="<?php echo site_url('dashboard/index2');?>"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            </ul>
+          <?php } ?>
         </li>
-
+   
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>

@@ -4,6 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pengajar extends MY_Controller {
 	function __construct(){
 		parent::__construct();		
+
+		// Cek apakah user sudah login
+		$this->cekLogin();
+		// Cek Hak Akses apakah user sebagai admin
+		$this->isAdmin();
+
 		$this->load->model('data_pengajar');
 		$this->load->helper('url');
  
