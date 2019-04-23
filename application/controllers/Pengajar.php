@@ -31,9 +31,18 @@ class Pengajar extends MY_Controller {
 		$this->render_page('pengajar/detailPengajar', $data);
 	}
 
-	public function deletePengajar($id) 
+	public function deletePengajar($id='') 
 	{
-		$data['delete'] = $this->data_pengajar->delete_data($id);
+		$data = array(			
+			'status_pengajar'	=> '0'
+		);
+
+		$data2 = array(
+			'status'	=> '0'
+		);
+
+		$this->data_pengajar->delete_data($id, $data);
+		$this->data_pengajar->take_down($id, $data2);
 		$this->session->set_flashdata('sukses',"Data berhasil dihapus");
 
 		redirect('pengajar/index');

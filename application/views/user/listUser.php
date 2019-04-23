@@ -72,11 +72,8 @@
                       ?>
                   </td>
                   <td><?php if($u->status >0 ){ echo "Aktif"; } else { echo "Tidak Aktif"; } ?></td>
-                  <td>
-                    <a class="btn" href="<?php echo site_url('user/dataDetail/'.$u->username); ?>">
-                      <i class="fa fa-eye"></i> Lihat
-                    </a>
-                    <a class="btn" href="<?php echo site_url('user/updateUser/'.$u->username); ?>">
+                  <td>                    
+                    <a class="btn" href="<?php echo site_url('user/updateUser/'.$u->id_user); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>
 
