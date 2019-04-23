@@ -2,12 +2,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pengajar
+        Data Siswa
         <small><?php echo $info; ?></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Pengajar</a></li>
+        <li><a href="#">Siswa</a></li>
         <li class="active"><?php echo $info; ?></li>
       </ol>
     </section>
@@ -20,24 +20,26 @@
           <!-- general form elements -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title"><?php echo $info; ?></h3>
+              <h3 class="box-title">Data Detail Data</h3>
             </div>
             <!-- /.box-header -->
+            <?php foreach($detail as $data):?>
             <!-- form start -->
             <form class="form-horizontal">
               <div class="box-body">
-              <?php foreach($detail as $details): ?>
+
                 <div class="form-group">
-                  <label for="NIP" class="col-sm-2 control-label">NIP</label>                  
+                  <label for="NIP" class="col-sm-2 control-label">NIS</label>
+
                   <div class="col-sm-10">
-                   : <?php echo $details['nip_pengajar']; ?>
+                    <input type="text" class="form-control" id="nis" placeholder="" name="nis" value="<?php echo $data['nis']; ?>" disabled>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaDepan" class="col-sm-2 control-label">Nama</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details['nama_depan']; ?> <?php echo $details['nama_belakang']; ?>, <?php echo $details['gelar']; ?>
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="nama" name="nama"  value="<?php echo $data['nama_depan']; ?> <?php echo $data['nama_belakang']; ?>" disabled>
                   </div>
                 </div>
 
@@ -45,16 +47,36 @@
                   <label for="TempatLahir" class="col-sm-2 control-label">Tempat, Tanggal Lahir</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details['tempat_lahir']; ?>, <?php echo $details['tanggal_lahir']; ?>
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="tempatlahir" name="tempat_lahir" value="<?php echo $data['tempat_lahir']; ?>, <?php echo $data['tanggal_lahir']; ?>" disabled>
                   </div>
                 </div>
 
+                <div class="form-group">
+                  <label for="nama_wali" class="col-sm-2 control-label">Nama Wali</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="nama_wali" name="nama_wali" value="<?php echo $data['nama_wali']; ?>" disabled>
+                  </div>
+                </div>
 
                 <div class="form-group">
-                  <label for="agama" class="col-sm-2 control-label">Agama</label>
+                  <label for="email_wali" class="col-sm-2 control-label">Email Wali</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details['agama']; ?>
+                    <input type="text" class="form-control" id="email_wali" name="email_wali" value="<?php echo $data['email_wali']; ?>" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nama_wali" class="col-sm-2 control-label">Agama</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="agama" name="agama" value="<?php echo $data['agama']; ?>" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nama_wali" class="col-sm-2 control-label">Kelas</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" style="text-transform: capitalize;" id="kelas" name="kelas" value="<?php echo $data['kelas']; ?>" disabled>
                   </div>
                 </div>
 
@@ -62,38 +84,22 @@
                   <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details['alamat']; ?>
+                    <textarea class="form-control" style="text-transform: capitalize;" rows="3" placeholder="Masukkan Alamat" name="alamat" disabled><?php echo $data['alamat']; ?></textarea>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputFoto" class="col-sm-2 control-label">Foto Profil</label>
                   <div class="col-sm-10">
-                   <img src="<?php echo base_url();?>assets/images/pengajar/<?php echo $details['foto_pengajar']; ?>" width="200">
+                   <img src="<?php echo base_url();?>assets/images/siswa/<?php echo $data['foto']; ?>" width="200">
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="email" class="col-sm-2 control-label">Email</label>
-
-                  <div class="col-sm-10">
-                  : <?php echo $details['email']; ?>
-                  </div>
-                </div>
-
-                <!-- <div class="form-group">
-                  <label for="password" class="col-sm-2 control-label">Password</label>
-
-                  <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                  </div>
-                </div> -->
-              <?php endforeach; ?>
-              </div>  
               <!-- /.box-body -->
+                <?php endforeach; ?>
 
               <div class="box-footer">
-                <button type="button" class="btn btn-primary pull-right" name="back" onClick="goBack()">Kembali</button>
+              <button type="button" class="btn btn-primary pull-right" name="back" onClick="goBack()">Kembali</button>
               </div>
             </form>
           </div>

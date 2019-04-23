@@ -18,11 +18,11 @@ class Siswa extends MY_Controller {
 
 	public function dataDetail($id) 
 	{
-		$data['title'] = 'Data Detail Pengajar | SmartSMK';
-		$data['info'] = 'Data Detail Pengajar';
+		$data['title'] = 'Data Detail Siswa | SmartSMK';
+		$data['info'] = 'Data Detail Siswa';
 
-		$data['detail'] = $this->data_pengajar->data_detail($id);
-		$this->render_page('pengajar/detailPengajar', $data);
+		$data['detail'] = $this->data_siswa->data_detail($id);
+		$this->render_page('siswa/detailSiswa', $data);
 	}
 
 	public function deletePengajar($id) 

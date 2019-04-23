@@ -66,7 +66,7 @@
                   <td><?php echo $u->nama_wali; ?></td>
                   <td><img src="<?php echo base_url();?>assets/images/siswa/<?php echo $u->foto; ?>" width="50"></td>
                   <td>
-                    <a class="btn" href="<?php //echo site_url('pengajar/dataDetail/'.$u->nip_pengajar); ?>">
+                    <a class="btn" href="<?php echo site_url('siswa/dataDetail/'.$u->nis); ?>">
                       <i class="fa fa-eye"></i> Lihat
                     </a>
                     <a class="btn" href="<?php echo site_url('siswa/updateSiswa/'.$u->nis); ?>">
