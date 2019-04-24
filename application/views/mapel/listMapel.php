@@ -43,7 +43,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>No.</th>
+                  <th style="width: 3px;">No.</th>
                   <th>ID</th>
                   <th>Mata Pelajaran</th>
                   <th>Action</th>
@@ -58,9 +58,9 @@
                   <td><?php echo $u->id_mapel; ?></td>
                   <td><?php echo $u->mapel; ?></td>
                   <td>
-                    <a class="btn" href="<?php echo site_url('mapel/dataDetail/'.$u->id_mapel); ?>">
+                    <!-- <a class="btn" href="<?php //echo site_url('mapel/dataDetail/'.$u->id_mapel); ?>">
                       <i class="fa fa-eye"></i> Lihat
-                    </a>
+                    </a> -->
                     <a class="btn" href="<?php echo site_url('mapel/updateMapel/'.$u->id_mapel); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>

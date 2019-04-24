@@ -30,14 +30,14 @@
                 <div class="form-group">
                   <label for="NIP" class="col-sm-2 control-label">NIP</label>                  
                   <div class="col-sm-10">
-                   : <?php echo $details['nip_pengajar']; ?>
+                  <input type="text" class="form-control" style="text-transform: capitalize;" value="<?php echo $details['nip_pengajar']; ?>" disabled>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="NamaDepan" class="col-sm-2 control-label">Nama</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details['nama_depan']; ?> <?php echo $details['nama_belakang']; ?>, <?php echo $details['gelar']; ?>
+                    <input type="text" class="form-control" style="text-transform: capitalize;" value="<?php echo $details['nama_depan']; ?> <?php echo $details['nama_belakang']; ?>, <?php echo $details['gelar']; ?>" disabled>
                   </div>
                 </div>
 
@@ -45,7 +45,7 @@
                   <label for="TempatLahir" class="col-sm-2 control-label">Tempat, Tanggal Lahir</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details['tempat_lahir']; ?>, <?php echo $details['tanggal_lahir']; ?>
+                    <input type="text" class="form-control" style="text-transform: capitalize;" value="<?php echo $details['tempat_lahir']; ?>, <?php echo $details['tanggal_lahir']; ?>" disabled>
                   </div>
                 </div>
 
@@ -54,7 +54,7 @@
                   <label for="agama" class="col-sm-2 control-label">Agama</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details['agama']; ?>
+                    <input type="text" class="form-control" style="text-transform: capitalize;" value="<?php echo $details['agama']; ?>" disabled>
                   </div>
                 </div>
 
@@ -62,14 +62,7 @@
                   <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details['alamat']; ?>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputFoto" class="col-sm-2 control-label">Foto Profil</label>
-                  <div class="col-sm-10">
-                   <img src="<?php echo base_url();?>assets/images/pengajar/<?php echo $details['foto_pengajar']; ?>" width="200">
+                    <textarea class="form-control" style="text-transform: capitalize;" rows="3" placeholder="Masukkan Alamat" name="alamat" disabled><?php echo $details['alamat']; ?></textarea>
                   </div>
                 </div>
 
@@ -77,17 +70,17 @@
                   <label for="email" class="col-sm-2 control-label">Email</label>
 
                   <div class="col-sm-10">
-                  : <?php echo $details['email']; ?>
+                    <input type="email" class="form-control" style="text-transform: lowercase;" value="<?php echo $details['email']; ?>" disabled>
                   </div>
                 </div>
 
-                <!-- <div class="form-group">
-                  <label for="password" class="col-sm-2 control-label">Password</label>
-
+                <div class="form-group">
+                  <label for="inputFoto" class="col-sm-2 control-label">Foto Profil</label>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                    <img src="<?php echo base_url();?>assets/images/pengajar/<?php echo $details['foto_pengajar']; ?>" width="200">
                   </div>
-                </div> -->
+                </div>
+
               <?php endforeach; ?>
               </div>  
               <!-- /.box-body -->
