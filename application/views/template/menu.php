@@ -122,8 +122,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="<?php echo site_url('Jadwal/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Jadwal</a></li>
-            <li class=""><a href="<?php echo site_url('Jadwal/tambahJadwal'); ?>"><i class="fa fa-circle-o"></i> Tambah Jadwal</a></li>
+            <li class=""><a href="<?php echo site_url('jadwal/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Jadwal</a></li>
+            <li class=""><a href="<?php echo site_url('jadwal/tambahJadwal'); ?>"><i class="fa fa-circle-o"></i> Tambah Jadwal</a></li>
           </ul>
         </li>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2019 at 05:33 PM
+-- Generation Time: Apr 25, 2019 at 05:31 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -39,28 +39,31 @@ CREATE TABLE `data_absensi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_isikelas`
---
-
-CREATE TABLE `data_isikelas` (
-  `id_isikelas` int(11) NOT NULL,
-  `nis` varchar(20) NOT NULL,
-  `id_kelas` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `data_jadwal`
 --
 
 CREATE TABLE `data_jadwal` (
   `id_jadwal` varchar(20) NOT NULL,
-  `tanggal` datetime NOT NULL,
+  `tanggal` date NOT NULL,
+  `start` time NOT NULL,
+  `end` time NOT NULL,
   `id_mapel` varchar(50) NOT NULL,
-  `id_kelas` int(11) NOT NULL,
-  `id_pengajar` varchar(50) NOT NULL
+  `id_kelas` varchar(50) NOT NULL,
+  `id_pengajar` varchar(50) NOT NULL,
+  `id_pengajar2` varchar(50) DEFAULT NULL,
+  `verifikasi_date` datetime NOT NULL,
+  `verifikasi_by` varchar(50) NOT NULL,
+  `input_date` datetime NOT NULL,
+  `update_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_jadwal`
+--
+
+INSERT INTO `data_jadwal` (`id_jadwal`, `tanggal`, `start`, `end`, `id_mapel`, `id_kelas`, `id_pengajar`, `id_pengajar2`, `verifikasi_date`, `verifikasi_by`, `input_date`, `update_date`) VALUES
+('mj005', '2019-04-12', '12:30:00', '15:30:00', 'MP002', 'mj4a', '2177', NULL, '0000-00-00 00:00:00', '', '2019-04-25 05:30:54', '2019-04-25 05:30:54'),
+('tkk102', '2019-04-06', '10:15:00', '14:15:00', 'MP001', 'tkk1a', '2173', NULL, '0000-00-00 00:00:00', '', '2019-04-25 05:30:08', '2019-04-25 05:30:08');
 
 -- --------------------------------------------------------
 
@@ -80,9 +83,11 @@ CREATE TABLE `data_kelas` (
 --
 
 INSERT INTO `data_kelas` (`id_kelas`, `nama_kelas`, `nama_jurusan`, `keterangan`) VALUES
-('mj3a', 'mj3a', 'Multimedia', 'diky bodok'),
-('mj42', 'mj42', 'Teknik Pengelasan Kapal', ''),
-('mj4a', 'mj4a', 'Teknik Pengelasan Kapal', '');
+('mj4a', 'mj', 'Multimedia', ''),
+('mj4b', 'mj', 'Multimedia', 'diky bodok'),
+('tkk1a', 'tkk', 'Teknik Kelistrikan Kapal', ''),
+('tkk1b', 'tkk', 'Teknik Kelistrikan Kapal', ''),
+('tpk1a', 'tpk', 'Teknik Pengelasan Kapal', '');
 
 -- --------------------------------------------------------
 
@@ -109,10 +114,9 @@ CREATE TABLE `data_pengajar` (
 --
 
 INSERT INTO `data_pengajar` (`nip_pengajar`, `nama_depan`, `nama_belakang`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `agama`, `email`, `gelar`, `foto_pengajar`, `status_pengajar`) VALUES
-('2171', 'DIKY', 'SATRIA', 'DUMAI', '1996-04-08', 'BATAM CENTRE', '', 'dikkycenter@gmail.com', 'S.Tr.T', '155490447101_3000.jpg', 1),
 ('2172', 'SUCI', 'NOVITASARI', 'BATAM', '1970-01-01', 'Batam', 'Budha', 'soecinovitasari@yahoo.com', 'S.I', '119182.jpg', 1),
 ('2173', 'ANANDA', 'ROY', 'BATAM', '0000-00-00', 'DUMAI', 'Islam', 'sucinovitasari96@gmail.com', 'S.I', '119181.jpg', 1),
-('2176', 'SUCI', 'JULIONO', 'BATAM', '2019-03-07', 'Batam', '', 'administrator@admin.com', 'S.IP', 'Key-01.png', 1),
+('2176', 'SUCI', 'JULIONO', 'BATAM', '2019-03-07', 'Batam', 'Islam', 'administrator@admin.com', 'S.IP', 'Key-01.png', 1),
 ('2177', 'DIKY', 'CAVE', 'DUMAI', '2019-03-29', 'BATAM', 'Islam', 'dikygazali@gmail.com', 'S.IP', 'batam2.jpg', 1),
 ('2178', 'ROY', 'ANANDA', 'BATAM', '2019-03-22', 'BATAM', 'Islam', 'administrator@admin.com', 'S.IP', '1553977670awan-di-langit_20180416_203622.jpg', 1),
 ('2179', 'KEVIN', 'ANANDA', 'BATAM', '2019-03-08', 'Batam', 'Islam', 'administrator@admin.com', 'S.IP', '155398008801_3000.jpg', 1);
@@ -140,6 +144,13 @@ CREATE TABLE `data_siswa` (
   `update_by` varchar(50) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_siswa`
+--
+
+INSERT INTO `data_siswa` (`nis`, `nama_depan`, `nama_belakang`, `tempat_lahir`, `tanggal_lahir`, `nama_wali`, `email_wali`, `agama`, `alamat`, `kelas`, `foto`, `input_date`, `update_date`, `update_by`, `status`) VALUES
+('4311611010', 'Ananda', 'Roy', 'Batam', '2019-04-18', 'Jhonny Astin', 'jhony@justinfilm.com', 'Kristen Khatolik', 'Tg. Uma', 'mj42', '1556036500045503500_1486041676-qureta_com.jpg', '2019-04-23 18:35:45', '2019-04-23 18:35:45', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -212,13 +223,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `kategori_user`, `status`) VALUES
-(6, '2171', '3165163', 3, 1),
-(9, '2172', 'sadasdasdsad', 3, 1),
-(10, '2173', 'SADASDASDAS', 3, 1),
-(14, '2176', 'asfasfas', 3, 1),
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 1),
+(9, '2172', '21232f297a57a5a743894a0e4a801fc3', 3, 1),
+(10, '2173', '611fe6ad3bc639d95becf37356b0ec9a', 3, 1),
+(14, '2176', 'be582f802932fa7f88fc4addabb56940', 3, 1),
 (15, '2177', 'asdasdasdas', 3, 1),
 (16, '2178', 'SADASDAS', 3, 1),
-(17, '2179', 'adada', 3, 1);
+(17, '2179', 'adada', 3, 1),
+(18, '4311611010', '827ccb0eea8a706c4c34a16891f84e7b', 4, 1);
 
 --
 -- Indexes for dumped tables
@@ -232,21 +244,10 @@ ALTER TABLE `data_absensi`
   ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
--- Indexes for table `data_isikelas`
---
-ALTER TABLE `data_isikelas`
-  ADD PRIMARY KEY (`id_isikelas`),
-  ADD KEY `nis` (`nis`,`id_kelas`),
-  ADD KEY `id_kelas` (`id_kelas`);
-
---
 -- Indexes for table `data_jadwal`
 --
 ALTER TABLE `data_jadwal`
-  ADD PRIMARY KEY (`id_jadwal`),
-  ADD KEY `id_mapel` (`id_mapel`,`id_kelas`,`id_pengajar`),
-  ADD KEY `id_pengajar` (`id_pengajar`),
-  ADD KEY `id_kelas` (`id_kelas`);
+  ADD PRIMARY KEY (`id_jadwal`);
 
 --
 -- Indexes for table `data_kelas`
@@ -305,12 +306,6 @@ ALTER TABLE `data_absensi`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `data_isikelas`
---
-ALTER TABLE `data_isikelas`
-  MODIFY `id_isikelas` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `kategori_user`
 --
 ALTER TABLE `kategori_user`
@@ -331,21 +326,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `data_absensi`
   ADD CONSTRAINT `data_absensi_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `data_jadwal` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `data_isikelas`
---
-ALTER TABLE `data_isikelas`
-  ADD CONSTRAINT `data_isikelas_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `data_kelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `data_isikelas_ibfk_2` FOREIGN KEY (`nis`) REFERENCES `data_siswa` (`nis`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `data_jadwal`
---
-ALTER TABLE `data_jadwal`
-  ADD CONSTRAINT `data_jadwal_ibfk_1` FOREIGN KEY (`id_mapel`) REFERENCES `mata_pelajaran` (`id_mapel`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `data_jadwal_ibfk_2` FOREIGN KEY (`id_pengajar`) REFERENCES `data_pengajar` (`nip_pengajar`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `data_jadwal_ibfk_3` FOREIGN KEY (`id_kelas`) REFERENCES `data_isikelas` (`id_isikelas`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `data_walikelas`
