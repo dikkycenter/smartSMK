@@ -29,10 +29,6 @@ class data_jadwal extends CI_Model
         return $query->result_array();
     }
 
-    // function data_detail($id) {
-    //     return $this->db->get_where('data_jadwal', array('id_jadwal' => $id))->result_array();
-    // }
-
     function input_data($data){
 		$this->db->insert('data_jadwal',$data);
     }

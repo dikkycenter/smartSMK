@@ -60,15 +60,15 @@
                 $i = 1;                
                 foreach ($jadwal as $u): ?>
                 <tr>
-                  <td><?php echo $i; ?></td>
-                  <td><?php echo $u->id_jadwal; ?></td>
-                  <td><?php echo $u->tanggal; ?></td>
-                  <td><?php echo $u->start; ?> - <?php echo $u->end; ?></td>
-                  <td><?php echo $u->mapel; ?></td>
-                  <td><?php echo $u->id_kelas; ?></td>
-                  <td><?php echo $u->nama_depan; ?> <?php echo $u->nama_belakang; ?>, <?php echo $u->gelar; ?></td>                  
-                  <td><?php echo $u->input_date; ?></td>
-                  <td><?php echo $u->update_date; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $i; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->id_jadwal; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->tanggal; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->start; ?> - <?php echo $u->end; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->mapel; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->nama_depan; ?> <?php echo $u->nama_belakang; ?>, <?php echo $u->gelar; ?></td>                  
+                  <td style="text-transform: uppercase;"><?php echo $u->input_date; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->update_date; ?></td>
                   <td>
                     <a class="btn" href="<?php echo site_url('jadwal/dataDetail/'.$u->id_jadwal); ?>">
                       <i class="fa fa-eye"></i> Lihat
