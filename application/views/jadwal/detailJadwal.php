@@ -31,14 +31,14 @@
                 <div class="form-group">
                   <label for="NIP" class="col-sm-2 control-label">ID Jadwal</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="id_jadwal" placeholder="" name="id_jadwal" value="<?php echo $data['id_jadwal']; ?>" disabled>
+                    <input type="text" class="form-control" id="id_jadwal" placeholder="" style="text-transform: uppercase;" name="id_jadwal" value="<?php echo $data['id_jadwal']; ?>" disabled>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="nama_wali" class="col-sm-2 control-label">Kelas</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="id_kelas" name="id_kelas" value="<?php echo $data['id_kelas']; ?>" disabled>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="id_kelas" name="id_kelas" value="<?php echo $data['id_kelas']; ?>" disabled>
                   </div>
                 </div>
 
@@ -46,7 +46,7 @@
                   <label for="email_wali" class="col-sm-2 control-label">Mata Pelajaran</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="id_mapel" name="id_mapel" value="<?php echo $data['id_mapel']; ?>" disabled>
+                    <input type="text" class="form-control" id="id_mapel" name="id_mapel" style="text-transform: uppercase;" value="<?php echo $data['id_mapel']; ?>" disabled>
                   </div>
                 </div>
 
@@ -54,7 +54,7 @@
                   <label for="NamaDepan" class="col-sm-2 control-label">Tanggal</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="tanggal" name="nama"  value="<?php echo $data['tanggal']; ?>" disabled>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="tanggal" name="nama"  value="<?php echo $data['tanggal']; ?>" disabled>
                   </div>
                 </div>
 
@@ -62,35 +62,45 @@
                   <label for="TempatLahir" class="col-sm-2 control-label">Jam Mulai</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="start" name="start" value="<?php echo $data['start']; ?>" disabled>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="start" name="start" value="<?php echo $data['start']; ?>" disabled>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="nama_wali" class="col-sm-2 control-label">Jam Berakhir</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="end" name="end" value="<?php echo $data['end']; ?>" disabled>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="end" name="end" value="<?php echo $data['end']; ?>" disabled>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="nama_wali" class="col-sm-2 control-label">Pengajar Utama</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="id_pengajar" name="id_pengajar" value="<?php echo $data['nama_depan']; ?> <?php echo $data['nama_belakang']; ?> <?php echo $data['gelar']; ?>" disabled>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="id_pengajar" name="id_pengajar" value="<?php echo $data['nama_depan']; ?> <?php echo $data['nama_belakang']; echo ','; ?> <?php echo $data['gelar']; ?>" disabled>
                   </div>
-                </div>
-
+                </div>                
+                
+                <?php foreach ($detail2 as $u): ?>
                 <div class="form-group">
                   <label for="nama_wali" class="col-sm-2 control-label">Pengajar Pengganti</label>
+
+                  <div class="col-sm-10">                    
+                    <input type="text" class="form-control" style="text-transform: uppercase;" name="id_pengajar2" value="<?php if($data['id_pengajar2']==null) { echo '-'; } else { ?><?php echo $u['nama_depan']; ?> <?php echo $u['nama_belakang']; echo ','; ?> <?php echo $u['gelar']; } ?>" disabled>
+                  </div>
+                </div>
+                <?php endforeach; ?>
+
+                <div class="form-group">
+                  <label for="nama_wali" class="col-sm-2 control-label">Verifikasi By</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="id_pengajar2" name="id_pengajar2" value="<?php echo $data['nama_depan']; ?> <?php echo $data['nama_belakang']; ?> <?php echo $data['gelar']; ?>" disabled>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="" name="verifikasi_by" value="<?php if($data['verifikasi_by']==null) { echo '-'; } else { echo $data['verifikasi_by']; }?>" disabled>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="nama_wali" class="col-sm-2 control-label">Verifikasi by</label>
+                  <label for="nama_wali" class="col-sm-2 control-label">Verifikasi Date</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: capitalize;" id="" name="verifikasi_by" value="<?php echo $data['verifikasi_by']; ?>" disabled>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="" name="verifikasi_by" value="<?php if($data['verifikasi_date']=='0000-00-00 00:00:00') { echo '-'; } else { echo $data['verifikasi_date']; }?>" disabled>
                   </div>
                 </div>
 

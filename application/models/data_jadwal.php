@@ -21,6 +21,18 @@ class data_jadwal extends CI_Model
         return $query->result_array();
     }
 
+    function data_detail2($id) {
+        $this->db->from('data_jadwal a');
+        $this->db->join('data_pengajar b','a.id_pengajar2=b.nip_pengajar','left');
+        $this->db->where('id_jadwal',$id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    // function data_detail($id) {
+    //     return $this->db->get_where('data_jadwal', array('id_jadwal' => $id))->result_array();
+    // }
+
     function input_data($data){
 		$this->db->insert('data_jadwal',$data);
     }
@@ -63,6 +75,21 @@ class data_jadwal extends CI_Model
         return $this->db->get_where('data_kelas', array('id_kelas' => $id))->result_array();
     }
 
+    // Ambil Data Jadwal Pengajar
+    function get_jadwal_pengajar() {
+        $this->db->from('data_jadwal a');
+        $this->db->join('data_pengajar b','a.id_pengajar=b.nip_pengajar', 'left');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // Ambil Data Jadwal Pengajar2
+    function get_jadwal_pengajar2($id) {
+        $this->db->from('data_jadwal a');
+        $this->db->join('data_pengajar b','a.id_pengajar2=b.nip_pengajar', 'left');
+        $this->db->where('id_pengajar2',$id);
+        return $this->db->get()->result_array();
+    }
 }
 
 ?>

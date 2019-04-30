@@ -25,10 +25,11 @@ class Jadwal extends MY_Controller {
     
     public function dataDetail($id) 
 	{
-		$data['title'] = 'Data Detail Jadwal | SmartSMK';
-		$data['info'] = 'Data Detail Jadwal';
+		$data['title']      = 'Data Detail Jadwal | SmartSMK';
+		$data['info']       = 'Data Detail Jadwal';
 
-        $data['detail'] = $this->data_jadwal->data_detail($id);
+        $data['detail']     = $this->data_jadwal->data_detail($id);
+        $data['detail2']     = $this->data_jadwal->data_detail2($id);
 		$this->render_page('jadwal/detailJadwal', $data);
 	}
 
@@ -129,6 +130,12 @@ class Jadwal extends MY_Controller {
     function get_kode() {
         $id=$this->input->post('id');
         $data=$this->data_jadwal->get_kelas_detail($id);
+        echo json_encode($data);
+    }
+
+    function get_pengajar2() {
+        $id=$this->input->post('id');
+        $data=$this->data_jadwal->get_jadwal_pengajar2($id);
         echo json_encode($data);
     }
 

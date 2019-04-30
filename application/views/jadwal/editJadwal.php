@@ -130,7 +130,7 @@
               </div>
 
               <div class="box-footer">                
-                <button type="submit" class="btn btn-primary pull-right" name="simpan">Simpan</button>
+                <button type="submit" class="btn btn-primary pull-right" name="update">Update</button>
               </div>
             </form>
             <?php endforeach ; ?>
