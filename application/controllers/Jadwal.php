@@ -23,6 +23,15 @@ class Jadwal extends MY_Controller {
 		$this->render_page('jadwal/listJadwal', $data);
     }
     
+    public function dataDetail($id) 
+	{
+		$data['title'] = 'Data Detail Jadwal | SmartSMK';
+		$data['info'] = 'Data Detail Jadwal';
+
+        $data['detail'] = $this->data_jadwal->data_detail($id);
+		$this->render_page('jadwal/detailJadwal', $data);
+	}
+
     public function tambahJadwal()
 	{
         $data['title'] = 'Tambah Jadwal | SmartSMK';
@@ -65,6 +74,50 @@ class Jadwal extends MY_Controller {
         redirect('jadwal/index');
     }
 
+    public function updateJadwal($id)
+	{
+        $data['title'] = 'Update Data Jadwal | SmartSMK';
+        
+        $data['detail'] = $this->data_jadwal->data_detail($id);
+		$data['mapel'] = $this->data_jadwal->get_mapel();
+        $data['kelas'] = $this->data_jadwal->get_kelas();
+        $data['pengajar'] = $this->data_jadwal->get_pengajar();
+        $data['pengajar2'] = $this->data_jadwal->get_pengajar();
+
+		$this->render_page('jadwal/editJadwal', $data);
+    }
+    
+    public function update_aksi($id='') {
+        $now = date('Y-m-d H:i:s');
+
+        $id_kelas       = $this->input->post('id_kelas');
+        $id_jadwal      = $this->input->post('id_jadwal');     
+        $id_mapel       = $this->input->post('id_mapel');
+        $id_pengajar    = $this->input->post('id_pengajar');
+        $id_pengajar2   = $this->input->post('id_pengajar2');
+        $newDate 		= date("Y-m-d", strtotime($this->input->post('tanggal')));
+        $start          = date("H:i:s", strtotime($this->input->post('start')));
+        $end            = date("H:i:s", strtotime($this->input->post('end')));
+        $update_date	= $now;
+        
+        $data = array (
+            'id_jadwal'     => $id_jadwal,
+            'id_kelas'      => $id_kelas,
+            'id_mapel'      => $id_mapel,
+            'id_pengajar'   => $id_pengajar,
+            'id_pengajar2'  => $id_pengajar2,
+            'tanggal'       => $newDate,
+            'start'         => $start,
+            'end'           => $end,
+            'update_date'   => $update_date
+        );
+
+        $this->data_jadwal->update_data($id, $data);
+        $this->session->set_flashdata('sukses',"Data berhasil diubah");
+
+        redirect('jadwal/index');
+    }
+
     public function deleteJadwal($id) 
 	{
 		$data['delete'] = $this->data_jadwal->delete_data($id);
@@ -75,7 +128,7 @@ class Jadwal extends MY_Controller {
 
     function get_kode() {
         $id=$this->input->post('id');
-        $data=$this->data_jadwal->data_detail($id);
+        $data=$this->data_jadwal->get_kelas_detail($id);
         echo json_encode($data);
     }
 

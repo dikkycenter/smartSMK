@@ -12,7 +12,13 @@ class data_jadwal extends CI_Model
     }
 
     function data_detail($id) {
-        return $this->db->get_where('data_kelas', array('id_kelas' => $id))->result_array();
+        $this->db->from('data_jadwal a');
+        $this->db->join('data_pengajar b','a.id_pengajar=b.nip_pengajar','left');
+        $this->db->join('data_kelas c','a.id_kelas=c.id_kelas','left');
+        $this->db->join('mata_pelajaran d','a.id_mapel=d.id_mapel','left');
+        $this->db->where('id_jadwal',$id);
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     function input_data($data){
@@ -24,8 +30,8 @@ class data_jadwal extends CI_Model
     }
 
     function update_data($id, $data) {
-        $query = $this->db->where('id_kelas', $id);
-        $query = $this->db->update('data_kelas', $data);
+        $query = $this->db->where('id_jadwal', $id);
+        $query = $this->db->update('data_jadwal', $data);
     }
 
     // Ambil Data Kelas
@@ -50,6 +56,11 @@ class data_jadwal extends CI_Model
     function get_siswa() {
         $query = $this->db->get('data_siswa');
         return $query->result();
+    }
+
+    // Ambil Data Kelas Detail
+    function get_kelas_detail($id) {
+        return $this->db->get_where('data_kelas', array('id_kelas' => $id))->result_array();
     }
 
 }

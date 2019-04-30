@@ -73,7 +73,7 @@
                     <a class="btn" href="<?php echo site_url('jadwal/dataDetail/'.$u->id_jadwal); ?>">
                       <i class="fa fa-eye"></i> Lihat
                     </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/updatejadwal/'.$u->id_jadwal); ?>">
+                    <a class="btn" href="<?php echo site_url('jadwal/updateJadwal/'.$u->id_jadwal); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>
                     <a class="btn" href="<?php echo site_url('jadwal/deleteJadwal/'.$u->id_jadwal); ?>"> 

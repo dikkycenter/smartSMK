@@ -114,7 +114,7 @@
                   <div class="col-sm-10">
                     <select class="form-control" style="width: 100%;" name="kelas" required> 
                       <?php foreach ($kelas as $u): ?>
-                      <option <?php echo ($data['kelas']==$u->id_kelas)?'selected="selected"':''; ?>><?php echo $u->nama_kelas; ?></option>
+                      <option <?php echo ($data['kelas']==$u->id_kelas)?'selected="selected"':''; ?>><?php echo $u->id_kelas; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
