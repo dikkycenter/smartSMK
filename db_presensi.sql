@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2019 at 05:31 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 5.6.39
+-- Generation Time: May 04, 2019 at 07:57 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,15 +44,13 @@ CREATE TABLE `data_absensi` (
 
 CREATE TABLE `data_jadwal` (
   `id_jadwal` varchar(20) NOT NULL,
-  `tanggal` date NOT NULL,
+  `hari` varchar(30) NOT NULL,
   `start` time NOT NULL,
   `end` time NOT NULL,
   `id_mapel` varchar(50) NOT NULL,
   `id_kelas` varchar(50) NOT NULL,
   `id_pengajar` varchar(50) NOT NULL,
   `id_pengajar2` varchar(50) DEFAULT NULL,
-  `verifikasi_date` datetime NOT NULL,
-  `verifikasi_by` varchar(50) NOT NULL,
   `input_date` datetime NOT NULL,
   `update_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -61,9 +59,8 @@ CREATE TABLE `data_jadwal` (
 -- Dumping data for table `data_jadwal`
 --
 
-INSERT INTO `data_jadwal` (`id_jadwal`, `tanggal`, `start`, `end`, `id_mapel`, `id_kelas`, `id_pengajar`, `id_pengajar2`, `verifikasi_date`, `verifikasi_by`, `input_date`, `update_date`) VALUES
-('mj005', '2019-04-12', '12:30:00', '15:30:00', 'MP002', 'mj4a', '2177', NULL, '0000-00-00 00:00:00', '', '2019-04-25 05:30:54', '2019-04-25 05:30:54'),
-('tkk102', '2019-04-06', '10:15:00', '14:15:00', 'MP001', 'tkk1a', '2173', NULL, '0000-00-00 00:00:00', '', '2019-04-25 05:30:08', '2019-04-25 05:30:08');
+INSERT INTO `data_jadwal` (`id_jadwal`, `hari`, `start`, `end`, `id_mapel`, `id_kelas`, `id_pengajar`, `id_pengajar2`, `input_date`, `update_date`) VALUES
+('12TKJ3_01', 'Senin', '07:15:00', '09:15:00', 'MP001', '12TKJ3', '2172', NULL, '2019-05-04 17:26:49', '2019-05-04 17:26:49');
 
 -- --------------------------------------------------------
 
@@ -83,6 +80,7 @@ CREATE TABLE `data_kelas` (
 --
 
 INSERT INTO `data_kelas` (`id_kelas`, `nama_kelas`, `nama_jurusan`, `keterangan`) VALUES
+('12TKJ3', '12TKJ3', 'Multimedia', ''),
 ('mj4a', 'mj', 'Multimedia', ''),
 ('mj4b', 'mj', 'Multimedia', 'diky bodok'),
 ('tkk1a', 'tkk', 'Teknik Kelistrikan Kapal', ''),
