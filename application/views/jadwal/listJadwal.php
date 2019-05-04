@@ -45,7 +45,7 @@
                 <tr>
                   <th>No.</th>
                   <th>ID Jadwal</th>
-                  <th>Tanggal</th>
+                  <th>Hari</th>
                   <th>Waktu (Start - End)</th>
                   <th>Mapel</th>
                   <th>Kelas</th>
@@ -62,7 +62,7 @@
                 <tr>
                   <td style="text-transform: uppercase;"><?php echo $i; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->id_jadwal; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->tanggal; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->hari; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->start; ?> - <?php echo $u->end; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->mapel; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>

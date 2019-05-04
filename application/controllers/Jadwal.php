@@ -51,7 +51,7 @@ class Jadwal extends MY_Controller {
         $id_jadwal      = $this->input->post('id_jadwal');     
         $id_mapel       = $this->input->post('id_mapel');
         $id_pengajar    = $this->input->post('id_pengajar');
-        $newDate 		= date("Y-m-d", strtotime($this->input->post('tanggal')));
+        $hari           = $this->input->post('hari');
         $start          = date("H:i:s", strtotime($this->input->post('start')));
         $end            = date("H:i:s", strtotime($this->input->post('end')));
         $input_date		= $now;
@@ -62,7 +62,7 @@ class Jadwal extends MY_Controller {
             'id_kelas'      => $id_kelas,
             'id_mapel'      => $id_mapel,
             'id_pengajar'   => $id_pengajar,
-            'tanggal'       => $newDate,
+            'hari'          => $hari,
             'start'         => $start,
             'end'           => $end,
             'input_date'    => $input_date,
@@ -96,7 +96,7 @@ class Jadwal extends MY_Controller {
         $id_mapel       = $this->input->post('id_mapel');
         $id_pengajar    = $this->input->post('id_pengajar');
         $id_pengajar2   = $this->input->post('id_pengajar2');
-        $newDate 		= date("Y-m-d", strtotime($this->input->post('tanggal')));
+        $hari           = $this->input->post('hari');
         $start          = date("H:i:s", strtotime($this->input->post('start')));
         $end            = date("H:i:s", strtotime($this->input->post('end')));
         $update_date	= $now;
@@ -107,7 +107,7 @@ class Jadwal extends MY_Controller {
             'id_mapel'      => $id_mapel,
             'id_pengajar'   => $id_pengajar,
             'id_pengajar2'  => $id_pengajar2,
-            'tanggal'       => $newDate,
+            'hari'          => $hari,
             'start'         => $start,
             'end'           => $end,
             'update_date'   => $update_date

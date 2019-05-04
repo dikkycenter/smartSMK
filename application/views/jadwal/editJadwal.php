@@ -87,15 +87,17 @@
                 </div>
                 
                 <div class="form-group">
-                  <label for="tanggal" class="col-sm-2 control-label">Tanggal*</label>
+                  <label for="tanggal" class="col-sm-2 control-label">Hari*</label>
 
-                  <div class="col-sm-4">
-                    <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal" value="<?php echo $data['tanggal']; ?>" required>
-                    </div>
+                  <div class="col-sm-10">
+                    <select class="form-control" style="width: 100%;" name="agama">
+                      <option <?php echo ($data['hari']=='Senin')?'selected="selected"':''; ?>>Senin</option>
+                      <option <?php echo ($data['hari']=='Selasa')?'selected="selected"':''; ?>>Selasa</option>
+                      <option <?php echo ($data['hari']=='Rabu')?'selected="selected"':''; ?>>Rabu</option>
+                      <option <?php echo ($data['hari']=='Kamis')?'selected="selected"':''; ?>>Kamis</option>
+                      <option <?php echo ($data['hari']=='Jumat')?'selected="selected"':''; ?>>Jumat</option>
+                      <option <?php echo ($data['hari']=='Sabtu')?'selected="selected"':''; ?>>Sabtu</option>
+                    </select>
                   </div>
                 </div>
 

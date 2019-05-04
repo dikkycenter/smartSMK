@@ -51,25 +51,17 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="NamaDepan" class="col-sm-2 control-label">Tanggal</label>
+                  <label for="NamaDepan" class="col-sm-2 control-label">Hari</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: uppercase;" id="tanggal" name="nama"  value="<?php echo $data['tanggal']; ?>" disabled>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="hari" name="hari"  value="<?php echo $data['hari']; ?>" disabled>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="TempatLahir" class="col-sm-2 control-label">Jam Mulai</label>
-
+                  <label for="nama_wali" class="col-sm-2 control-label">Jam Pelajaran</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: uppercase;" id="start" name="start" value="<?php echo $data['start']; ?>" disabled>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="nama_wali" class="col-sm-2 control-label">Jam Berakhir</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: uppercase;" id="end" name="end" value="<?php echo $data['end']; ?>" disabled>
+                    <input type="text" class="form-control" style="text-transform: uppercase;" id="jam" name="jam" value="<?php echo $data['start']; ?> - <?php echo $data['end']; ?>" disabled>
                   </div>
                 </div>
 
@@ -89,20 +81,6 @@
                   </div>
                 </div>
                 <?php endforeach; ?>
-
-                <div class="form-group">
-                  <label for="nama_wali" class="col-sm-2 control-label">Verifikasi By</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: uppercase;" id="" name="verifikasi_by" value="<?php if($data['verifikasi_by']==null) { echo '-'; } else { echo $data['verifikasi_by']; }?>" disabled>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="nama_wali" class="col-sm-2 control-label">Verifikasi Date</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style="text-transform: uppercase;" id="" name="verifikasi_by" value="<?php if($data['verifikasi_date']=='0000-00-00 00:00:00') { echo '-'; } else { echo $data['verifikasi_date']; }?>" disabled>
-                  </div>
-                </div>
 
               <!-- /.box-body -->
                 <?php endforeach; ?>

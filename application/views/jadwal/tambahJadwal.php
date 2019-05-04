@@ -74,15 +74,18 @@
                 </div>
                 
                 <div class="form-group">
-                  <label for="tanggal" class="col-sm-2 control-label">Tanggal*</label>
+                  <label for="hari" class="col-sm-2 control-label">Hari*</label>
 
-                  <div class="col-sm-4">
-                    <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal" required>
-                    </div>
+                  <div class="col-sm-10">
+                    <select class="form-control" style="width: 100%;" name="hari" required> 
+                      <option selected disabled>---Pilih Hari---</option>
+                      <option value="Senin">Senin</option>
+                      <option value="Selasa">Selasa</option>
+                      <option value="Rabu">Rabu</option>
+                      <option value="Kamis">Kamis</option>
+                      <option value="Jumat">Jumat</option>
+                      <option value="Sabtu">Sabtu</option>
+                    </select>
                   </div>
                 </div>
 
