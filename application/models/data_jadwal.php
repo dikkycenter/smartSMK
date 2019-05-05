@@ -40,6 +40,7 @@ class data_jadwal extends CI_Model
     function update_data($id, $data) {
         $query = $this->db->where('id_jadwal', $id);
         $query = $this->db->update('data_jadwal', $data);
+        return "success";
     }
 
     // Ambil Data Kelas

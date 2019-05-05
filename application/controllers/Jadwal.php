@@ -113,8 +113,13 @@ class Jadwal extends MY_Controller {
             'update_date'   => $update_date
         );
 
-        $this->data_jadwal->update_data($id, $data);
-        $this->session->set_flashdata('sukses',"Data berhasil diubah");
+        $update = $this->data_jadwal->update_data($id, $data);
+        if($update == "success"){
+            $this->session->set_flashdata('sukses',"Data berhasil diubah");
+        }
+        else{
+            $this->session->set_flashdata('Gagal',"Data berhasil diubah");
+        }
 
         redirect('jadwal/index');
     }
