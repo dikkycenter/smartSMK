@@ -3,13 +3,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Jadwal
-        <small>List Data Jadwal</small>
+        Data Presensi
+        <small>Jadwal Presensi</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Data Jadwal</a></li>
-        <li class="active">List Data Jadwal</li>
+        <li><a href="#">Data Presensi</a></li>
+        <li class="active">Jadwal Presensi</li>
       </ol>
     </section>
 
@@ -30,11 +30,11 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Jadwal</h3>
-              <a href="<?php echo site_url('jadwal/tambahJadwal');?>">
+              <h3 class="box-title">Data Presensi</h3>
+              <a href="<?php echo site_url('presensi/tambahPresensi');?>">
                 <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Tambah Data</button>
               </a>
             </div>
@@ -45,13 +45,6 @@
                 <tr>
                   <th>No.</th>
                   <th>ID Jadwal</th>
-                  <th>Hari</th>
-                  <th>Waktu (Start - End)</th>
-                  <th>Mapel</th>
-                  <th>Kelas</th>
-                  <th>Pengajar</th>
-                  <th>Input Date</th>
-                  <th>Update Date</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -60,27 +53,14 @@
                 $i = 1;                
                 foreach ($jadwal as $u): ?>
                 <tr>
-                  <td style="text-transform: uppercase;"><?php echo $i; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $i; ?></td>               
                   <td style="text-transform: uppercase;"><?php echo $u->id_jadwal; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->hari; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->start; ?> - <?php echo $u->end; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->mapel; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->nama_depan; ?> <?php echo $u->nama_belakang; ?>, <?php echo $u->gelar; ?></td>                  
-                  <td style="text-transform: uppercase;"><?php echo $u->input_date; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->update_date; ?></td>
                   <td>
-                    <a class="btn" href="<?php echo site_url('jadwal/dataDetail/'.$u->id_jadwal); ?>">
-                      <i class="fa fa-eye"></i> Lihat
+                    <a class="btn" href="<?php echo site_url('presensi/createPresensi/'.$u->id_jadwal); ?>">
+                      <i class="fa fa-plus"></i> Tambah
                     </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/updateJadwal/'.$u->id_jadwal); ?>">
-                      <i class="fa fa-edit"></i> Edit
-                    </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/deleteJadwal/'.$u->id_jadwal); ?>"> 
-                      <i class="fa fa-remove"></i> Hapus
-                    </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/createEvent/'.$u->id_jadwal); ?>"> 
-                      <i class="fa fa-calendar-plus-o"></i> Buat Event
+                    <a class="btn" href="<?php echo site_url('presensi/updatePresensi/'.$u->id_jadwal); ?>">
+                      <i class="fa fa-edit"></i> Update
                     </a>
                   </td>
                 </tr>
@@ -141,26 +121,7 @@
       "autoWidth": false
     });
   }); 
-
-  $(".remove").click(function(){
-        var id = $(this).parents("tr").attr("id");
-
-
-        if(confirm('Are you sure to remove this record ?'))
-        {
-            $.ajax({
-               url: '/item-list/'+id,
-               type: 'DELETE',
-               error: function() {
-                  alert('Something is wrong');
-               },
-               success: function(data) {
-                    $("#"+id).remove();
-                    alert("Record removed successfully");  
-               }
-            });
-        }
-    });
+  
 </script>
 
 </body>

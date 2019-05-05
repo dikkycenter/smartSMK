@@ -144,4 +144,50 @@ class Jadwal extends MY_Controller {
         echo json_encode($data);
     }
 
+    function createEvent($id) {
+        $data['title'] = 'Membuat Event | SmartSMK';
+        $data['jadwal']=$this->data_jadwal->get_idJadwal($id);
+        
+		$this->render_page('jadwal/createEvent', $data);
+        //$query = 'CREATE EVENT $event_name ON SCHEDULE $intval DO insert into table_jadwal values (null, $tanggal, $id_jadwal)';
+    }
+
+    function createEventAction() {
+        $id_jadwal      = $this->input->post('id_jadwal');
+        $nama_event     = $this->input->post('nama_event');
+        $intval         = $this->input->post('intval');
+        $starts         = date("Y-m-d H:i:s", strtotime($this->input->post('starts')));
+        $ends           = date("Y-m-d H:i:s", strtotime($this->input->post('ends')));
+
+        $data = array (
+            'tanggal'       => $starts,
+            'id_jadwal'     => $id_jadwal,
+            'nama_event'    => $nama_event,
+            'intval'        => $intval,
+            'starts'        => $starts,
+            'ends'          => $ends
+        );
+
+        $data2= "CREATE EVENT `$nama_event` 
+                ON SCHEDULE EVERY $intval 
+                STARTS '$starts' 
+                ENDS '$ends' 
+                ON COMPLETION NOT PRESERVE ENABLE 
+                DO insert into table_jadwal values (null,now(),'$id_jadwal','$nama_event','$intval','$starts','$ends')";
+
+        //$query_event    = 'CREATE EVENT $event_name ON SCHEDULE $intval STARTS $starts ENDS $ends DO insert into table_jadwal values (null, $tanggal, $id_jadwal)';
+        $this->data_jadwal->create_event($data, $data2);
+        
+        
+        $this->session->set_flashdata('sukses',"Event berhasil dibuat");
+
+        redirect('jadwal/index');
+    }
+
+    function listEvent() {
+        $data['title'] = 'Update Data Jadwal | SmartSMK';
+        
+        $this->render_page('jadwal/listEvent', $data);
+    }
+
 }

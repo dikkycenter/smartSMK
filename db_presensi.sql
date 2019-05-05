@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2019 at 07:57 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 5.6.40
+-- Generation Time: May 05, 2019 at 05:30 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 5.6.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,20 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_presensi`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `data_absensi`
---
-
-CREATE TABLE `data_absensi` (
-  `id` bigint(20) NOT NULL,
-  `date` date NOT NULL,
-  `absensi` varchar(50) NOT NULL,
-  `id_jadwal` varchar(20) NOT NULL,
-  `verifikasi_by` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -60,7 +46,10 @@ CREATE TABLE `data_jadwal` (
 --
 
 INSERT INTO `data_jadwal` (`id_jadwal`, `hari`, `start`, `end`, `id_mapel`, `id_kelas`, `id_pengajar`, `id_pengajar2`, `input_date`, `update_date`) VALUES
-('12TKJ3_01', 'Senin', '07:15:00', '09:15:00', 'MP001', '12TKJ3', '2172', NULL, '2019-05-04 17:26:49', '2019-05-04 17:26:49');
+('12TKJ3-002', 'Senin', '10:45:00', '12:45:00', 'MP002', '12TKJ3', '2177', NULL, '2019-05-04 22:58:28', '2019-05-04 22:58:28'),
+('12TKJ3-03', 'Selasa', '09:15:00', '11:15:00', 'MP002', '12TKJ3', '2176', NULL, '2019-05-05 04:20:15', '2019-05-05 04:20:15'),
+('12TKJ3_01', 'Senin', '07:15:00', '09:15:00', 'MP001', '12TKJ3', '2172', NULL, '2019-05-04 17:26:49', '2019-05-04 17:26:49'),
+('tkk-001', 'Senin', '07:45:00', '09:45:00', 'MP001', 'tkk1b', '2173', NULL, '2019-05-04 22:59:30', '2019-05-04 22:59:30');
 
 -- --------------------------------------------------------
 
@@ -118,6 +107,23 @@ INSERT INTO `data_pengajar` (`nip_pengajar`, `nama_depan`, `nama_belakang`, `tem
 ('2177', 'DIKY', 'CAVE', 'DUMAI', '2019-03-29', 'BATAM', 'Islam', 'dikygazali@gmail.com', 'S.IP', 'batam2.jpg', 1),
 ('2178', 'ROY', 'ANANDA', 'BATAM', '2019-03-22', 'BATAM', 'Islam', 'administrator@admin.com', 'S.IP', '1553977670awan-di-langit_20180416_203622.jpg', 1),
 ('2179', 'KEVIN', 'ANANDA', 'BATAM', '2019-03-08', 'Batam', 'Islam', 'administrator@admin.com', 'S.IP', '155398008801_3000.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_presensi`
+--
+
+CREATE TABLE `data_presensi` (
+  `id` bigint(20) NOT NULL,
+  `tanggal` datetime NOT NULL,
+  `id_jadwal` varchar(20) NOT NULL,
+  `nis` varchar(20) NOT NULL,
+  `presensi` int(11) NOT NULL,
+  `verifikasi_by` varchar(20) NOT NULL,
+  `verifikasi_date` datetime NOT NULL,
+  `presensi_by` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -205,6 +211,78 @@ INSERT INTO `mata_pelajaran` (`id_mapel`, `mapel`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `table_jadwal`
+--
+
+CREATE TABLE `table_jadwal` (
+  `id` bigint(20) NOT NULL,
+  `tanggal` datetime NOT NULL,
+  `id_jadwal` varchar(20) NOT NULL,
+  `nama_event` varchar(20) NOT NULL,
+  `intval` varchar(20) NOT NULL,
+  `starts` datetime NOT NULL,
+  `ends` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `table_jadwal`
+--
+
+INSERT INTO `table_jadwal` (`id`, `tanggal`, `id_jadwal`, `nama_event`, `intval`, `starts`, `ends`) VALUES
+(83, '2019-05-05 00:00:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(84, '2019-05-05 09:49:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(85, '2019-05-05 00:00:00', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(86, '2019-05-05 00:00:00', '12TKJ3_01', '12TKJ3_01', '1 HOUR', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(87, '2019-05-05 09:50:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(88, '2019-05-05 09:50:00', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(89, '2019-05-05 09:51:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(90, '2019-05-05 09:52:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(91, '2019-05-05 09:53:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(92, '2019-05-05 09:54:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(93, '2019-05-05 09:55:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(94, '2019-05-05 09:55:00', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(95, '2019-05-05 09:56:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(96, '2019-05-05 09:57:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(97, '2019-05-05 09:58:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(98, '2019-05-05 09:59:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(99, '2019-05-05 10:00:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(100, '2019-05-05 10:00:00', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(101, '2019-05-05 10:00:00', '12TKJ3_01', '12TKJ3_01', '1 HOUR', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(102, '2019-05-05 10:01:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(103, '2019-05-05 10:02:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(104, '2019-05-05 10:03:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(105, '2019-05-05 10:04:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(106, '2019-05-05 10:05:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(107, '2019-05-05 10:05:00', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(108, '2019-05-05 10:06:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(109, '2019-05-05 10:07:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(110, '2019-05-05 10:08:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(111, '2019-05-05 10:09:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(112, '2019-05-05 10:10:00', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(113, '2019-05-05 10:10:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(114, '2019-05-05 10:11:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(115, '2019-05-05 10:12:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(116, '2019-05-05 10:13:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(117, '2019-05-05 10:14:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(118, '2019-05-05 10:15:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(119, '2019-05-05 10:15:00', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(120, '2019-05-05 10:16:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(121, '2019-05-05 10:17:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(122, '2019-05-05 10:18:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(123, '2019-05-05 10:19:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(124, '2019-05-05 10:20:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(125, '2019-05-05 10:20:00', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(126, '2019-05-05 10:21:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(127, '2019-05-05 10:22:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(128, '2019-05-05 10:28:40', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(129, '2019-05-05 10:28:40', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(130, '2019-05-05 10:29:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(131, '2019-05-05 10:30:00', '12TKJ3-002', '12TKJ3-002', '1 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00'),
+(132, '2019-05-05 10:30:00', '12TKJ3-03', '12TKJ3-03', '5 MINUTE', '2019-05-05 00:00:00', '2019-05-06 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -235,13 +313,6 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `kategori_user`, `status`
 --
 
 --
--- Indexes for table `data_absensi`
---
-ALTER TABLE `data_absensi`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_jadwal` (`id_jadwal`);
-
---
 -- Indexes for table `data_jadwal`
 --
 ALTER TABLE `data_jadwal`
@@ -258,6 +329,12 @@ ALTER TABLE `data_kelas`
 --
 ALTER TABLE `data_pengajar`
   ADD PRIMARY KEY (`nip_pengajar`);
+
+--
+-- Indexes for table `data_presensi`
+--
+ALTER TABLE `data_presensi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `data_siswa`
@@ -285,6 +362,12 @@ ALTER TABLE `mata_pelajaran`
   ADD PRIMARY KEY (`id_mapel`);
 
 --
+-- Indexes for table `table_jadwal`
+--
+ALTER TABLE `table_jadwal`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -298,9 +381,9 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `data_absensi`
+-- AUTO_INCREMENT for table `data_presensi`
 --
-ALTER TABLE `data_absensi`
+ALTER TABLE `data_presensi`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
@@ -308,6 +391,12 @@ ALTER TABLE `data_absensi`
 --
 ALTER TABLE `kategori_user`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `table_jadwal`
+--
+ALTER TABLE `table_jadwal`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -318,12 +407,6 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `data_absensi`
---
-ALTER TABLE `data_absensi`
-  ADD CONSTRAINT `data_absensi_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `data_jadwal` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `data_walikelas`
@@ -337,6 +420,18 @@ ALTER TABLE `data_walikelas`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`kategori_user`) REFERENCES `kategori_user` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`localhost` EVENT `12TKJ3_01` ON SCHEDULE EVERY 1 HOUR STARTS '2019-05-05 00:00:00' ENDS '2019-05-06 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'12TKJ3_01','12TKJ3_01','1 HOUR','2019-05-05 00:00:00','2019-05-06 00:00:00')$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `12TKJ3-002` ON SCHEDULE EVERY 1 MINUTE STARTS '2019-05-05 00:00:00' ENDS '2019-05-06 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'12TKJ3-002','12TKJ3-002','1 MINUTE','2019-05-05 00:00:00','2019-05-06 00:00:00')$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `12TKJ3-03` ON SCHEDULE EVERY 5 MINUTE STARTS '2019-05-05 00:00:00' ENDS '2019-05-06 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'12TKJ3-03','12TKJ3-03','5 MINUTE','2019-05-05 00:00:00','2019-05-06 00:00:00')$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
