@@ -3,13 +3,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Jadwal
-        <small>List Data Jadwal</small>
+        Data Presensi
+        <small>List Data Presensi</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Data Jadwal</a></li>
-        <li class="active">List Data Jadwal</li>
+        <li><a href="#">Data Presensi</a></li>
+        <li class="active">List Data Presensi</li>
       </ol>
     </section>
 
@@ -33,8 +33,8 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Jadwal</h3>
-              <a href="<?php echo site_url('jadwal/tambahJadwal');?>">
+              <h3 class="box-title">Data Presensi</h3>
+              <a href="<?php echo site_url('presensi/jadwalPresensi');?>">
                 <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Tambah Data</button>
               </a>
             </div>
@@ -44,43 +44,38 @@
                 <thead>
                 <tr>
                   <th>No.</th>
+                  <th>Tanggal</th>
                   <th>ID Jadwal</th>
-                  <th>Hari</th>
-                  <th>Waktu (Start - End)</th>
-                  <th>Mapel</th>
-                  <th>Kelas</th>
-                  <th>Pengajar</th>
-                  <th>Input Date</th>
-                  <th>Update Date</th>
+                  <th>NIS</th>
+                  <th>Presensi</th>
+                  <th>Verifikasi By</th>
+                  <th>Verifikasi Date</th>
+                  <th>Presensi By</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php 
                 $i = 1;                
-                foreach ($jadwal as $u): ?>
+                foreach ($presensi as $u): ?>
                 <tr>
                   <td style="text-transform: uppercase;"><?php echo $i; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->tanggal; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->id_jadwal; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->hari; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->start; ?> - <?php echo $u->end; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->mapel; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->nama_depan; ?> <?php echo $u->nama_belakang; ?>, <?php echo $u->gelar; ?></td>                  
-                  <td style="text-transform: uppercase;"><?php echo $u->input_date; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->update_date; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->nis; ?> - <?php echo $u->end; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->presensi; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->verifikasi_by; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->verifikasi_date; ?></td>                  
+                  <td style="text-transform: uppercase;"><?php echo $u->presensi_by; ?></td>
                   <td>
-                    <a class="btn" href="<?php echo site_url('jadwal/dataDetail/'.$u->id_jadwal); ?>">
+                    <a class="btn" href="<?php echo site_url('jadwal/dataDetail/'.$u->id); ?>">
                       <i class="fa fa-eye"></i> Lihat
                     </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/updateJadwal/'.$u->id_jadwal); ?>">
+                    <a class="btn" href="<?php echo site_url('jadwal/updateJadwal/'.$u->id); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/deleteJadwal/'.$u->id_jadwal); ?>"> 
+                    <a class="btn" href="<?php echo site_url('jadwal/deleteJadwal/'.$u->id); ?>"> 
                       <i class="fa fa-remove"></i> Hapus
-                    </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/createEvent/'.$u->id_jadwal); ?>"> 
-                      <i class="fa fa-calendar-plus-o"></i> Buat Event
                     </a>
                   </td>
                 </tr>
@@ -141,26 +136,7 @@
       "autoWidth": false
     });
   }); 
-
-  $(".remove").click(function(){
-        var id = $(this).parents("tr").attr("id");
-
-
-        if(confirm('Are you sure to remove this record ?'))
-        {
-            $.ajax({
-               url: '/item-list/'+id,
-               type: 'DELETE',
-               error: function() {
-                  alert('Something is wrong');
-               },
-               success: function(data) {
-                    $("#"+id).remove();
-                    alert("Record removed successfully");  
-               }
-            });
-        }
-    });
+  
 </script>
 
 </body>

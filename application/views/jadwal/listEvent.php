@@ -3,13 +3,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Jadwal
-        <small>List Data Jadwal</small>
+        Data Event
+        <small>List Data Event</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Data Jadwal</a></li>
-        <li class="active">List Data Jadwal</li>
+        <li><a href="#">Data Event</a></li>
+        <li class="active">List Data Event</li>
       </ol>
     </section>
 
@@ -33,9 +33,9 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Jadwal</h3>
-              <a href="<?php echo site_url('jadwal/tambahJadwal');?>">
-                <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Tambah Data</button>
+              <h3 class="box-title">Data Event</h3>
+              <a href="<?php echo site_url('jadwal/createEvent');?>">
+                <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Tambah Event</button>
               </a>
             </div>
             <!-- /.box-header -->
@@ -44,14 +44,12 @@
                 <thead>
                 <tr>
                   <th>No.</th>
+                  <th>Tanggal</th>
                   <th>ID Jadwal</th>
-                  <th>Hari</th>
-                  <th>Waktu (Start - End)</th>
-                  <th>Mapel</th>
-                  <th>Kelas</th>
-                  <th>Pengajar</th>
-                  <th>Input Date</th>
-                  <th>Update Date</th>
+                  <th>Nama Event</th>
+                  <th>Interval</th>
+                  <th>Mulai</th>
+                  <th>Berakhir</th>
                   <th>Action</th>
                 </tr>
                 </thead>

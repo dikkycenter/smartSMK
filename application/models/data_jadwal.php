@@ -86,6 +86,33 @@ class data_jadwal extends CI_Model
         $this->db->where('id_pengajar2',$id);
         return $this->db->get()->result_array();
     }
+
+    // Membuat Event Scheduler
+    function create_event($data, $data2) {               
+        $this->db->query($data2);
+        $this->db->insert('table_jadwal',$data);
+    }
+
+    // List Data Event by ID
+    function tampil_event($id) {
+        return $this->db->get_where('table_jadwal', array('nama_event' => $id));
+    }
+
+    // Mengecek apakah event tidak kosong
+    // function check_event() {
+    //     $query = $this->db->get_where('table_jadwal', array('nama_event' => $id));
+    //     if ($query->num_rows > 0) {
+    //         return 1;
+    //     } else {
+    //         return 0;
+    //     }
+
+    // }
+
+    // Mengambil Data id_jadwal 
+    function get_idJadwal($id) {
+        return $this->db->get_where('data_jadwal', array('id_jadwal' => $id))->result_array();
+    }
 }
 
 ?>
