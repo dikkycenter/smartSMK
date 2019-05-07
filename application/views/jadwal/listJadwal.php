@@ -82,6 +82,17 @@
                     <a class="btn" href="<?php echo site_url('jadwal/createEvent/'.$u->id_jadwal); ?>"> 
                       <i class="fa fa-calendar-plus-o"></i> Buat Event
                     </a>
+
+                    <!-- <?php //if($cekEvent > 0 ){ ?>
+                    <a class="btn"> 
+                      <i class="fa fa-remove"></i> Sudah Dievent
+                    </a>
+                    <?php //} else { ?>
+                      <a class="btn" href="<?php //echo site_url('jadwal/createEvent/'.$u->id_jadwal); ?>"> 
+                      <i class="fa fa-check"></i> Buat Event
+                    </a>
+                    <?php //} ?> -->
+
                   </td>
                 </tr>
                 <?php $i++; endforeach; ?>

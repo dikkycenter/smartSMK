@@ -13,16 +13,20 @@ class Jadwal extends MY_Controller {
 		$this->load->model('data_jadwal');
 		$this->load->helper('url');
  
-	}
+    }
 
 	public function index()
 	{
         $data['title'] = 'Data Jadwal | SmartSMK';
         $data['jadwal'] = $this->data_jadwal->tampil_data();
         
+        // $id   = '0';
+        // $id2  = '0';
+        // $data['cekEvent'] = $this->data_jadwal->cek_event($id, $id2);
+        
 		$this->render_page('jadwal/listJadwal', $data);
     }
-    
+
     public function dataDetail($id) 
 	{
 		$data['title']      = 'Data Detail Jadwal | SmartSMK';
@@ -30,6 +34,7 @@ class Jadwal extends MY_Controller {
 
         $data['detail']     = $this->data_jadwal->data_detail($id);
         $data['detail2']     = $this->data_jadwal->data_detail2($id);
+
 		$this->render_page('jadwal/detailJadwal', $data);
 	}
 
