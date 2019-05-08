@@ -33,28 +33,25 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Presensi</h3>
-              <a href="<?php echo site_url('presensi/tambahPresensi');?>">
-                <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Tambah Data</button>
-              </a>
+              <h3 class="box-title">Data Presensi</h3>              
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>No.</th>
                   <th>ID Jadwal</th>
+                  <th>Mata Pelajaran</th>
+                  <th>Kelas</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php 
-                $i = 1;                
-                foreach ($jadwal as $u): ?>
-                <tr>
-                  <td style="text-transform: uppercase;"><?php echo $i; ?></td>               
+                <?php foreach ($jadwal as $u): ?>
+                <tr>               
                   <td style="text-transform: uppercase;"><?php echo $u->id_jadwal; ?></td>
+                  <td style="text-transform: capitalize;"><?php echo $u->mapel; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
                   <td>
                     <a class="btn" href="<?php echo site_url('presensi/createPresensi/'.$u->id_jadwal); ?>">
                       <i class="fa fa-plus"></i> Tambah
@@ -64,7 +61,7 @@
                     </a>
                   </td>
                 </tr>
-                <?php $i++; endforeach; ?>
+                <?php  endforeach; ?>
                 </tbody>
               </table>
             </div>

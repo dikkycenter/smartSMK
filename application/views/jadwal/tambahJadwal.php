@@ -264,7 +264,7 @@
                   var html = '';
                   var i;
                     for(i=0; i<data.length; i++){
-                        html += '<input type="text" class="form-control" style="text-transform: uppercase;" name="id_jadwal" value="'+data[i].nama_kelas+'" required>';
+                        html += '<input type="text" class="form-control" style="text-transform: uppercase;" name="id_jadwal" value="'+data[i].id_kelas+'" required>';
                     }
 
                   $('.jadwal').html(html);

@@ -17,72 +17,36 @@ class Presensi extends MY_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Data Presensi | SmartSMK';
-		$data['presensi'] = $this->data_presensi->tampil_data();
-		$this->render_page('presensi/listPresensi', $data);
-	}
+		$hak_akses = $this->session->userdata('kategori_user');
 
-	public function deleteKelas($id) 
-	{
-		$data['delete'] = $this->data_kelas->delete_data($id);
-		$this->session->set_flashdata('sukses',"Data berhasil dihapus");
+		if ($hak_akses != '1') {
+			redirect('presensi/jadwalPresensi');
+			
+		} else {
+			$data['title'] = 'Data Presensi | SmartSMK';
+			$data['presensi'] = $this->data_presensi->tampil_data();
 
-		redirect('kelas/index');
-	}
+			$this->render_page('presensi/listPresensi', $data);
+		}		
+	}	
 
 	public function jadwalPresensi()
 	{
 		$data['title'] = 'Jadwal Presensi | SmartSMK';
-		$data['jadwal'] = $this->data_presensi->get_jadwal();
+
+		$nip_pengajar = $this->session->userdata('username');
+		$datenow = date('Y-m-d');
+		$data['jadwal'] = $this->data_presensi->get_jadwal_pengajar($nip_pengajar,$datenow);
 
 		$this->render_page('presensi/jadwalPresensi', $data);
 	}
 
-	public function tambah_aksi() {
-		$id_kelas			= $this->input->post('id_kelas');
-		$nama_kelas			= $this->input->post('nama_kelas');
-		$nama_jurusan		= $this->input->post('nama_jurusan');
-		$keterangan			= $this->input->post('keterangan');
-		
-		$data = array(
-			'id_kelas'			=> $id_kelas,
-			'nama_kelas'		=> $nama_kelas,
-			'nama_jurusan'		=> $nama_jurusan,
-			'keterangan'		=> $keterangan,
-		);		
-		
-		$query = $this->data_kelas->input_data($data);
+	public function createPresensi($id) {
+		$data['title'] = 'Presensi Siswa | SmartSMK';
 
-		$this->session->set_flashdata('sukses',"Data berhasil ditambahkan");
+		$data['array_siswa'] = $this->data_presensi->get_siswa($id);
 
-		redirect('kelas/index');
+		$this->render_page('presensi/createPresensi', $data);
 	}
-
-	public function updateKelas($id)
-	{
-		$data['title'] = 'Update Data Kelas | SmartSMK';
-		$data['detail'] = $this->data_kelas->data_detail($id);
-
-		$this->render_page('kelas/editKelas', $data);
-	}
-
-	public function update_aksi($id='') {
-		$id_kelas			= $this->input->post('id_kelas');
-		$nama_kelas			= $this->input->post('nama_kelas');
-		$nama_jurusan		= $this->input->post('nama_jurusan');
-		$keterangan			= $this->input->post('keterangan');
-		
-		$data = array(
-			'id_kelas'			=> $id_kelas,
-			'nama_kelas'		=> $nama_kelas,
-			'nama_jurusan'		=> $nama_jurusan,
-			'keterangan'		=> $keterangan,
-		);		
-		
-		$this->data_kelas->update_data($id, $data);
-		$this->session->set_flashdata('sukses',"Data berhasil dibah");
-		redirect('kelas/index');
-	}
-
 	
 }

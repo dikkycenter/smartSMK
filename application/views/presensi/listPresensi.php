@@ -35,7 +35,7 @@
             <div class="box-header">
               <h3 class="box-title">Data Presensi</h3>
               <a href="<?php echo site_url('presensi/jadwalPresensi');?>">
-                <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Tambah Data</button>
+                <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Absensi</button>
               </a>
             </div>
             <!-- /.box-header -->
