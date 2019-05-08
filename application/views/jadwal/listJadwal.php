@@ -30,7 +30,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Data Jadwal</h3>
@@ -82,6 +82,17 @@
                     <a class="btn" href="<?php echo site_url('jadwal/createEvent/'.$u->id_jadwal); ?>"> 
                       <i class="fa fa-calendar-plus-o"></i> Buat Event
                     </a>
+
+                    <!-- <?php //if($cekEvent > 0 ){ ?>
+                    <a class="btn"> 
+                      <i class="fa fa-remove"></i> Sudah Dievent
+                    </a>
+                    <?php //} else { ?>
+                      <a class="btn" href="<?php //echo site_url('jadwal/createEvent/'.$u->id_jadwal); ?>"> 
+                      <i class="fa fa-check"></i> Buat Event
+                    </a>
+                    <?php //} ?> -->
+
                   </td>
                 </tr>
                 <?php $i++; endforeach; ?>

@@ -40,6 +40,7 @@ class data_jadwal extends CI_Model
     function update_data($id, $data) {
         $query = $this->db->where('id_jadwal', $id);
         $query = $this->db->update('data_jadwal', $data);
+        return "success";
     }
 
     // Ambil Data Kelas
@@ -113,6 +114,16 @@ class data_jadwal extends CI_Model
     function get_idJadwal($id) {
         return $this->db->get_where('data_jadwal', array('id_jadwal' => $id))->result_array();
     }
+
+    // function cek_event($id){
+    //     $this->db->where('id_jadwal', $id);
+    //     $query = $this->db->get('table_jadwal');
+    //     if ($query->num_rows >= 1) {
+    //         return 1;
+    //     } else {
+    //         return 0;
+    //     }
+    // }
 }
 
 ?>
