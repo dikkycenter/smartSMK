@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2019 at 03:10 AM
+-- Generation Time: May 09, 2019 at 07:00 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -252,7 +252,9 @@ INSERT INTO `table_jadwal` (`id`, `tanggal`, `id_jadwal`, `nama_event`, `intval`
 (183, '2019-05-07 00:00:00', '12MJB_002', '12MJB_002', '1 WEEK', '2019-05-07 00:00:00', '2019-05-31 00:00:00'),
 (184, '2019-05-08 00:00:00', '12MJB_003', '12MJB_003', '1 WEEK', '2019-05-08 00:00:00', '2019-05-31 00:00:00'),
 (185, '2019-05-08 00:00:00', '11PGA_002', '11PGA_002', '1 DAY', '2019-05-07 00:00:00', '2019-05-08 00:00:00'),
-(186, '2019-05-08 00:00:00', '12MJB_003', '12MJB_003', '1 WEEK', '2019-05-08 00:00:00', '2019-05-31 00:00:00');
+(186, '2019-05-08 00:00:00', '12MJB_003', '12MJB_003', '1 WEEK', '2019-05-08 00:00:00', '2019-05-31 00:00:00'),
+(187, '2019-05-09 21:31:00', '11PGA_003', '11PGA_003', '1 WEEK', '2019-05-07 00:00:00', '2019-05-08 00:00:00'),
+(188, '2019-05-10 00:00:00', '11PGA_003', '11PGA_003', '1 WEEK', '2019-05-07 00:00:00', '2019-05-08 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -378,7 +380,7 @@ ALTER TABLE `kategori_user`
 -- AUTO_INCREMENT for table `table_jadwal`
 --
 ALTER TABLE `table_jadwal`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -407,8 +409,6 @@ DELIMITER $$
 --
 -- Events
 --
-CREATE DEFINER=`root`@`localhost` EVENT `11PGA_003` ON SCHEDULE EVERY 1 WEEK STARTS '2019-05-07 00:00:00' ENDS '2019-05-08 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'11PGA_003','11PGA_003','1 WEEK','2019-05-07 00:00:00','2019-05-08 00:00:00')$$
-
 CREATE DEFINER=`root`@`localhost` EVENT `12MJA_001` ON SCHEDULE EVERY 1 WEEK STARTS '2019-05-07 00:00:00' ENDS '2019-05-14 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'12MJA_001','12MJA_001','1 WEEK','2019-05-07 00:00:00','2019-05-14 00:00:00')$$
 
 CREATE DEFINER=`root`@`localhost` EVENT `12MJA_002` ON SCHEDULE EVERY 1 WEEK STARTS '2019-05-07 00:00:00' ENDS '2019-05-31 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'12MJA_002','12MJA_002','1 WEEK','2019-05-07 00:00:00','2019-05-31 00:00:00')$$
