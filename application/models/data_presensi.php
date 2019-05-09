@@ -36,7 +36,10 @@ class data_presensi extends CI_Model
 
     // Mengambil Data Mapel
 
-
+    //Menyimpan data presensi
+    function save_presensi($data){
+        return $this->db->insert_batch('data_presensi', $data);
+    }
 
 }
 

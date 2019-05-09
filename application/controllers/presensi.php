@@ -49,4 +49,29 @@ class Presensi extends MY_Controller {
 		$this->render_page('presensi/createPresensi', $data);
 	}
 	
+	public function savePresensi(){
+		$now = date('Y-m-d H:i:s');
+
+		$nis 		= $_POST['nis']; // Ambil data nis dan masukkan ke variabel nis
+		$tanggal 	= $now;
+		$id_jadwal	= $_POST['id_jadwal'];
+		$presensi	= $_POST['presensi'];
+		$presensi_by = $this->session->userdata('username'); // Ambil data telp dan masukkan ke variabel telp
+		$data 		= array();
+		
+		$index = 0; // Set index array awal dengan 0
+		foreach($nis as $datanis){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+		  array_push($data, array(
+			'nis'		=> $datanis,
+			'tanggal'	=> $tanggal[$index],
+			'id_jadwal'	=> $id_jadwal[$index],
+			'presensi'	=> $presensi[$index],
+			'presensi_by'=> $presensi_by[$index]
+		  ));
+		  
+		  $index++;
+
+		  $this->data_presensi->save_presensi($data);
+		}
+	}
 }

@@ -73,10 +73,10 @@
                   foreach ($array_siswa as $u): ?>
                   <tr>
                     <td style="text-transform: uppercase;"><?php echo $i; ?></td>
-                    <td style="text-transform: uppercase;" name="nis"><?php echo $u['nis']; ?></td>
+                    <td style="text-transform: uppercase;" name="nis[]" value="<?php echo $u['nis']; ?>"><?php echo $u['nis']; ?></td>
                     <td style="text-transform: uppercase;" name="nama"><?php echo $u['nama_depan']; ?> <?php echo $u['nama_belakang']; ?></td>
                     <td style="text-transform: uppercase;" name="jurusan"><?php echo $u['kelas']; ?> - <?php echo $u['nama_jurusan']; ?></td>
-                    <td style="text-transform: uppercase;"><input type="checkbox" class="minimal" name="presensi"></td>
+                    <td style="text-transform: uppercase;"><input type="checkbox" class="minimal" name="presensi[]"></td>
                   </tr>
                   <?php $i++; endforeach; ?>
                   </tbody>
