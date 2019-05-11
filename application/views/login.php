@@ -27,7 +27,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    Smart<b>LTE</b>
+    Smart<b>SMK</b>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -47,7 +47,7 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Remember Me
+              <!-- <input type="checkbox"> Remember Me -->
             </label>
           </div>
         </div>
@@ -68,8 +68,8 @@
     </div> -->
     <!-- /.social-auth-links -->
 
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
+    <!-- <a href="#">I forgot my password</a><br>
+    <a href="register.html" class="text-center">Register a new membership</a> -->
 
   </div>
   <!-- /.login-box-body -->
