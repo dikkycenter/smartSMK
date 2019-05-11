@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// Load library phpspreadsheet
+require('./excel/vendor/autoload.php');
+
+use PhpOffice\PhpSpreadsheet\Helper\Sample;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+// End load library phpspreadsheet
+
 class Siswa extends MY_Controller {
 	function __construct(){
 		parent::__construct();	
@@ -202,6 +210,5 @@ class Siswa extends MY_Controller {
 		$this->session->set_flashdata('sukses',"Data berhasil diubah");
 		redirect('siswa/index');
 	}
-
 	
 }
