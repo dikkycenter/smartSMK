@@ -35,7 +35,7 @@
             <div class="box-header">
               <h3 class="box-title">Data Kelas</h3>
               <a href="<?php echo site_url('kelas/tambahKelas');?>">
-                <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Tambah Data</button>
+                <button type="submit" class="btn btn-primary pull-right" ><i class="fa fa-plus"></i> Tambah Data</button>
               </a>
             </div>
             <!-- /.box-header -->

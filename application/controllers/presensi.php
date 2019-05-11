@@ -43,7 +43,7 @@ class Presensi extends MY_Controller {
 
 	public function createPresensi($id) {
 		$data['title'] = 'Presensi Siswa | SmartSMK';
-
+		$data['mapel']	= $this->data_presensi->get_mapel($id);
 		$data['array_siswa'] = $this->data_presensi->get_siswa($id);
 
 		$this->render_page('presensi/createPresensi', $data);
@@ -52,26 +52,30 @@ class Presensi extends MY_Controller {
 	public function savePresensi(){
 		$now = date('Y-m-d H:i:s');
 
-		$nis 		= $_POST['nis']; // Ambil data nis dan masukkan ke variabel nis
-		$tanggal 	= $now;
-		$id_jadwal	= $_POST['id_jadwal'];
-		$presensi	= $_POST['presensi'];
-		$presensi_by = $this->session->userdata('username'); // Ambil data telp dan masukkan ke variabel telp
-		$data 		= array();
+		$nis			= $this->input->post('nis');
+		$tanggal 		= $now;
+		$id_jadwal		= $this->input->post('id_jadwal');
+		$presensi		= $this->input->post('presensi');
+		$presensi_by 	= $this->session->userdata('username');
 		
-		$index = 0; // Set index array awal dengan 0
-		foreach($nis as $datanis){ // Kita buat perulangan berdasarkan nis sampai data terakhir
-		  array_push($data, array(
-			'nis'		=> $datanis,
-			'tanggal'	=> $tanggal[$index],
-			'id_jadwal'	=> $id_jadwal[$index],
-			'presensi'	=> $presensi[$index],
-			'presensi_by'=> $presensi_by[$index]
-		  ));
-		  
-		  $index++;
+		// $data = array();
+		$i = 0;
 
-		  $this->data_presensi->save_presensi($data);
-		}
+		foreach($nis as $key=>$val) {
+			$data[$i]['nis']		= $val;
+			$data[$i]['presensi']	 = $presensi[$key];
+			$data[$i]['tanggal']	 = $tanggal;
+			$data[$i]['presensi_by'] = $presensi_by;
+
+			$i++;
+			
+		}	
+		$this->data_presensi->save_presensi($data);		
+
+		$this->session->set_flashdata('sukses',"Presensi sukses");
+
+		redirect('presensi/jadwalPresensi', $data);
+				
+		
 	}
 }

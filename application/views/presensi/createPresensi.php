@@ -39,13 +39,12 @@
             <!-- form start -->
             <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('presensi/savePresensi'); ?>">
               <div class="box-body">
-                <div class="form-group">
-                  <div class="col-sm-1">
-                    <label for="id_jadwal">ID Jadwal</label>
-                  </div>
+                <div class="form-group">                  
+                  <?php foreach ($mapel as $k): ?>
                   <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="ID Jadwal" name="id_jadwal">
+                    <input type="hidden" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id_jadwal']; ?>"> 
                   </div>
+                  <?php endforeach; ?>
                 </div>
 
                 <div class="form-group">
@@ -53,7 +52,25 @@
                     <label for="id_mapel">Mata Pelajaran</label>
                   </div>
                   <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="Mata Pelajaran" name="id_mapel">
+                    <input type="text" class="form-control" placeholder="Mata Pelajaran" name="id_mapel" value="<?php echo $k['mapel']; ?>" readonly>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-1">
+                    <label for="id_mapel">Hari / Tanggal</label>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Mata Pelajaran" name="id_mapel" value="<?php echo $k['hari']; ?>, <?php echo date('d M Y') ?>" readonly>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-1">
+                    <label for="id_mapel">Mulai - Berakhir</label>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Mata Pelajaran" name="id_mapel" value="<?php echo $k['start']; ?> - <?php echo $k['end']; ?>" readonly>
                   </div>
                 </div>
 
@@ -73,10 +90,10 @@
                   foreach ($array_siswa as $u): ?>
                   <tr>
                     <td style="text-transform: uppercase;"><?php echo $i; ?></td>
-                    <td style="text-transform: uppercase;" name="nis[]" value="<?php echo $u['nis']; ?>"><?php echo $u['nis']; ?></td>
-                    <td style="text-transform: uppercase;" name="nama"><?php echo $u['nama_depan']; ?> <?php echo $u['nama_belakang']; ?></td>
-                    <td style="text-transform: uppercase;" name="jurusan"><?php echo $u['kelas']; ?> - <?php echo $u['nama_jurusan']; ?></td>
-                    <td style="text-transform: uppercase;"><input type="checkbox" class="minimal" name="presensi[]"></td>
+                    <td style="text-transform: uppercase;"><input type="text" name="nis[]" style="border: 0px;" value="<?php echo $u['nis']; ?>"></td>
+                    <td style="text-transform: uppercase;"><?php echo $u['nama_depan']; ?> <?php echo $u['nama_belakang']; ?></td>
+                    <td style="text-transform: uppercase;"><?php echo $u['kelas']; ?> - <?php echo $u['nama_jurusan']; ?></td>
+                    <td style="text-transform: uppercase;"><input id="checkbox" type="checkbox" class="minimal" name="presensi[]" value="1"><input id="checkboxHidden" type="hidden" class="minimal" name="presensi[]" value="0"></td>
                   </tr>
                   <?php $i++; endforeach; ?>
                   </tbody>
@@ -141,9 +158,26 @@
   //   });
   // }); 
 
-  function goBack() {
-    window.history.back();
-  }
+function goBack() {
+  window.history.back();
+}
+
+// $(function () {
+//   var checkedValue = $('.messageCheckbox:checked').val(); 
+//   var inputElements = document.getElementsById('checkbox');
+//   for(var i=0; inputElements[i]; ++i){
+//         if(inputElements[i].checked){
+//             checkedValue = inputElements[i].value;
+//             break;
+//         }
+//   }
+// });
+
+if(document.getElementById("checkbox").checked){
+  document.getElementById("checkHidden").disabled = true;
+}
+
+
   
 </script>
 

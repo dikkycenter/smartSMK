@@ -34,10 +34,20 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Data Siswa</h3>
-              <a href="<?php echo site_url('siswa/tambahSiswa');?>">
-                <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Tambah Data</button>
-              </a>
-            </div>
+                <div class ="text-right">
+                  <div class = btn-group>
+                    <a href="<?php echo site_url('siswa/tambahSiswa');?>">
+                      <button type="submit" class="btn btn-primary pull-right" ><i class="fa fa-plus"></i> Tambah Data</button>
+                    </a>
+                  </div>
+                  <div class = btn-group>
+                    <a href="<?php echo site_url('siswa/export');?>">
+                      <button class="btn btn-primary pull-right" ><i class="fa fa-download"></i> Unduh</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">

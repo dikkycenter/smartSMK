@@ -35,10 +35,24 @@ class data_presensi extends CI_Model
     }
 
     // Mengambil Data Mapel
+    function get_mapel($id) {
+        $this->db->from('table_jadwal a');
+        $this->db->join('data_jadwal b','a.id_jadwal=b.id_jadwal','left');
+        $this->db->join('mata_pelajaran c','b.id_mapel=c.id_mapel','left');
+        $this->db->where('b.id_jadwal',$id);
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     //Menyimpan data presensi
     function save_presensi($data){
-        return $this->db->insert_batch('data_presensi', $data);
+        $this->db->insert_batch('data_presensi', $data);
+
+        // if($this->db->affected_rows() > 0 ) {
+        //     return TRUE;
+        // }
+        // return FALSE;
     }
 
 }
