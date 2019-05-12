@@ -33,7 +33,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Verifikasi</h3>              
+              <h3 class="box-title"><?php echo $title; ?></h3>              
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -56,7 +56,7 @@
                   <label for="pilih_siswa" class="col-sm-2 control-label">Masukkan Password*</label>  
 
                   <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="Masukkan Password" name="verifikasi"> 
+                    <input type="password" class="form-control" placeholder="Masukkan Password" name="verifikasi" required> 
                   </div>
                 </div>                 
               </div>

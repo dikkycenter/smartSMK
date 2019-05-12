@@ -42,8 +42,8 @@
               <?php foreach ($mapel as $k): ?>
                 <div class="form-group">
                   <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id']; ?>"> 
-                  </div>                  
+                    <input type="hidden" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id']; ?>"> 
+                  </div>
                 </div>
 
                 <div class="form-group">
@@ -73,6 +73,8 @@
                   </div>
                 </div>
                 <?php endforeach; ?>
+
+
 
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
