@@ -35,12 +35,13 @@ class data_presensi extends CI_Model
     }
 
     // Mengambil Data Mapel
-    function get_mapel($id) {
+    function get_mapel($id,$datenow) {
         $this->db->from('table_jadwal a');
         $this->db->join('data_jadwal b','a.id_jadwal=b.id_jadwal','left');
         $this->db->join('mata_pelajaran c','b.id_mapel=c.id_mapel','left');
         $this->db->where('b.id_jadwal',$id);
-        $this->db->limit(1);
+        $this->db->where('a.tanggal',$datenow);
+        //$this->db->limit(1);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -53,6 +54,25 @@ class data_presensi extends CI_Model
         //     return TRUE;
         // }
         // return FALSE;
+    }
+
+    // Verifikasi
+    function get_verifikasi($id) {
+        $array = array('presensi' => 1, 'id_jadwal' => $id);
+
+        $this->db->from('data_presensi a');
+        $this->db->join('user b','a.nis=b.username','left');
+        $this->db->join('data_siswa c','b.username=c.nis','left');
+        $this->db->where($array);
+        $this->db->order_by('rand()');
+        $this->db->limit(2);
+
+        return $this->db->get()->result_array();
+    }
+
+    function addVerifikasi($id, $data) {
+        $query = $this->db->where('id_jadwal', $id);
+        $query = $this->db->update('data_presensi', $data);
     }
 
 }

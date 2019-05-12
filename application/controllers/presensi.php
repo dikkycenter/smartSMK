@@ -43,7 +43,9 @@ class Presensi extends MY_Controller {
 
 	public function createPresensi($id) {
 		$data['title'] = 'Presensi Siswa | SmartSMK';
-		$data['mapel']	= $this->data_presensi->get_mapel($id);
+		$datenow = date('Y-m-d');
+
+		$data['mapel']	= $this->data_presensi->get_mapel($id,$datenow);
 		$data['array_siswa'] = $this->data_presensi->get_siswa($id);
 
 		$this->render_page('presensi/createPresensi', $data);
@@ -63,6 +65,7 @@ class Presensi extends MY_Controller {
 
 		foreach($nis as $key=>$val) {
 			$data[$i]['nis']		= $val;
+			$data[$i]['id_jadwal']	= $id_jadwal;
 			$data[$i]['presensi']	 = $presensi[$key];
 			$data[$i]['tanggal']	 = $tanggal;
 			$data[$i]['presensi_by'] = $presensi_by;
@@ -72,10 +75,46 @@ class Presensi extends MY_Controller {
 		}	
 		$this->data_presensi->save_presensi($data);		
 
-		$this->session->set_flashdata('sukses',"Presensi sukses");
+		$this->session->set_flashdata('sukses',"Presensi sukses. Silahkan Verifikasi!");
 
-		redirect('presensi/jadwalPresensi', $data);
-				
+		redirect('presensi/jadwalPresensi', $data);			
+		
+	}
+
+	function formVerifikasi($id) {
+		$data['title'] = 'Form Verifikasi | SmartSMK';
+		$data['getSiswa'] = $this->data_presensi->get_verifikasi($id);
+
+		$this->render_page('presensi/formVerifikasi', $data);
+	}
+
+	function save_verifikasi() {
+		$now = date('Y-m-d H:i:s');
+		$checking = $this->data_presensi->get_verifikasi(array('username' => $verifikasi_by, 'password' => $password));
+
+		$verifikasi_by = $this->input->post('pilih_siswa');
+		$verifikasi_date = $now;
+		$password = md5($this->input->post('password'));
+
+		if ($checking != FALSE) {
+			$data = array(
+				'verifikasi_by'       => $verifikasi_by,
+				'verifikasi_date'      => $verifikasi_date
+			);
+			//set session userdata
+			$this->data_presensi->addVerifikasi($id, $data);
+
+			$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
+
+			redirect('presensi/jadwalPresensi');
+		} else {
+			$this->session->set_flashdata('Verifikasi Gagal',"Password salah!");
+
+			refresh('presensi/formVerifikasi');
+		}
+
+
+
 		
 	}
 }

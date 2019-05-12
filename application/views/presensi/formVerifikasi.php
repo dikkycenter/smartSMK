@@ -4,12 +4,12 @@
     <section class="content-header">
       <h1>
         Data Presensi
-        <small>Jadwal Presensi</small>
+        <small>Presensi</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Data Presensi</a></li>
-        <li class="active">Jadwal Presensi</li>
+        <li class="active">Presensi</li>
       </ol>
     </section>
 
@@ -27,47 +27,45 @@
     ?>
     <div class="alert-success"></div>
 
-    <!-- Main content -->
+    <!-- Verifikasi -->
     <section class="content">
       <div class="row">
         <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Presensi</h3>              
+              <h3 class="box-title">Verifikasi</h3>              
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>ID Jadwal</th>
-                  <th>Mata Pelajaran</th>
-                  <th>Kelas</th>
-                  <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($jadwal as $u): ?>
-                <tr>               
-                  <td style="text-transform: uppercase;"><?php echo $u->id_jadwal; ?></td>
-                  <td style="text-transform: capitalize;"><?php echo $u->mapel; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
-                  <td>
-                    <a class="btn" href="<?php echo site_url('presensi/createPresensi/'.$u->id_jadwal); ?>">
-                      <i class="fa fa-plus"></i> Tambah
-                    </a>
-                    <a class="btn" href="<?php echo site_url('presensi/formVerifikasi/'.$u->id); ?>">
-                      <i class="fa fa-check-square-o"></i> Verifikasi
-                    </a>
-                    <a class="btn" href="<?php echo site_url('presensi/updatePresensi/'.$u->id_jadwal); ?>">
-                      <i class="fa fa-edit"></i> Update
-                    </a>
-                  </td>
-                </tr>
-                <?php  endforeach; ?>
-                </tbody>
-              </table>
-            </div>
+            <!-- form start -->
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('presensi/save_verifikasi'); ?>">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="pilih_siswa" class="col-sm-2 control-label">Pilih Siswa*</label>
+
+                  <div class="col-sm-3">
+                    <select class="form-control" style="width: 100%;" name="pilih_siswa" onChange="pilih_siswa()" required> 
+                      <option selected disabled>---Pilih Siswa---</option>
+                      <?php foreach ($getSiswa as $u): ?>
+                      <option value="<?php echo $u['nis']; ?>"><?php echo $u['nama_depan']; ?> <?php echo $u['nama_belakang']; ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" id="form-verifikasi">  
+                  <label for="pilih_siswa" class="col-sm-2 control-label">Masukkan Password*</label>  
+
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Masukkan Password" name="verifikasi"> 
+                  </div>
+                </div>                 
+              </div>
+
+              <div class="box-footer">                
+                <button type="submit" class="btn btn-primary pull-right" name="verifikasi">Verifikasi</button>
+                <!-- <button type="button" class="btn btn-danger pull-right" name="back" onClick="goBack()" style="margin-right: 2px;">Kembali</button> -->
+              </div>
+            </form>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -110,19 +108,16 @@
 <script src="<?php echo base_url();?>/assets/dist/js/demo.js"></script>
 <!-- page script -->
 <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  }); 
+
+// document.getElementById("form-verifikasi").style.display="none";
+
+// function pilih_siswa() {
+//   document.getElementById("form-verifikasi").style.display="block";
+// }
   
 </script>
+  
+
 
 </body>
 </html>

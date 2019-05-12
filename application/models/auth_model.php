@@ -17,7 +17,7 @@ class auth_model extends CI_Model{
         $this->db->where($field1);
         $this->db->where($field2);
         $this->db->where($field3);
-        //$this->db->limit(1);
+        $this->db->limit(1);
         $query = $this->db->get();
         if ($query->num_rows() == 0) {
             return FALSE;

@@ -42,7 +42,7 @@
                 <div class="form-group">                  
                   <?php foreach ($mapel as $k): ?>
                   <div class="col-sm-3">
-                    <input type="hidden" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id_jadwal']; ?>"> 
+                    <input type="text" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id']; ?>"> 
                   </div>
                   <?php endforeach; ?>
                 </div>
@@ -112,7 +112,7 @@
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->
+    <!-- /.content -->    
   </div>
   <!-- /.content-wrapper -->
 
@@ -176,8 +176,6 @@ function goBack() {
 if(document.getElementById("checkbox").checked){
   document.getElementById("checkHidden").disabled = true;
 }
-
-
   
 </script>
 
