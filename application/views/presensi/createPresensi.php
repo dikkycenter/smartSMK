@@ -39,12 +39,11 @@
             <!-- form start -->
             <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('presensi/savePresensi'); ?>">
               <div class="box-body">
+              <?php foreach ($mapel as $k): ?>
                 <div class="form-group">
-                  <?php foreach ($mapel as $k): ?>
                   <div class="col-sm-3">
                     <input type="text" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id']; ?>"> 
-                  </div>
-                  <?php endforeach; ?>
+                  </div>                  
                 </div>
 
                 <div class="form-group">
@@ -73,6 +72,7 @@
                     <input type="text" class="form-control" placeholder="Mata Pelajaran" name="id_mapel" value="<?php echo $k['start']; ?> - <?php echo $k['end']; ?>" readonly>
                   </div>
                 </div>
+                <?php endforeach; ?>
 
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
