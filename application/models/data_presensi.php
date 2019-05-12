@@ -58,7 +58,7 @@ class data_presensi extends CI_Model
 
     // Verifikasi
     function get_verifikasi($id) {
-        $array = array('presensi' => 1, 'id_jadwal' => $id);
+        $array = array('presensi' => "Hadir", 'id_jadwal' => $id);
 
         $this->db->from('data_presensi a');
         $this->db->join('user b','a.nis=b.username','left');
