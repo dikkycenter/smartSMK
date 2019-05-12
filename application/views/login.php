@@ -27,6 +27,9 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
+  <div>
+      <img src="<?php echo base_url();?>assets/images/logo.png" width="150">
+    </div>
     Smart<b>SMK</b>
   </div>
   <!-- /.login-logo -->

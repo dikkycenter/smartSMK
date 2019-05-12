@@ -102,7 +102,7 @@
                   <label for="Alamat" class="col-sm-2 control-label">Alamat</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control" style="text-transform: capitalize;" rows="3" placeholder="Masukkan Alamat" name="alamat"></textarea>
+                    <textarea class="form-control" style="text-transform: capitalize;" id="alamat" rows="3" placeholder="Masukkan Alamat" name="alamat"></textarea>
                   </div>
                 </div>
 

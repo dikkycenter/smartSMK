@@ -13,8 +13,8 @@
       </ol>
     </section>
 
-    
-    <?php 
+
+    <?php
       $data = $this->session->flashdata('sukses');
       if($data!="") { ?>
       <div class="alert alert-success" role="alert"><Strong>Sukses!</Strong>
@@ -22,7 +22,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="close">
           <span aria-hidden="true">&times;</span>
         </button>
-    </div> 
+    </div>
       <?php };
     ?>
     <div class="alert-success"></div>
@@ -33,16 +33,16 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Presensi</h3>              
+              <h3 class="box-title">Data Presensi</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('presensi/savePresensi'); ?>">
               <div class="box-body">
-                <div class="form-group">                  
+                <div class="form-group">
                   <?php foreach ($mapel as $k): ?>
                   <div class="col-sm-3">
-                    <input type="hidden" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id_jadwal']; ?>"> 
+                    <input type="hidden" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id_jadwal']; ?>">
                   </div>
                   <?php endforeach; ?>
                 </div>
@@ -81,25 +81,32 @@
                     <th>NIS</th>
                     <th>Nama</th>
                     <th>Kelas</th>
-                    <th>Presensi</th>
+                    <th>Hadir</th>
+                    <th>Alpa</th>
+                    <th>Sakit</th>
+                    <th>Izin</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <?php 
-                  $i = 1;                
+                  <?php
+                  $i = 1;
+                  $x = 0;
                   foreach ($array_siswa as $u): ?>
-                  <tr>
+                  <tr ng-repeat="checkpoint in checkpoints">
                     <td style="text-transform: uppercase;"><?php echo $i; ?></td>
                     <td style="text-transform: uppercase;"><input type="text" name="nis[]" style="border: 0px;" value="<?php echo $u['nis']; ?>"></td>
                     <td style="text-transform: uppercase;"><?php echo $u['nama_depan']; ?> <?php echo $u['nama_belakang']; ?></td>
                     <td style="text-transform: uppercase;"><?php echo $u['kelas']; ?> - <?php echo $u['nama_jurusan']; ?></td>
-                    <td style="text-transform: uppercase;"><input id="checkbox" type="checkbox" class="minimal" name="presensi[]" value="1"><input id="checkboxHidden" type="hidden" class="minimal" name="presensi[]" value="0"></td>
+                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi[<?php echo $x; ?>]" value="Hadir" checked></td>
+                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi[<?php echo $x; ?>]" value="Alpa"></td>
+                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi[<?php echo $x; ?>]" value="Sakit"></td>
+                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi[<?php echo $x; ?>]" value="Izin"></td>
                   </tr>
-                  <?php $i++; endforeach; ?>
+                  <?php $i++; $x++; endforeach; ?>
                   </tbody>
                 </table>
               </div>
-              <div class="box-footer">                
+              <div class="box-footer">
                 <button type="submit" class="btn btn-primary pull-right" name="simpan">Simpan</button>
                 <button type="button" class="btn btn-danger pull-right" name="back" onClick="goBack()" style="margin-right: 2px;">Kembali</button>
               </div>
@@ -145,40 +152,67 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>/assets/dist/js/demo.js"></script>
 <!-- page script -->
-<script>
-  // $(function () {
-  //   $("#example1").DataTable();
-  //   $('#example2').DataTable({
-  //     "paging": true,
-  //     "lengthChange": false,
-  //     "searching": false,
-  //     "ordering": true,
-  //     "info": true,
-  //     "autoWidth": false
-  //   });
-  // }); 
+<script type="text/javascript">
+
+// var x = document.getElementsByClassName("presensi");
+
+// if(getElementsByClassName("suci").disabled){
+//   var inputElements = document.getElementsByClassName('suci');
+
+//   for(var i=0; inputElements[i]; ++i){
+//         if(inputElements[i].disabled){
+//             checkedValue = inputElements[i].value;
+//             break;
+//         }
+//   }
+// }
+
+// var x = document.getElementsByClassName("suci");
+// var i;
+// for (i=0; i<x.length; i++){
+//   x[i].value = 1;
+// }
+
 
 function goBack() {
   window.history.back();
 }
 
-// $(function () {
-//   var checkedValue = $('.messageCheckbox:checked').val(); 
-//   var inputElements = document.getElementsById('checkbox');
-//   for(var i=0; inputElements[i]; ++i){
-//         if(inputElements[i].checked){
-//             checkedValue = inputElements[i].value;
-//             break;
-//         }
+  // var checkedValue = $('.suci:disabled').val();
+  // var inputElements = document.getElementsByid('suci');
+  // for(var i=0; inputElements[i]; ++i){
+  //       if(inputElements[i].disabled){
+  //           checkedValue = inputElements[i].value;
+  //           break;
+  //       }
+  // }
+
+// var x = document.getElementsByClassName("presensi");
+// var i;
+// for (i=0; i<x.length; i++){
+//     if(document.getElementById("checkbox").checked = true){
+//       document.getElementById("checkbox").value = 1;
+//   } else if(document.getElementById("checkbox").checked = false){
+//     document.getElementById("checkbox")[i].value = 2;
 //   }
-// });
+// }
 
-if(document.getElementById("checkbox").checked){
-  document.getElementById("checkHidden").disabled = true;
+function myFunction() {
+    document.getElementById("checkbox").value = "1";
 }
+// }
 
+// $(document).ready(function(){
+//         $('input[tag="checkbox"]').click(function(){
+//             if($(this).prop("checked") == true){
+//               document.getElementById("checkbox").value = 2;
+//             }
+//             else
+//               document.getElementById("checkbox").value = 5;
+//             }
+//         });
+//     });
 
-  
 </script>
 
 </body>
