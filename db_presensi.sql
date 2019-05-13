@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2019 at 12:36 PM
+-- Generation Time: May 13, 2019 at 07:26 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -133,9 +133,9 @@ CREATE TABLE `data_presensi` (
 --
 
 INSERT INTO `data_presensi` (`id`, `tanggal`, `id_jadwal`, `nis`, `presensi`, `verifikasi_by`, `verifikasi_date`, `presensi_by`) VALUES
-(365, '2019-05-12 11:55:57', '190', '001', 'Hadir', '', '0000-00-00 00:00:00', '2173'),
-(366, '2019-05-12 11:55:57', '190', '002', 'Hadir', '', '0000-00-00 00:00:00', '2173'),
-(367, '2019-05-12 11:55:57', '190', '009', 'Hadir', '', '0000-00-00 00:00:00', '2173');
+(395, '2019-05-12 14:57:14', '190', '001', 'Alpa', '009', '2019-05-12 14:57:25', '2173'),
+(396, '2019-05-12 14:57:14', '190', '002', 'Hadir', '009', '2019-05-12 14:57:25', '2173'),
+(397, '2019-05-12 14:57:14', '190', '009', 'Hadir', '009', '2019-05-12 14:57:25', '2173');
 
 -- --------------------------------------------------------
 
@@ -308,7 +308,8 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `kategori_user`, `status`
 (24, '006', '202cb962ac59075b964b07152d234b70', 4, 1),
 (25, '007', '202cb962ac59075b964b07152d234b70', 4, 1),
 (26, '008', '202cb962ac59075b964b07152d234b70', 4, 1),
-(27, '009', '166450042d16bd4a7c19ea7f02bc067d', 4, 1);
+(27, '009', '166450042d16bd4a7c19ea7f02bc067d', 4, 1),
+(28, 'anandaroy', '7f363f401f336a7925f28655b6a44447', 3, 1);
 
 --
 -- Indexes for dumped tables
@@ -386,7 +387,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `data_presensi`
 --
 ALTER TABLE `data_presensi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=368;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=398;
 
 --
 -- AUTO_INCREMENT for table `kategori_user`
@@ -404,7 +405,7 @@ ALTER TABLE `table_jadwal`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
