@@ -77,12 +77,13 @@ class Presensi extends MY_Controller {
 
 		$this->session->set_flashdata('sukses',"Presensi sukses. Silahkan Verifikasi!");
 
-		redirect('presensi/jadwalPresensi', $data);
-			// $id=$id_jadwal;
-			// $data2['title'] = 'Verifikasi';
-			// $data2['getSiswa'] = $this->data_presensi->get_verifikasi($id);
+		redirect('presensi/formVerifikasi/'.$id_jadwal, $data);
+		// $id=$id_jadwal;
+		
+		// $data2['title'] = 'Verifikasi';
+		// $data2['getSiswa'] = $this->data_presensi->get_verifikasi($id);
 
-			// $this->render_page('presensi/formVerifikasi', $data2);
+		// $this->render_page('presensi/formVerifikasi', $data2);
 	}
 
 	function formVerifikasi($id) {
@@ -92,33 +93,24 @@ class Presensi extends MY_Controller {
 		$this->render_page('presensi/formVerifikasi', $data);
 	}
 
-	function save_verifikasi() {
+	function save_verifikasi($id='') {
 		$now = date('Y-m-d H:i:s');
 		// $checking = $this->data_presensi->get_verifikasi(array('username' => $verifikasi_by, 'password' => $password));
 
+		$id_jadwal = $this->input->post('id_jadwal');
 		$verifikasi_by = $this->input->post('pilih_siswa');
 		$verifikasi_date = $now;
-		// $password = md5($this->input->post('password'));
+	
+		$data = array(
+			'verifikasi_by'       => $verifikasi_by,
+			'verifikasi_date'     => $verifikasi_date
+		);
+		
+		$this->data_presensi->add_verifikasi($id_jadwal, $data);
 
-		// if ($checking != FALSE) {
-			$data = array(
-				'verifikasi_by'       => $verifikasi_by,
-				'verifikasi_date'      => $verifikasi_date
-			);
-		// 	//set session userdata
-		$this->data_presensi->addVerifikasi($id, $data);
+		$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
 
-			$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
-
-			redirect('presensi/jadwalPresensi');
-		// } else {
-		// 	$this->session->set_flashdata('Verifikasi Gagal',"Password salah!");
-
-		// 	refresh('presensi/formVerifikasi');
-		// }
-
-
-
+		redirect('presensi/jadwalPresensi');
 
 	}
 }

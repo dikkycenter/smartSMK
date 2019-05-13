@@ -70,8 +70,8 @@ class data_presensi extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    function addVerifikasi($id, $data) {
-        $query = $this->db->where('id_jadwal', $id);
+    function add_verifikasi($id_jadwal, $data) {
+        $this->db->where('id_jadwal', $id_jadwal);
         $query = $this->db->update('data_presensi', $data);
     }
 
