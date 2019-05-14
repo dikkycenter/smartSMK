@@ -39,6 +39,8 @@
             <!-- form start -->
             <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('presensi/save_verifikasi'); ?>">
               <div class="box-body">
+                
+                
                 <div class="form-group">
                   <label for="pilih_siswa" class="col-sm-2 control-label">Pilih Siswa*</label>
 
@@ -51,21 +53,21 @@
                     </select>
                   </div>
                 </div>
+                
 
                 <div class="form-group" id="form-verifikasi">  
                   <label for="pilih_siswa" class="col-sm-2 control-label">Masukkan Password*</label>  
 
                   <div class="col-sm-3">
-<<<<<<< HEAD
-                    <input type="password" class="form-control" placeholder="Masukkan Password" name="password" required> 
-=======
-                    <input type="text" class="form-control" placeholder="Masukkan Password" name="verifikasi"> 
->>>>>>> parent of 388a93f... update
+                    <input type="password" class="form-control" placeholder="Masukkan Password" name="verifikasi"> 
                   </div>
                 </div>                 
               </div>
 
-              <input type="hidden" class="form-control" value="<?php echo $u['id_jadwal']; ?>" name="id_jadwal" required>
+              <input type="hidden" class="form-control" placeholder="Masukkan Password" name="id_jadwal" value="<?php echo $u['id_jadwal']; ?>">
+               
+
+              
 
               <div class="box-footer">                
                 <button type="submit" class="btn btn-primary pull-right" name="verifikasi">Verifikasi</button>

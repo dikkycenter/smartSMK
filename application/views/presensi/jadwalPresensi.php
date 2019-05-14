@@ -53,7 +53,7 @@
                   <td style="text-transform: capitalize;"><?php echo $u->mapel; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
                   <td>
-                    <a class="btn" href="<?php echo site_url('presensi/createPresensi/'.$u->id_jadwal); ?>">
+                    <a class="btn" href="<?php echo site_url('presensi/createPresensi/'.$u->id); ?>">
                       <i class="fa fa-plus"></i> Tambah
                     </a>
                     <a class="btn" href="<?php echo site_url('presensi/formVerifikasi/'.$u->id); ?>">

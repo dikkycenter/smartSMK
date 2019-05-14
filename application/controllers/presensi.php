@@ -45,7 +45,7 @@ class Presensi extends MY_Controller {
 		$data['title'] = 'Presensi Siswa | SmartSMK';
 		$datenow = date('Y-m-d');
 
-		$data['mapel']	= $this->data_presensi->get_mapel($id,$datenow);
+		$data['mapel']	= $this->data_presensi->get_mapel($id);
 		$data['array_siswa'] = $this->data_presensi->get_siswa($id);
 
 		$this->render_page('presensi/createPresensi', $data);
@@ -77,18 +77,8 @@ class Presensi extends MY_Controller {
 
 		$this->session->set_flashdata('sukses',"Presensi sukses. Silahkan Verifikasi!");
 
-<<<<<<< HEAD
-		redirect('presensi/formVerifikasi/'.$id_jadwal, $data);
-		// $id=$id_jadwal;
+		redirect('presensi/formVerifikasi/'.$id_jadwal, $data);			
 		
-		// $data2['title'] = 'Verifikasi';
-		// $data2['getSiswa'] = $this->data_presensi->get_verifikasi($id);
-
-		// $this->render_page('presensi/formVerifikasi', $data2);
-=======
-		redirect('presensi/jadwalPresensi', $data);			
-		
->>>>>>> parent of 388a93f... update
 	}
 
 	function formVerifikasi($id) {
@@ -100,43 +90,33 @@ class Presensi extends MY_Controller {
 
 	function save_verifikasi($id='') {
 		$now = date('Y-m-d H:i:s');
-		$checking = $this->data_presensi->get_verifikasi(array('username' => $verifikasi_by, 'password' => $password));
+		//$checking = $this->data_presensi->get_verifikasi(array('username' => $verifikasi_by, 'password' => $password));
 
-		$id_jadwal = $this->input->post('id_jadwal');
+		$id = $this->input->post('id_jadwal');
 		$verifikasi_by = $this->input->post('pilih_siswa');
 		$verifikasi_date = $now;
-<<<<<<< HEAD
-	
-		$data = array(
-			'verifikasi_by'       => $verifikasi_by,
-			'verifikasi_date'     => $verifikasi_date
-		);
-		
-		$this->data_presensi->add_verifikasi($id_jadwal, $data);
-=======
 		$password = md5($this->input->post('password'));
 
-		if ($checking != FALSE) {
+		//if ($checking != FALSE) {
 			$data = array(
 				'verifikasi_by'       => $verifikasi_by,
 				'verifikasi_date'      => $verifikasi_date
 			);
 			//set session userdata
-			$this->data_presensi->addVerifikasi($id, $data);
+			$this->data_presensi->add_verifikasi($id, $data);
 
 			$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
 
 			redirect('presensi/jadwalPresensi');
-		} else {
-			$this->session->set_flashdata('Verifikasi Gagal',"Password salah!");
+		// } else {
+		// 	$this->session->set_flashdata('Verifikasi Gagal',"Password salah!");
 
-			refresh('presensi/formVerifikasi');
-		}
->>>>>>> parent of 388a93f... update
+		// 	refresh('presensi/formVerifikasi');
+		// }
 
-		$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
+		// $this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
 
-		redirect('presensi/jadwalPresensi');
+		// redirect('presensi/jadwalPresensi');
 
 		
 	}
