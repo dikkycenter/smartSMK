@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Presensi extends MY_Controller {
 	function __construct(){
 		parent::__construct();
-
+		
 		// Cek apakah user sudah login
 		$this->cekLogin();
 		// Cek Hak Akses apakah user sebagai admin
@@ -12,7 +12,7 @@ class Presensi extends MY_Controller {
 
 		$this->load->model('data_presensi');
 		$this->load->helper('url');
-
+ 
 	}
 
 	public function index()
@@ -21,14 +21,14 @@ class Presensi extends MY_Controller {
 
 		if ($hak_akses != '1') {
 			redirect('presensi/jadwalPresensi');
-
+			
 		} else {
 			$data['title'] = 'Data Presensi | SmartSMK';
 			$data['presensi'] = $this->data_presensi->tampil_data();
 
 			$this->render_page('presensi/listPresensi', $data);
-		}
-	}
+		}		
+	}	
 
 	public function jadwalPresensi()
 	{
@@ -50,7 +50,7 @@ class Presensi extends MY_Controller {
 
 		$this->render_page('presensi/createPresensi', $data);
 	}
-
+	
 	public function savePresensi(){
 		$now = date('Y-m-d H:i:s');
 
@@ -59,7 +59,7 @@ class Presensi extends MY_Controller {
 		$id_jadwal		= $this->input->post('id_jadwal');
 		$presensi		= $this->input->post('presensi');
 		$presensi_by 	= $this->session->userdata('username');
-
+		
 		// $data = array();
 		$i = 0;
 
@@ -71,12 +71,13 @@ class Presensi extends MY_Controller {
 			$data[$i]['presensi_by'] = $presensi_by;
 
 			$i++;
-
-		}
-		$this->data_presensi->save_presensi($data);
+			
+		}	
+		$this->data_presensi->save_presensi($data);		
 
 		$this->session->set_flashdata('sukses',"Presensi sukses. Silahkan Verifikasi!");
 
+<<<<<<< HEAD
 		redirect('presensi/formVerifikasi/'.$id_jadwal, $data);
 		// $id=$id_jadwal;
 		
@@ -84,10 +85,14 @@ class Presensi extends MY_Controller {
 		// $data2['getSiswa'] = $this->data_presensi->get_verifikasi($id);
 
 		// $this->render_page('presensi/formVerifikasi', $data2);
+=======
+		redirect('presensi/jadwalPresensi', $data);			
+		
+>>>>>>> parent of 388a93f... update
 	}
 
 	function formVerifikasi($id) {
-		$data['title'] = 'Verifikasi';
+		$data['title'] = 'Form Verifikasi | SmartSMK';
 		$data['getSiswa'] = $this->data_presensi->get_verifikasi($id);
 
 		$this->render_page('presensi/formVerifikasi', $data);
@@ -95,11 +100,12 @@ class Presensi extends MY_Controller {
 
 	function save_verifikasi($id='') {
 		$now = date('Y-m-d H:i:s');
-		// $checking = $this->data_presensi->get_verifikasi(array('username' => $verifikasi_by, 'password' => $password));
+		$checking = $this->data_presensi->get_verifikasi(array('username' => $verifikasi_by, 'password' => $password));
 
 		$id_jadwal = $this->input->post('id_jadwal');
 		$verifikasi_by = $this->input->post('pilih_siswa');
 		$verifikasi_date = $now;
+<<<<<<< HEAD
 	
 		$data = array(
 			'verifikasi_by'       => $verifikasi_by,
@@ -107,10 +113,31 @@ class Presensi extends MY_Controller {
 		);
 		
 		$this->data_presensi->add_verifikasi($id_jadwal, $data);
+=======
+		$password = md5($this->input->post('password'));
+
+		if ($checking != FALSE) {
+			$data = array(
+				'verifikasi_by'       => $verifikasi_by,
+				'verifikasi_date'      => $verifikasi_date
+			);
+			//set session userdata
+			$this->data_presensi->addVerifikasi($id, $data);
+
+			$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
+
+			redirect('presensi/jadwalPresensi');
+		} else {
+			$this->session->set_flashdata('Verifikasi Gagal',"Password salah!");
+
+			refresh('presensi/formVerifikasi');
+		}
+>>>>>>> parent of 388a93f... update
 
 		$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
 
 		redirect('presensi/jadwalPresensi');
 
+		
 	}
 }
