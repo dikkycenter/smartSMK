@@ -25,6 +25,18 @@
     </div> 
       <?php };
     ?>
+
+    <?php 
+      $data = $this->session->flashdata('gagal');
+      if($data!="") { ?>
+      <div class="alert alert-danger" role="alert"><Strong>Gagal!</Strong>
+        <?php echo $data; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div> 
+      <?php };
+    ?>
     <div class="alert-success"></div>
 
     <!-- Verifikasi -->
@@ -39,7 +51,7 @@
             <!-- form start -->
             <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('presensi/save_verifikasi'); ?>">
               <div class="box-body">
-                
+              <!-- <p><?php //if(isset($error)) { echo $error; }; ?></p> -->
                 
                 <div class="form-group">
                   <label for="pilih_siswa" class="col-sm-2 control-label">Pilih Siswa*</label>
@@ -62,14 +74,9 @@
                     <input type="password" class="form-control" placeholder="Masukkan Password" name="password"> 
                   </div>
                 </div>                 
-              </div>
+              </div>              
 
-              <p><?php if(isset($error)) { echo $error; }; ?></p>
-
-              <input type="hidden" class="form-control" placeholder="Masukkan Password" name="id_jadwal" value="<?php echo $u['id_jadwal']; ?>">
-               
-
-              
+              <input type="hidden" class="form-control" placeholder="Masukkan Password" name="id_jadwal" value="<?php echo $u['id_jadwal']; ?>">                           
 
               <div class="box-footer">                
                 <button type="submit" class="btn btn-primary pull-right" name="verifikasi">Verifikasi</button>

@@ -122,9 +122,12 @@ class Presensi extends MY_Controller {
 
 			redirect('presensi/jadwalPresensi');
 		} else {
-			$data['error'] = '<script language="javascript"> alert("Hello, From C# Corner"); </script>';
+			//$data['error'] = '<script language="javascript"> alert("Password Salah, Silahkan Ulangi."); </script>';
+			$data['getSiswa'] = $this->data_presensi->get_verifikasi($id);
 
-			$this->render_page('presensi/formVerifikasi', $data);
+			$this->session->set_flashdata('gagal',"Password salah, verifikasi gagal. Silahkan ulangi");
+
+			redirect('presensi/formVerifikasi/'.$id, $data);
 		}
 
 		//$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
