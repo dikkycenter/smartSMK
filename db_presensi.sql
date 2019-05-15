@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: May 13, 2019 at 07:26 AM
-=======
--- Generation Time: May 11, 2019 at 08:00 PM
->>>>>>> parent of 388a93f... update
+-- Generation Time: May 15, 2019 at 06:43 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -126,7 +122,7 @@ CREATE TABLE `data_presensi` (
   `tanggal` datetime NOT NULL,
   `id_jadwal` varchar(20) NOT NULL,
   `nis` varchar(20) NOT NULL,
-  `presensi` int(11) NOT NULL,
+  `presensi` varchar(11) NOT NULL,
   `verifikasi_by` varchar(20) NOT NULL,
   `verifikasi_date` datetime NOT NULL,
   `presensi_by` varchar(20) NOT NULL
@@ -137,15 +133,12 @@ CREATE TABLE `data_presensi` (
 --
 
 INSERT INTO `data_presensi` (`id`, `tanggal`, `id_jadwal`, `nis`, `presensi`, `verifikasi_by`, `verifikasi_date`, `presensi_by`) VALUES
-<<<<<<< HEAD
-(395, '2019-05-12 14:57:14', '190', '001', 'Alpa', '009', '2019-05-12 14:57:25', '2173'),
-(396, '2019-05-12 14:57:14', '190', '002', 'Hadir', '009', '2019-05-12 14:57:25', '2173'),
-(397, '2019-05-12 14:57:14', '190', '009', 'Hadir', '009', '2019-05-12 14:57:25', '2173');
-=======
-(167, '2019-05-11 12:11:55', '', '001', 0, '', '0000-00-00 00:00:00', '2172'),
-(168, '2019-05-11 12:11:55', '', '002', 0, '', '0000-00-00 00:00:00', '2172'),
-(169, '2019-05-11 12:11:55', '', '009', 1, '', '0000-00-00 00:00:00', '2172');
->>>>>>> parent of 388a93f... update
+(458, '2019-05-15 18:00:25', '197', '005', 'Alpa', '005', '2019-05-15 18:38:04', '2177'),
+(459, '2019-05-15 18:00:25', '197', '006', 'Hadir', '005', '2019-05-15 18:38:04', '2177'),
+(460, '2019-05-15 18:03:39', '198', '003', 'Hadir', '003', '2019-05-15 18:20:01', '2177'),
+(461, '2019-05-15 18:03:39', '198', '004', 'Alpa', '003', '2019-05-15 18:20:01', '2177'),
+(462, '2019-05-15 18:21:44', '197', '005', 'Hadir', '005', '2019-05-15 18:38:04', '2177'),
+(463, '2019-05-15 18:21:44', '197', '006', 'Alpa', '005', '2019-05-15 18:38:04', '2177');
 
 -- --------------------------------------------------------
 
@@ -248,7 +241,7 @@ INSERT INTO `mata_pelajaran` (`id_mapel`, `mapel`) VALUES
 
 CREATE TABLE `table_jadwal` (
   `id` bigint(20) NOT NULL,
-  `tanggal` datetime NOT NULL,
+  `tanggal` date NOT NULL,
   `id_jadwal` varchar(20) NOT NULL,
   `nama_event` varchar(20) NOT NULL,
   `intval` varchar(20) NOT NULL,
@@ -261,23 +254,9 @@ CREATE TABLE `table_jadwal` (
 --
 
 INSERT INTO `table_jadwal` (`id`, `tanggal`, `id_jadwal`, `nama_event`, `intval`, `starts`, `ends`) VALUES
-(175, '2019-05-06 00:00:00', '11PGA_002', '11PGA_002', '1 DAY', '2019-05-06 00:00:00', '2019-05-07 00:00:00'),
-(176, '2019-05-07 00:00:00', '11PGA_002', '11PGA_002', '1 DAY', '2019-05-07 00:00:00', '2019-05-08 00:00:00'),
-(177, '2019-05-06 00:00:00', '11PGA_001', '11PGA_001', '1 WEEK', '2019-05-06 00:00:00', '2019-05-07 00:00:00'),
-(178, '2019-05-07 00:00:00', '11PGA_003', '11PGA_003', '1 WEEK', '2019-05-07 00:00:00', '2019-05-08 00:00:00'),
-(179, '2019-05-07 00:00:00', '12MJA_001', '12MJA_001', '1 WEEK', '2019-05-07 00:00:00', '2019-05-14 00:00:00'),
-(180, '2019-05-07 00:00:00', '12MJA_002', '12MJA_002', '1 WEEK', '2019-05-07 00:00:00', '2019-05-31 00:00:00'),
-(181, '2019-05-07 00:00:00', '12MJA_003', '12MJA_003', '1 WEEK', '2019-05-07 00:00:00', '2019-05-31 00:00:00'),
-(182, '2019-05-07 00:00:00', '12MJB_001', '12MJB_001', '1 WEEK', '2019-05-07 00:00:00', '2019-05-31 00:00:00'),
-(183, '2019-05-07 00:00:00', '12MJB_002', '12MJB_002', '1 WEEK', '2019-05-07 00:00:00', '2019-05-31 00:00:00'),
-(184, '2019-05-08 00:00:00', '12MJB_003', '12MJB_003', '1 WEEK', '2019-05-08 00:00:00', '2019-05-31 00:00:00'),
-(185, '2019-05-08 00:00:00', '11PGA_002', '11PGA_002', '1 DAY', '2019-05-07 00:00:00', '2019-05-08 00:00:00'),
-(186, '2019-05-08 00:00:00', '12MJB_003', '12MJB_003', '1 WEEK', '2019-05-08 00:00:00', '2019-05-31 00:00:00'),
-(187, '2019-05-09 21:31:00', '11PGA_003', '11PGA_003', '1 WEEK', '2019-05-07 00:00:00', '2019-05-08 00:00:00'),
-(188, '2019-05-10 00:00:00', '11PGA_003', '11PGA_003', '1 WEEK', '2019-05-07 00:00:00', '2019-05-08 00:00:00'),
-(189, '2019-05-11 00:00:00', '11PGA_001', '11PGA_001', '1 DAY', '2019-05-11 00:00:00', '2019-05-14 00:00:00'),
-(190, '2019-05-11 00:00:00', '11PGA_002', '11PGA_002', '1 HOUR', '2019-05-11 00:00:00', '2019-05-12 00:00:00'),
-(191, '2019-05-11 00:00:00', '11PGA_003', '11PGA_003', '1 HOUR', '2019-05-11 00:00:00', '2019-05-18 00:00:00');
+(196, '2019-05-14', '11PGA_003', '11PGA_003', '1 DAY', '2019-05-15 00:00:00', '2019-05-18 00:00:00'),
+(197, '2019-05-15', '12MJB_003', '12MJB_003', '1 DAY', '2019-05-15 00:00:00', '2019-05-18 00:00:00'),
+(198, '2019-05-15', '12MJA_002', '12MJA_002', '1 DAY', '2019-05-15 00:00:00', '2019-05-18 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -306,15 +285,15 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `kategori_user`, `status`
 (16, '2178', 'SADASDAS', 3, 1),
 (17, '2179', 'adada', 3, 1),
 (18, '4311611010', '827ccb0eea8a706c4c34a16891f84e7b', 4, 1),
-(19, '001', '202cb962ac59075b964b07152d234b70', 4, 1),
-(20, '002', '202cb962ac59075b964b07152d234b70', 4, 1),
-(21, '003', '202cb962ac59075b964b07152d234b70', 4, 1),
-(22, '004', '202cb962ac59075b964b07152d234b70', 4, 1),
-(23, '005', '202cb962ac59075b964b07152d234b70', 4, 1),
-(24, '006', '202cb962ac59075b964b07152d234b70', 4, 1),
-(25, '007', '202cb962ac59075b964b07152d234b70', 4, 1),
-(26, '008', '202cb962ac59075b964b07152d234b70', 4, 1),
-(27, '009', '166450042d16bd4a7c19ea7f02bc067d', 4, 1),
+(19, '001', '81dc9bdb52d04dc20036dbd8313ed055', 4, 1),
+(20, '002', '81dc9bdb52d04dc20036dbd8313ed055', 4, 1),
+(21, '003', '81dc9bdb52d04dc20036dbd8313ed055', 4, 1),
+(22, '004', '81dc9bdb52d04dc20036dbd8313ed055', 4, 1),
+(23, '005', '81dc9bdb52d04dc20036dbd8313ed055', 4, 1),
+(24, '006', '81dc9bdb52d04dc20036dbd8313ed055', 4, 1),
+(25, '007', '81dc9bdb52d04dc20036dbd8313ed055', 4, 1),
+(26, '008', '81dc9bdb52d04dc20036dbd8313ed055', 4, 1),
+(27, '009', '81dc9bdb52d04dc20036dbd8313ed055', 4, 1),
 (28, 'anandaroy', '7f363f401f336a7925f28655b6a44447', 3, 1);
 
 --
@@ -393,11 +372,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `data_presensi`
 --
 ALTER TABLE `data_presensi`
-<<<<<<< HEAD
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=398;
-=======
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
->>>>>>> parent of 388a93f... update
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=464;
 
 --
 -- AUTO_INCREMENT for table `kategori_user`
@@ -409,7 +384,7 @@ ALTER TABLE `kategori_user`
 -- AUTO_INCREMENT for table `table_jadwal`
 --
 ALTER TABLE `table_jadwal`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -438,11 +413,11 @@ DELIMITER $$
 --
 -- Events
 --
-CREATE DEFINER=`root`@`localhost` EVENT `11PGA_003` ON SCHEDULE EVERY 1 HOUR STARTS '2019-05-11 00:00:00' ENDS '2019-05-18 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'11PGA_003','11PGA_003','1 HOUR','2019-05-11 00:00:00','2019-05-18 00:00:00')$$
+CREATE DEFINER=`root`@`localhost` EVENT `12MJA_002` ON SCHEDULE EVERY 1 DAY STARTS '2019-05-15 00:00:00' ENDS '2019-05-18 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'12MJA_002','12MJA_002','1 DAY','2019-05-15 00:00:00','2019-05-18 00:00:00')$$
 
-CREATE DEFINER=`root`@`localhost` EVENT `11PGA_001` ON SCHEDULE EVERY 1 DAY STARTS '2019-05-11 00:00:00' ENDS '2019-05-14 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'11PGA_001','11PGA_001','1 DAY','2019-05-11 00:00:00','2019-05-14 00:00:00')$$
+CREATE DEFINER=`root`@`localhost` EVENT `11PGA_003` ON SCHEDULE EVERY 1 DAY STARTS '2019-05-15 00:00:00' ENDS '2019-05-18 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'11PGA_003','11PGA_003','1 DAY','2019-05-15 00:00:00','2019-05-18 00:00:00')$$
 
-CREATE DEFINER=`root`@`localhost` EVENT `11PGA_002` ON SCHEDULE EVERY 1 HOUR STARTS '2019-05-11 00:00:00' ENDS '2019-05-12 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'11PGA_002','11PGA_002','1 HOUR','2019-05-11 00:00:00','2019-05-12 00:00:00')$$
+CREATE DEFINER=`root`@`localhost` EVENT `12MJB_003` ON SCHEDULE EVERY 1 DAY STARTS '2019-05-15 00:00:00' ENDS '2019-05-18 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'12MJB_003','12MJB_003','1 DAY','2019-05-15 00:00:00','2019-05-18 00:00:00')$$
 
 DELIMITER ;
 COMMIT;
