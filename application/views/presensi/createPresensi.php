@@ -42,7 +42,7 @@
               <?php foreach ($mapel as $k): ?>
                 <div class="form-group">                  
                   <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id']; ?>"> 
+                    <input type="hidden" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id']; ?>"> 
                   </div>
                   
                 </div>
@@ -95,7 +95,7 @@
                   foreach ($array_siswa as $u): ?>
                   <tr ng-repeat="checkpoint in checkpoints">
                     <td style="text-transform: uppercase;"><?php echo $i; ?></td>
-                    <td style="text-transform: uppercase;"><input type="text" name="nis[]" style="border: 0px;" value="<?php echo $u['nis']; ?>"></td>
+                    <td style="text-transform: uppercase;"><input type="text" name="nis[]" style="border: 0px; background-color: transparent;" value="<?php echo $u['nis']; ?>"></td>
                     <td style="text-transform: uppercase;"><?php echo $u['nama_depan']; ?> <?php echo $u['nama_belakang']; ?></td>
                     <td style="text-transform: uppercase;"><?php echo $u['kelas']; ?> - <?php echo $u['nama_jurusan']; ?></td>
                     <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi[<?php echo $x; ?>]" value="Hadir" checked></td>

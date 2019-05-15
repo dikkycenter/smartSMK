@@ -17,9 +17,9 @@ class Presensi extends MY_Controller {
 
 	public function index()
 	{
-		$hak_akses = $this->session->userdata('kategori_user');
+		//$hak_akses = $this->session->userdata('kategori_user');
 
-		if ($hak_akses != '1') {
+		if ($this->session->userdata('hak_akses') != '1') {
 			redirect('presensi/jadwalPresensi');
 			
 		} else {
@@ -33,10 +33,20 @@ class Presensi extends MY_Controller {
 	public function jadwalPresensi()
 	{
 		$data['title'] = 'Jadwal Presensi | SmartSMK';
+		$id = $this->input->post('id_jdwal');
 
-		$nip_pengajar = $this->session->userdata('username');
-		$datenow = date('Y-m-d');
-		$data['jadwal'] = $this->data_presensi->get_jadwal_pengajar($nip_pengajar,$datenow);
+		if ($this->session->userdata('hak_akses') != '1') {
+
+			$nip_pengajar = $this->session->userdata('username');
+			$datenow = date('Y-m-d');
+			$data['jadwal'] = $this->data_presensi->get_jadwal_pengajar($nip_pengajar,$datenow);
+			$data['cek_presensi'] = $this->data_presensi->cek_presensi($id);
+			
+		} else {
+
+			$data['jadwal'] = $this->data_presensi->get_jadwal_admin();
+
+		}		
 
 		$this->render_page('presensi/jadwalPresensi', $data);
 	}
@@ -90,14 +100,17 @@ class Presensi extends MY_Controller {
 
 	function save_verifikasi($id='') {
 		$now = date('Y-m-d H:i:s');
-		//$checking = $this->data_presensi->get_verifikasi(array('username' => $verifikasi_by, 'password' => $password));
+		$nis = $this->input->post('nis');
+		$password = md5($this->input->post('password'));
+		
+		$checking = $this->data_presensi->get_verifikasi_siswa('user', array('username' => $nis), array('password' => $password), array('status' => "1"));
 
 		$id = $this->input->post('id_jadwal');
-		$verifikasi_by = $this->input->post('pilih_siswa');
+		$verifikasi_by = $this->input->post('nis');
 		$verifikasi_date = $now;
 		$password = md5($this->input->post('password'));
 
-		//if ($checking != FALSE) {
+		if ($checking != FALSE) {
 			$data = array(
 				'verifikasi_by'       => $verifikasi_by,
 				'verifikasi_date'      => $verifikasi_date
@@ -108,15 +121,15 @@ class Presensi extends MY_Controller {
 			$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
 
 			redirect('presensi/jadwalPresensi');
-		// } else {
-		// 	$this->session->set_flashdata('Verifikasi Gagal',"Password salah!");
+		} else {
+			$data['error'] = '<script language="javascript"> alert("Hello, From C# Corner"); </script>';
 
-		// 	refresh('presensi/formVerifikasi');
-		// }
+			$this->render_page('presensi/formVerifikasi', $data);
+		}
 
-		// $this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
+		//$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
 
-		// redirect('presensi/jadwalPresensi');
+		//redirect('presensi/jadwalPresensi');
 
 		
 	}

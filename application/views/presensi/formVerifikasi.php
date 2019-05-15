@@ -45,7 +45,7 @@
                   <label for="pilih_siswa" class="col-sm-2 control-label">Pilih Siswa*</label>
 
                   <div class="col-sm-3">
-                    <select class="form-control" style="width: 100%;" name="pilih_siswa" required> 
+                    <select class="form-control" style="width: 100%;" name="nis" required> 
                       <option selected disabled>---Pilih Siswa---</option>
                       <?php foreach ($getSiswa as $u): ?>
                       <option value="<?php echo $u['nis']; ?>"><?php echo $u['nama_depan']; ?> <?php echo $u['nama_belakang']; ?></option>
@@ -59,10 +59,12 @@
                   <label for="pilih_siswa" class="col-sm-2 control-label">Masukkan Password*</label>  
 
                   <div class="col-sm-3">
-                    <input type="password" class="form-control" placeholder="Masukkan Password" name="verifikasi"> 
+                    <input type="password" class="form-control" placeholder="Masukkan Password" name="password"> 
                   </div>
                 </div>                 
               </div>
+
+              <p><?php if(isset($error)) { echo $error; }; ?></p>
 
               <input type="hidden" class="form-control" placeholder="Masukkan Password" name="id_jadwal" value="<?php echo $u['id_jadwal']; ?>">
                

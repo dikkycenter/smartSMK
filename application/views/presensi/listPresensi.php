@@ -35,7 +35,7 @@
             <div class="box-header">
               <h3 class="box-title">Data Presensi</h3>
               <a href="<?php echo site_url('presensi/jadwalPresensi');?>">
-                <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-plus"></i> Absensi</button>
+                <button type="submit" class="btn btn-success pull-right" ><i class="fa fa-pencil-square-o"></i> Absensi</button>
               </a>
             </div>
             <!-- /.box-header -->
@@ -43,11 +43,11 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>No.</th>
+                  <th style="width: 2px;">No.</th>
                   <th>Tanggal</th>
                   <th>ID Jadwal</th>
-                  <th>NIS</th>
-                  <th>Presensi</th>
+                  <th>Mata Pelajaran</th>
+                  <th>Kelas</th>
                   <th>Verifikasi By</th>
                   <th>Verifikasi Date</th>
                   <th>Presensi By</th>
@@ -62,19 +62,19 @@
                   <td style="text-transform: uppercase;"><?php echo $i; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->tanggal; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->id_jadwal; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->nis; ?> - <?php echo $u->end; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->presensi; ?></td>
-                  <td style="text-transform: uppercase;"><?php echo $u->verifikasi_by; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->mapel; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->nama_depan; ?> <?php echo $u->nama_belakang; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->verifikasi_date; ?></td>                  
-                  <td style="text-transform: uppercase;"><?php echo $u->presensi_by; ?></td>
+                  <td style="text-transform: uppercase;"><?php echo $u->nd_pengajar; ?> <?php echo $u->nb_pengajar; ?></td>
                   <td>
-                    <a class="btn" href="<?php echo site_url('jadwal/dataDetail/'.$u->id); ?>">
+                    <a class="btn" href="<?php echo site_url('jadwal/dataDetail/'.$u->pid); ?>">
                       <i class="fa fa-eye"></i> Lihat
                     </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/updateJadwal/'.$u->id); ?>">
+                    <a class="btn" href="<?php echo site_url('jadwal/updateJadwal/'.$u->pid); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/deleteJadwal/'.$u->id); ?>"> 
+                    <a class="btn" href="<?php echo site_url('jadwal/deleteJadwal/'.$u->pid); ?>"> 
                       <i class="fa fa-remove"></i> Hapus
                     </a>
                   </td>

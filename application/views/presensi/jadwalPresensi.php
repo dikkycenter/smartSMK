@@ -40,6 +40,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Tanggal</th>
                   <th>ID Jadwal</th>
                   <th>Mata Pelajaran</th>
                   <th>Kelas</th>
@@ -48,22 +49,30 @@
                 </thead>
                 <tbody>
                 <?php foreach ($jadwal as $u): ?>
-                <tr>               
+                <tr>    
+                  <td style="text-transform: uppercase;"><?php echo $u->tanggal; ?></td>           
                   <td style="text-transform: uppercase;"><?php echo $u->id_jadwal; ?></td>
                   <td style="text-transform: capitalize;"><?php echo $u->mapel; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
                   <td>
+                  <?php //foreach ($cek_presensi as $cek): ?>
                     <a class="btn" href="<?php echo site_url('presensi/createPresensi/'.$u->id); ?>">
                       <i class="fa fa-plus"></i> Tambah
                     </a>
-                    <a class="btn" href="<?php echo site_url('presensi/formVerifikasi/'.$u->id); ?>">
+
+                    <!-- <a class="btn" style="cursor: not-allowed; opacity: 0.5; color: currentColor;">
+                      <i class="fa fa-plus"></i> Tambah
+                    </a> -->
+                  <?php //endforeach; ?>
+                    <!-- <a class="btn" href="<?php //echo site_url('presensi/formVerifikasi/'.$u->id); ?>">
                       <i class="fa fa-check-square-o"></i> Verifikasi
-                    </a>
-                    <a class="btn" href="<?php echo site_url('presensi/updatePresensi/'.$u->id_jadwal); ?>">
+                    </a> -->
+                    <!-- <a class="btn" href="<?php //echo site_url('presensi/updatePresensi/'.$u->id_jadwal); ?>">
                       <i class="fa fa-edit"></i> Update
-                    </a>
+                    </a> -->
                   </td>
                 </tr>
+                <!-- <input type="text" name="id_jdwal" value="<?php //echo $u->id; ?>"> -->
                 <?php  endforeach; ?>
                 </tbody>
               </table>

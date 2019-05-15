@@ -136,7 +136,7 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Presensi/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Presesi</a></li>
-            <li class=""><a href="<?php echo site_url('Presensi/tambahPresensi'); ?>"><i class="fa fa-circle-o"></i> Tambah Presensi</a></li>
+            <li class=""><a href="<?php echo site_url('Presensi/jadwalPresensi'); ?>"><i class="fa fa-circle-o"></i> Tambah Presensi</a></li>
           </ul>
         </li>
 
