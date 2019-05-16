@@ -137,6 +137,7 @@
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Presensi/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Presesi</a></li>
             <li class=""><a href="<?php echo site_url('Presensi/jadwalPresensi'); ?>"><i class="fa fa-circle-o"></i> Tambah Presensi</a></li>
+            <li class=""><a href="<?php echo site_url('Presensi/updatePresensi'); ?>"><i class="fa fa-circle-o"></i> Update Presensi</a></li>
           </ul>
         </li>
 
@@ -149,8 +150,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="<?php echo site_url('Jadwal/index'); ?>"><i class="fa fa-circle-o"></i> Daftar Presensi</a></li>
-            <li class=""><a href="<?php echo site_url('Jadwal/tambahJadwal'); ?>"><i class="fa fa-circle-o"></i> Cetak Presensi</a></li>
+            <li class=""><a href="<?php echo site_url('Laporan/index'); ?>"><i class="fa fa-circle-o"></i> Unduh Laporan Presensi</a></li>
+            <li class=""><a href="<?php echo site_url('Laporan/'); ?>"><i class="fa fa-circle-o"></i> Cetak Presensi</a></li>
           </ul>
         </li>
 
@@ -211,7 +212,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="<?php echo site_url('presensi/cetakPresensi'); ?>"><i class="fa fa-circle-o"></i> Cetak Presensi</a></li>
+            <li class=""><a href="<?php echo site_url('laporan/index'); ?>"><i class="fa fa-circle-o"></i> Unduh Presensi</a></li>
           </ul>
         </li>
       </ul>

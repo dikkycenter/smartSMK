@@ -25,15 +25,51 @@ class Presensi extends MY_Controller {
 		} else {
 			$data['title'] = 'Data Presensi | SmartSMK';
 			$data['presensi'] = $this->data_presensi->tampil_data();
+			
+			//redirect('presensi/cekPresensi/'.$id_jadwal, $data);	
 
 			$this->render_page('presensi/listPresensi', $data);
+			
+
 		}		
 	}	
+
+	public function updatePresensi()
+	{
+		$this->isAdmin();
+
+		$data['title'] = 'Update Presensi | SmartSMK';
+		$data['data_presensi'] = $this->data_presensi->get_presensi();
+		$this->render_page('presensi/updatePresensi', $data);
+	}
+
+	public function updatePresensiDetail($id){
+		$this->isAdmin();
+		
+		$data['title'] = 'Update Presensi | SmartSMK';
+		$data['data_presensi'] = $this->data_presensi->tampil_presensi_detail($id);
+		$this->render_page('presensi/updatePresensiDetail', $data);
+	}
+
+	public function save_updatePresensi(){
+		$id			= $this->input->post('pid');
+		$presensi 	= $this->input->post('presensi');
+
+		$data = array(
+			'presensi'	=> $presensi
+		);
+
+		$this->data_presensi->save_update_presensi($id, $data);
+
+		$this->session->set_flashdata('sukses',"Presensi berhasil diupdate");
+		redirect('presensi/updatePresensi');
+
+	}
 
 	public function jadwalPresensi()
 	{
 		$data['title'] = 'Jadwal Presensi | SmartSMK';
-		$id = $this->input->post('id_jdwal');
+		$id = $this->input->post('id_jadwal');
 
 		if ($this->session->userdata('hak_akses') != '1') {
 
@@ -49,6 +85,7 @@ class Presensi extends MY_Controller {
 		}		
 
 		$this->render_page('presensi/jadwalPresensi', $data);
+		
 	}
 
 	public function createPresensi($id) {
@@ -134,6 +171,14 @@ class Presensi extends MY_Controller {
 
 		//redirect('presensi/jadwalPresensi');
 
-		
+		function cekJadwal($id){
+			$tes=0;
+			if($this->data_presensi->cekPresensi($id)){
+				$tes= 1;
+			} else{
+				$tes=0;
+			}
+		}
+
 	}
 }

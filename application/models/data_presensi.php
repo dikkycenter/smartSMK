@@ -115,6 +115,47 @@ class data_presensi extends CI_Model
         }
     }
 
+    function cekPresensi($id){
+        $this->db->where('id_jadwal', $id);
+        $query = $this->db->get('data_presensi');
+
+        if($query->num_rows()>0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function get_Presensi() { 
+        $this->db->select('a.id,a.nis,b.nama_depan,b.nama_belakang,a.tanggal,e.mapel,a.presensi');
+        $this->db->from('data_presensi a');
+        $this->db->join('data_siswa b','a.nis=b.nis','left');
+        $this->db->join('table_jadwal c','a.id_jadwal=c.id','left');
+        $this->db->join('data_jadwal d','c.id_jadwal=d.id_jadwal','left');
+        $this->db->join('mata_pelajaran e','d.id_mapel=e.id_mapel','left');
+        $this->db->where('a.presensi','alpa');
+
+        return $this->db->get()->result();
+    }
+
+    function tampil_presensi_detail($id){
+        $this->db->select('a.id,a.nis,b.nama_depan,b.nama_belakang,a.tanggal,e.mapel,a.presensi,b.kelas,f.nama_jurusan');
+        $this->db->from('data_presensi a');
+        $this->db->join('data_siswa b','a.nis=b.nis','left');
+        $this->db->join('table_jadwal c','a.id_jadwal=c.id','left');
+        $this->db->join('data_jadwal d','c.id_jadwal=d.id_jadwal','left');
+        $this->db->join('mata_pelajaran e','d.id_mapel=e.id_mapel','left');
+        $this->db->join('data_kelas f','b.kelas=f.id_kelas','left');
+        $this->db->where('a.id', $id);
+
+        return $this->db->get()->result_array();
+    }
+
+    function save_update_presensi($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('data_presensi', $data);
+    }
+
 }
 
 ?>

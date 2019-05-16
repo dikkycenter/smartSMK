@@ -3,13 +3,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Presensi
-        <small>Presensi</small>
+        Update Data Presensi
+        <small>Update Presensi</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Data Presensi</a></li>
-        <li class="active">Presensi</li>
+        <li><a href="#">Update Data Presensi</a></li>
+        <li class="active">Update Presensi</li>
       </ol>
     </section>
 
@@ -33,47 +33,12 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Presensi</h3>
+              <h3 class="box-title">Update Data Presensi</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('presensi/savePresensi'); ?>">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo site_url('presensi/save_updatePresensi'); ?>">
               <div class="box-body">
-              <?php foreach ($mapel as $k): ?>
-                <div class="form-group">                  
-                  <div class="col-sm-3">
-                    <input type="hidden" class="form-control" placeholder="" name="id_jadwal" value="<?php echo $k['id']; ?>"> 
-                  </div>
-                  
-                </div>
-
-                <div class="form-group">
-                  <div class="col-sm-1">
-                    <label for="id_mapel">Mata Pelajaran</label>
-                  </div>
-                  <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="Mata Pelajaran" name="id_mapel" value="<?php echo $k['mapel']; ?>" readonly>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-sm-1">
-                    <label for="id_mapel">Hari / Tanggal</label>
-                  </div>
-                  <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="Mata Pelajaran" name="id_mapel" value="<?php echo $k['hari']; ?>, <?php echo date('d M Y') ?>" readonly>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-sm-1">
-                    <label for="id_mapel">Mulai - Berakhir</label>
-                  </div>
-                  <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="Mata Pelajaran" name="id_mapel" value="<?php echo $k['start']; ?> - <?php echo $k['end']; ?>" readonly>
-                  </div>
-                </div>
-                <?php endforeach; ?>
 
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -82,7 +47,6 @@
                     <th>NIS</th>
                     <th>Nama</th>
                     <th>Kelas</th>
-                    <th>Hadir</th>
                     <th>Alpa</th>
                     <th>Sakit</th>
                     <th>Izin</th>
@@ -91,19 +55,18 @@
                   <tbody>
                   <?php
                   $i = 1;
-                  $x = 0;
-                  foreach ($array_siswa as $u): ?>
+                  foreach ($data_presensi as $u): ?>
                   <tr ng-repeat="checkpoint in checkpoints">
                     <td style="text-transform: uppercase;"><?php echo $i; ?></td>
-                    <td style="text-transform: uppercase;"><input type="text" name="nis[]" style="border: 0px; background-color: transparent;" value="<?php echo $u['nis']; ?>" readonly></td>
+                    <td style="text-transform: uppercase;"><input type="text" name="nis" style="border: 0px; background-color: transparent;" value="<?php echo $u['nis']; ?>" readonly></td>
                     <td style="text-transform: uppercase;"><?php echo $u['nama_depan']; ?> <?php echo $u['nama_belakang']; ?></td>
                     <td style="text-transform: uppercase;"><?php echo $u['kelas']; ?> - <?php echo $u['nama_jurusan']; ?></td>
-                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi[<?php echo $x; ?>]" value="Hadir" checked></td>
-                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi[<?php echo $x; ?>]" value="Alpa"></td>
-                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi[<?php echo $x; ?>]" value="Sakit"></td>
-                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi[<?php echo $x; ?>]" value="Izin"></td>
+                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi" value="Alpa" checked></td>
+                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi" value="Sakit"></td>
+                    <td style="text-transform: uppercase;"><input id="checkbox" type="radio" class="minimal presensi" name="presensi" value="Izin"></td>
                   </tr>
-                  <?php $i++; $x++; endforeach; ?>
+                  <input type="hidden" name="pid" value="<?php echo $u['id']; ?>">
+                  <?php $i++; endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -198,9 +161,9 @@ function goBack() {
 //   }
 // }
 
-function myFunction() {
-    document.getElementById("checkbox").value = "1";
-}
+// function myFunction() {
+//     document.getElementById("checkbox").value = "1";
+// }
   
 </script>
 
