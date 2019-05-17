@@ -55,3 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['item-list'] = 'Pengajar/index';
 $route['item-list/(:any)']['delete'] = "Pengajar/deletePengajar/$1";
+
+$route['email'] = 'CheckPresensi';

@@ -203,9 +203,9 @@ class Jadwal extends MY_Controller {
     function deleteEvent($id_jadwal) {
         $id = $this->input->post('pid');
 
-        $query = $this->data_jadwal->delete_event($id);
+        $query = "DROP EVENT IF EXISTS '$id'";
 
-        if ($query==true) {
+        if($query->num_rows > 0) {
             $data3 = array('event_status' => '0');
 
             $this->data_jadwal->update_event_status($id_jadwal, $data3);

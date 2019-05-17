@@ -66,7 +66,14 @@
                   <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->nama_depan; ?> <?php echo $u->nama_belakang; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->verifikasi_date; ?></td>                  
-                  <td style="text-transform: uppercase;"><?php echo $u->nd_pengajar; ?> <?php echo $u->nb_pengajar; ?></td>
+                  <td style="text-transform: uppercase;">
+                  <?php if ($u->presensi_by!='admin') {
+                            echo $u->nd_pengajar; ?> <?php echo $u->nb_pengajar; 
+                        } else {
+                            echo $u->presensi_by;
+                        }
+                  ?>
+                  </td>
                   <td>
                     <a class="btn" href="<?php echo site_url('jadwal/dataDetail/'.$u->pid); ?>">
                       <i class="fa fa-eye"></i> Lihat
