@@ -49,8 +49,13 @@
               <h3 class="box-title">Laporan Presensi</h3>
                 <div class ="text-right">
                   <div class = btn-group>
-                    <a href="<?php echo site_url('pengajar/export');?>">
+                    <a href="<?php echo site_url('laporan/export');?>">
                       <button class="btn btn-primary pull-right" ><i class="fa fa-download"></i> Unduh</button>
+                    </a>
+                  </div>
+                  <div class = btn-group>
+                    <a href="<?php //echo site_url('laporan/email');?>">
+                      <button class="btn btn-primary pull-right" ><i class="fa fa-download"></i> Send Email</button>
                     </a>
                   </div>
                 </div>

@@ -65,7 +65,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo $rate_hadir; ?><sup style="font-size: 20px">%</sup></h3>
+              <h3><?php echo number_format($rate_hadir,2); ?><sup style="font-size: 20px">%</sup></h3>
 
               <p>Presensi Rate</p>
             </div>

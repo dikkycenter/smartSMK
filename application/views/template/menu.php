@@ -151,7 +151,7 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="<?php echo site_url('Laporan/index'); ?>"><i class="fa fa-circle-o"></i> Unduh Laporan Presensi</a></li>
-            <li class=""><a href="<?php echo site_url('Laporan/'); ?>"><i class="fa fa-circle-o"></i> Cetak Presensi</a></li>
+            <!-- <li class=""><a href="<?php //echo site_url('Laporan/'); ?>"><i class="fa fa-circle-o"></i> Cetak Presensi</a></li> -->
           </ul>
         </li>
 
@@ -169,7 +169,23 @@
           </ul>
         </li>
       </ul>
-      <?php } ?>
+      <?php }?>
+
+      <!-- <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i>
+            <span>Kelola User</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php //echo site_url('mail/index'); ?>"><i class="fa fa-circle-o"></i> Data User</a></li>
+        
+          </ul>
+        </li>
+      </ul>
+      <?php  ?> -->
       <!-- End Tampil Menu Admin -->
       
       <!-- Tampil Menu Pengajar -->

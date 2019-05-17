@@ -65,7 +65,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Presensi Rate</span>
-              <span class="info-box-number"><?php echo $rate_hadir; ?><small>%</small></span>
+              <span class="info-box-number"><?php echo number_format($rate_hadir,2); ?><small>%</small></span>
             </div>
             <!-- /.info-box-content -->
           </div>
