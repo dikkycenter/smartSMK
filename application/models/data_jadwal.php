@@ -100,6 +100,16 @@ class data_jadwal extends CI_Model
         $this->db->insert('table_jadwal',$data);
     }
 
+    function delete_event($id) {
+        $query = "DROP EVENT IF EXISTS $id";
+
+        if($query->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // List Data Event by ID
     function tampil_event($id) {
         return $this->db->get_where('table_jadwal', array('nama_event' => $id));

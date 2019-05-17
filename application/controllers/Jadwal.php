@@ -201,13 +201,18 @@ class Jadwal extends MY_Controller {
     }
 
     function deleteEvent($id_jadwal) {
-        $data = "DROP EVENT IF EXISTS `$id_jadwal`";
+        $id = $this->input->post('pid');
 
-        $data3 = array('event_status' => '0');
+        $query = $this->data_jadwal->delete_event($id);
 
-        $this->data_jadwal->update_event_status($id_jadwal, $data3);
-        $this->session->set_flashdata('sukses',"Event berhasil dihapus");
-        
+        if ($query==true) {
+            $data3 = array('event_status' => '0');
+
+            $this->data_jadwal->update_event_status($id_jadwal, $data3);
+            $this->session->set_flashdata('sukses',"Event berhasil dihapus");
+        }
+        $this->session->set_flashdata('gagal',"Event gagal dihapus");
+
         redirect('jadwal/index');
     }
 

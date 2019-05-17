@@ -29,7 +29,7 @@
     <?php 
       $data = $this->session->flashdata('gagal');
       if($data!="") { ?>
-      <div class="alert alert-danger" role="alert"><Strong>Sukses!</Strong>
+      <div class="alert alert-danger" role="alert"><Strong>Gagal!</Strong>
         <?php echo $data; ?>
         <button type="button" class="close" data-dismiss="alert" aria-label="close">
           <span aria-hidden="true">&times;</span>
@@ -71,6 +71,7 @@
                 <?php 
                 $i = 1;                
                 foreach ($jadwal as $u): ?>
+                <input type="hidden" name="pid" value="<?php echo $u->id_jadwal; ?>">
                 <tr>
                   <td style="text-transform: uppercase;"><?php echo $i; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->id_jadwal; ?></td>
