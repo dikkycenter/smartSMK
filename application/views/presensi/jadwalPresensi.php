@@ -55,21 +55,25 @@
                   <td style="text-transform: capitalize;"><?php echo $u->mapel; ?></td>
                   <td style="text-transform: uppercase;"><?php echo $u->id_kelas; ?></td>
                   <td>
-                  <?php //foreach ($cek_presensi as $cek): ?>
+                  <?php if($u->presensi_status < 1) { ?>
                     <a class="btn" href="<?php echo site_url('presensi/createPresensi/'.$u->id); ?>">
                       <i class="fa fa-plus"></i> Tambah
                     </a>
-
-                    <!-- <a class="btn" style="cursor: not-allowed; opacity: 0.5; color: currentColor;">
+                    <?php } else { ?>
+                    <a class="btn" style="cursor: not-allowed; opacity: 0.5; color: currentColor;">
                       <i class="fa fa-plus"></i> Tambah
-                    </a> -->
-                  <?php //endforeach; ?>
-                    <!-- <a class="btn" href="<?php //echo site_url('presensi/formVerifikasi/'.$u->id); ?>">
+                    </a>
+                    <?php } ?>
+
+                    <?php if($u->verifikasi_status < 1) { ?>
+                    <a class="btn" href="<?php echo site_url('presensi/formVerifikasi/'.$u->id); ?>">
                       <i class="fa fa-check-square-o"></i> Verifikasi
-                    </a> -->
-                    <!-- <a class="btn" href="<?php //echo site_url('presensi/updatePresensi/'.$u->id_jadwal); ?>">
-                      <i class="fa fa-edit"></i> Update
-                    </a> -->
+                    </a>
+                    <?php } else { ?>
+                    <a class="btn" style="cursor: not-allowed; opacity: 0.5; color: currentColor;">
+                      <i class="fa fa-check-square-o"></i> Verifikasi
+                    </a>
+                    <?php } ?>
                   </td>
                 </tr>
                 <!-- <input type="text" name="id_jdwal" value="<?php //echo $u->id; ?>"> -->

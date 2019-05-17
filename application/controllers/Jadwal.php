@@ -61,6 +61,7 @@ class Jadwal extends MY_Controller {
         $end            = date("H:i:s", strtotime($this->input->post('end')));
         $input_date		= $now;
         $update_date	= $now;
+        $event_stats    = '0';
         
         $data = array (
             'id_jadwal'     => $id_jadwal,
@@ -71,7 +72,8 @@ class Jadwal extends MY_Controller {
             'start'         => $start,
             'end'           => $end,
             'input_date'    => $input_date,
-            'update_date'   => $update_date
+            'update_date'   => $update_date,
+            'event_status'  => $event_stats
         );
 
         $query = $this->data_jadwal->input_data($data);
@@ -158,19 +160,23 @@ class Jadwal extends MY_Controller {
     }
 
     function createEventAction() {
-        $id_jadwal      = $this->input->post('id_jadwal');
-        $nama_event     = $this->input->post('nama_event');
-        $intval         = $this->input->post('intval');
-        $starts         = date("Y-m-d H:i:s", strtotime($this->input->post('starts')));
-        $ends           = date("Y-m-d H:i:s", strtotime($this->input->post('ends')));
+        $id_jadwal          = $this->input->post('id_jadwal');
+        $nama_event         = $this->input->post('nama_event');
+        $intval             = $this->input->post('intval');
+        $starts             = date("Y-m-d H:i:s", strtotime($this->input->post('starts')));
+        $ends               = date("Y-m-d H:i:s", strtotime($this->input->post('ends')));
+        $presensi_stats     = '0';
+        $verifikasi_stats   = '0';
 
         $data = array (
-            'tanggal'       => $starts,
-            'id_jadwal'     => $id_jadwal,
-            'nama_event'    => $nama_event,
-            'intval'        => $intval,
-            'starts'        => $starts,
-            'ends'          => $ends
+            'tanggal'           => $starts,
+            'id_jadwal'         => $id_jadwal,
+            'nama_event'        => $nama_event,
+            'intval'            => $intval,
+            'starts'            => $starts,
+            'ends'              => $ends,
+            'presensi_status'   => $presensi_stats,
+            'verifikasi_status' => $verifikasi_stats
         );
 
         $data2= "CREATE EVENT `$nama_event` 
@@ -178,14 +184,30 @@ class Jadwal extends MY_Controller {
                 STARTS '$starts' 
                 ENDS '$ends' 
                 ON COMPLETION NOT PRESERVE ENABLE 
-                DO insert into table_jadwal values (null,now(),'$id_jadwal','$nama_event','$intval','$starts','$ends')";
+                DO insert into table_jadwal values (null,now(),'$id_jadwal','$nama_event','$intval','$starts','$ends','$presensi_stats','$verifikasi_stats')";
 
+        $data3 = array(
+            'event_status'  => '1'
+        );
         //$query_event    = 'CREATE EVENT $event_name ON SCHEDULE $intval STARTS $starts ENDS $ends DO insert into table_jadwal values (null, $tanggal, $id_jadwal)';
         $this->data_jadwal->create_event($data, $data2);
-        
+
+        // Update status event di data jadwal
+        $this->data_jadwal->update_event_status($id_jadwal, $data3);
         
         $this->session->set_flashdata('sukses',"Event berhasil dibuat");
 
+        redirect('jadwal/index');
+    }
+
+    function deleteEvent($id_jadwal) {
+        $data = "DROP EVENT IF EXISTS `$id_jadwal`";
+
+        $data3 = array('event_status' => '0');
+
+        $this->data_jadwal->update_event_status($id_jadwal, $data3);
+        $this->session->set_flashdata('sukses',"Event berhasil dihapus");
+        
         redirect('jadwal/index');
     }
 

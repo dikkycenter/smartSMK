@@ -74,6 +74,12 @@ class data_presensi extends CI_Model
         // return FALSE;
     }
 
+    // Mengupdate status presensi di table jadwal
+    function update_status_presensi($id_jadwal, $data2) {
+        $this->db->where('id',$id_jadwal);
+        $this->db->update('table_jadwal', $data2);
+    }
+
     // Verifikasi
     function get_verifikasi($id) {
         $array = array('presensi' => 'Hadir', 'id_jadwal' => $id);
@@ -93,9 +99,10 @@ class data_presensi extends CI_Model
         $query = $this->db->update('data_presensi', $data);
     }
 
-    //Cek Presensi dan Verifikasi apakah sudah dilakukan
-    function cek_presensi($id) {
-        return $this->db->get_where('data_presensi', array('id_jadwal' => $id))->result_array();
+    // Mengupdate status verifikasi di table jadwal
+    function update_status_verifikasi($id, $data2) {
+        $this->db->where('id',$id);
+        $this->db->update('table_jadwal', $data2);
     }
 
     // Verifikasi Siswa
@@ -115,16 +122,16 @@ class data_presensi extends CI_Model
         }
     }
 
-    function cekPresensi($id){
-        $this->db->where('id_jadwal', $id);
-        $query = $this->db->get('data_presensi');
+    // function cekPresensi($id){
+    //     $this->db->where('id_jadwal', $id);
+    //     $query = $this->db->get('data_presensi');
 
-        if($query->num_rows()>0){
-            return true;
-        } else {
-            return false;
-        }
-    }
+    //     if($query->num_rows()>0){
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     function get_Presensi() { 
         $this->db->select('a.id,a.nis,b.nama_depan,b.nama_belakang,a.tanggal,e.mapel,a.presensi');

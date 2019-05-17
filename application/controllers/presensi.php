@@ -76,7 +76,6 @@ class Presensi extends MY_Controller {
 			$nip_pengajar = $this->session->userdata('username');
 			$datenow = date('Y-m-d');
 			$data['jadwal'] = $this->data_presensi->get_jadwal_pengajar($nip_pengajar,$datenow);
-			$data['cek_presensi'] = $this->data_presensi->cek_presensi($id);
 			
 		} else {
 
@@ -87,6 +86,9 @@ class Presensi extends MY_Controller {
 		$this->render_page('presensi/jadwalPresensi', $data);
 		
 	}
+
+	// Melakukan cek table jadwal apakah sudah dilakukan presensi atau belum dilakukan
+	
 
 	public function createPresensi($id) {
 		$data['title'] = 'Presensi Siswa | SmartSMK';
@@ -119,8 +121,14 @@ class Presensi extends MY_Controller {
 
 			$i++;
 			
-		}	
-		$this->data_presensi->save_presensi($data);		
+		}
+		
+		$data2 = array(
+			'presensi_status'	=> '1'
+		);
+
+		$this->data_presensi->save_presensi($data);
+		$this->data_presensi->update_status_presensi($id_jadwal, $data2);		
 
 		$this->session->set_flashdata('sukses',"Presensi sukses. Silahkan Verifikasi!");
 
@@ -152,8 +160,14 @@ class Presensi extends MY_Controller {
 				'verifikasi_by'       => $verifikasi_by,
 				'verifikasi_date'      => $verifikasi_date
 			);
+
+			$data2 = array(
+				'verifikasi_status'	=> '1'
+			);
+
 			//set session userdata
 			$this->data_presensi->add_verifikasi($id, $data);
+			$this->data_presensi->update_status_verifikasi($id, $data2);
 
 			$this->session->set_flashdata('sukses',"Verifikasi telah berhasil");
 
@@ -171,14 +185,14 @@ class Presensi extends MY_Controller {
 
 		//redirect('presensi/jadwalPresensi');
 
-		function cekJadwal($id){
-			$tes=0;
-			if($this->data_presensi->cekPresensi($id)){
-				$tes= 1;
-			} else{
-				$tes=0;
-			}
-		}
+		// function cekJadwal($id){
+		// 	$tes=0;
+		// 	if($this->data_presensi->cekPresensi($id)){
+		// 		$tes= 1;
+		// 	} else{
+		// 		$tes=0;
+		// 	}
+		// }
 
 	}
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2019 at 06:43 PM
+-- Generation Time: May 17, 2019 at 06:46 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -38,23 +38,24 @@ CREATE TABLE `data_jadwal` (
   `id_pengajar` varchar(50) NOT NULL,
   `id_pengajar2` varchar(50) DEFAULT NULL,
   `input_date` datetime NOT NULL,
-  `update_date` datetime NOT NULL
+  `update_date` datetime NOT NULL,
+  `event_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_jadwal`
 --
 
-INSERT INTO `data_jadwal` (`id_jadwal`, `hari`, `start`, `end`, `id_mapel`, `id_kelas`, `id_pengajar`, `id_pengajar2`, `input_date`, `update_date`) VALUES
-('11PGA_001', 'Senin', '07:15:00', '09:45:00', 'MP001', '11PGA', '2172', NULL, '2019-05-07 17:25:22', '2019-05-07 17:25:22'),
-('11PGA_002', 'Senin', '10:00:00', '11:45:00', 'MP004', '11PGA', '2173', NULL, '2019-05-07 17:35:06', '2019-05-07 17:35:06'),
-('11PGA_003', 'Senin', '13:15:00', '14:15:00', 'MP002', '11PGA', '2177', NULL, '2019-05-07 17:30:10', '2019-05-07 17:30:10'),
-('12MJA_001', 'Senin', '10:00:00', '11:45:00', 'MP001', '12MJA', '2172', NULL, '2019-05-07 17:16:22', '2019-05-07 17:16:22'),
-('12MJA_002', 'Senin', '07:15:00', '09:45:00', 'MP002', '12MJA', '2177', NULL, '2019-05-07 17:31:49', '2019-05-07 17:31:49'),
-('12MJA_003', 'Senin', '13:15:00', '14:15:00', 'MP004', '12MJA', '2173', NULL, '2019-05-07 17:33:13', '2019-05-07 17:33:13'),
-('12MJB_001', 'Senin', '13:15:00', '14:15:00', 'MP001', '12MJB', '2172', NULL, '2019-05-07 17:21:02', '2019-05-07 17:21:02'),
-('12MJB_002', 'Senin', '07:15:00', '09:45:00', 'MP004', '12MJB', '2173', NULL, '2019-05-07 17:38:02', '2019-05-07 17:38:02'),
-('12MJB_003', 'Senin', '10:00:00', '11:45:00', 'MP002', '12MJB', '2177', NULL, '2019-05-07 17:42:24', '2019-05-07 17:42:24');
+INSERT INTO `data_jadwal` (`id_jadwal`, `hari`, `start`, `end`, `id_mapel`, `id_kelas`, `id_pengajar`, `id_pengajar2`, `input_date`, `update_date`, `event_status`) VALUES
+('11PGA_001', 'Senin', '07:15:00', '09:45:00', 'MP001', '11PGA', '2172', NULL, '2019-05-07 17:25:22', '2019-05-07 17:25:22', 0),
+('11PGA_002', 'Senin', '10:00:00', '11:45:00', 'MP004', '11PGA', '2173', NULL, '2019-05-07 17:35:06', '2019-05-07 17:35:06', 0),
+('11PGA_003', 'Senin', '13:15:00', '14:15:00', 'MP002', '11PGA', '2177', NULL, '2019-05-07 17:30:10', '2019-05-07 17:30:10', 0),
+('12MJA_001', 'Senin', '10:00:00', '11:45:00', 'MP001', '12MJA', '2172', NULL, '2019-05-07 17:16:22', '2019-05-07 17:16:22', 0),
+('12MJA_002', 'Senin', '07:15:00', '09:45:00', 'MP002', '12MJA', '2177', NULL, '2019-05-07 17:31:49', '2019-05-07 17:31:49', 0),
+('12MJA_003', 'Senin', '13:15:00', '14:15:00', 'MP004', '12MJA', '2173', NULL, '2019-05-07 17:33:13', '2019-05-07 17:33:13', 0),
+('12MJB_001', 'Senin', '13:15:00', '14:15:00', 'MP001', '12MJB', '2172', NULL, '2019-05-07 17:21:02', '2019-05-07 17:21:02', 0),
+('12MJB_002', 'Senin', '07:15:00', '09:45:00', 'MP004', '12MJB', '2173', NULL, '2019-05-07 17:38:02', '2019-05-07 17:38:02', 0),
+('12MJB_003', 'Senin', '10:00:00', '11:45:00', 'MP002', '12MJB', '2177', NULL, '2019-05-07 17:42:24', '2019-05-07 17:42:24', 0);
 
 -- --------------------------------------------------------
 
@@ -133,12 +134,12 @@ CREATE TABLE `data_presensi` (
 --
 
 INSERT INTO `data_presensi` (`id`, `tanggal`, `id_jadwal`, `nis`, `presensi`, `verifikasi_by`, `verifikasi_date`, `presensi_by`) VALUES
-(458, '2019-05-15 18:00:25', '197', '005', 'Alpa', '005', '2019-05-15 18:38:04', '2177'),
-(459, '2019-05-15 18:00:25', '197', '006', 'Hadir', '005', '2019-05-15 18:38:04', '2177'),
-(460, '2019-05-15 18:03:39', '198', '003', 'Hadir', '003', '2019-05-15 18:20:01', '2177'),
-(461, '2019-05-15 18:03:39', '198', '004', 'Alpa', '003', '2019-05-15 18:20:01', '2177'),
-(462, '2019-05-15 18:21:44', '197', '005', 'Hadir', '005', '2019-05-15 18:38:04', '2177'),
-(463, '2019-05-15 18:21:44', '197', '006', 'Alpa', '005', '2019-05-15 18:38:04', '2177');
+(477, '2019-05-17 06:04:05', '226', '001', 'Sakit', '002', '2019-05-17 06:04:52', 'admin'),
+(478, '2019-05-17 06:04:05', '226', '002', 'Hadir', '002', '2019-05-17 06:04:52', 'admin'),
+(479, '2019-05-17 06:04:05', '226', '009', 'Hadir', '002', '2019-05-17 06:04:52', 'admin'),
+(480, '2019-05-17 06:04:23', '227', '001', 'Alpa', '009', '2019-05-17 06:04:34', 'admin'),
+(481, '2019-05-17 06:04:23', '227', '002', 'Hadir', '009', '2019-05-17 06:04:34', 'admin'),
+(482, '2019-05-17 06:04:23', '227', '009', 'Hadir', '009', '2019-05-17 06:04:34', 'admin');
 
 -- --------------------------------------------------------
 
@@ -246,17 +247,22 @@ CREATE TABLE `table_jadwal` (
   `nama_event` varchar(20) NOT NULL,
   `intval` varchar(20) NOT NULL,
   `starts` datetime NOT NULL,
-  `ends` datetime NOT NULL
+  `ends` datetime NOT NULL,
+  `presensi_status` int(2) NOT NULL,
+  `verifikasi_status` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `table_jadwal`
 --
 
-INSERT INTO `table_jadwal` (`id`, `tanggal`, `id_jadwal`, `nama_event`, `intval`, `starts`, `ends`) VALUES
-(196, '2019-05-14', '11PGA_003', '11PGA_003', '1 DAY', '2019-05-15 00:00:00', '2019-05-18 00:00:00'),
-(197, '2019-05-15', '12MJB_003', '12MJB_003', '1 DAY', '2019-05-15 00:00:00', '2019-05-18 00:00:00'),
-(198, '2019-05-15', '12MJA_002', '12MJA_002', '1 DAY', '2019-05-15 00:00:00', '2019-05-18 00:00:00');
+INSERT INTO `table_jadwal` (`id`, `tanggal`, `id_jadwal`, `nama_event`, `intval`, `starts`, `ends`, `presensi_status`, `verifikasi_status`) VALUES
+(226, '2019-05-17', '11PGA_001', '11PGA_001', '1 MINUTE', '2019-05-17 00:00:00', '2019-05-18 00:00:00', 1, 1),
+(227, '2019-05-17', '11PGA_001', '11PGA_001', '1 MINUTE', '2019-05-17 00:00:00', '2019-05-18 00:00:00', 1, 1),
+(228, '2019-05-17', '11PGA_002', '11PGA_002', '1 WEEK', '2019-05-17 00:00:00', '2019-05-31 00:00:00', 0, 0),
+(229, '2019-05-17', '11PGA_001', '11PGA_001', '1 MINUTE', '2019-05-17 00:00:00', '2019-05-18 00:00:00', 0, 0),
+(234, '2019-05-17', '11PGA_001', '11PGA_001', '1 WEEK', '2019-05-17 00:00:00', '2019-05-31 00:00:00', 0, 0),
+(235, '2019-05-17', '11PGA_001', '11PGA_001', '1 WEEK', '2019-05-17 00:00:00', '2019-05-24 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -372,7 +378,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `data_presensi`
 --
 ALTER TABLE `data_presensi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=464;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=483;
 
 --
 -- AUTO_INCREMENT for table `kategori_user`
@@ -384,7 +390,7 @@ ALTER TABLE `kategori_user`
 -- AUTO_INCREMENT for table `table_jadwal`
 --
 ALTER TABLE `table_jadwal`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -408,18 +414,6 @@ ALTER TABLE `data_walikelas`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`kategori_user`) REFERENCES `kategori_user` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-DELIMITER $$
---
--- Events
---
-CREATE DEFINER=`root`@`localhost` EVENT `12MJA_002` ON SCHEDULE EVERY 1 DAY STARTS '2019-05-15 00:00:00' ENDS '2019-05-18 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'12MJA_002','12MJA_002','1 DAY','2019-05-15 00:00:00','2019-05-18 00:00:00')$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `11PGA_003` ON SCHEDULE EVERY 1 DAY STARTS '2019-05-15 00:00:00' ENDS '2019-05-18 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'11PGA_003','11PGA_003','1 DAY','2019-05-15 00:00:00','2019-05-18 00:00:00')$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `12MJB_003` ON SCHEDULE EVERY 1 DAY STARTS '2019-05-15 00:00:00' ENDS '2019-05-18 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO insert into table_jadwal values (null,now(),'12MJB_003','12MJB_003','1 DAY','2019-05-15 00:00:00','2019-05-18 00:00:00')$$
-
-DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

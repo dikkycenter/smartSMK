@@ -25,6 +25,18 @@
     </div> 
       <?php };
     ?>
+
+    <?php 
+      $data = $this->session->flashdata('gagal');
+      if($data!="") { ?>
+      <div class="alert alert-danger" role="alert"><Strong>Sukses!</Strong>
+        <?php echo $data; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div> 
+      <?php };
+    ?>
     <div class="alert-success"></div>
 
     <!-- Main content -->
@@ -79,19 +91,15 @@
                     <a class="btn" href="<?php echo site_url('jadwal/deleteJadwal/'.$u->id_jadwal); ?>"> 
                       <i class="fa fa-remove"></i> Hapus
                     </a>
+                    <?php if($u->event_status < 1) { ?>
                     <a class="btn" href="<?php echo site_url('jadwal/createEvent/'.$u->id_jadwal); ?>"> 
                       <i class="fa fa-calendar-plus-o"></i> Buat Event
                     </a>
-
-                    <!-- <?php //if($cekEvent > 0 ){ ?>
-                    <a class="btn"> 
-                      <i class="fa fa-remove"></i> Sudah Dievent
+                    <?php } else { ?>
+                      <a class="btn" href="<?php echo site_url('jadwal/deleteEvent/'.$u->id_jadwal); ?>"> 
+                      <i class="fa fa-calendar-times-o "></i> Hapus Event
                     </a>
-                    <?php //} else { ?>
-                      <a class="btn" href="<?php //echo site_url('jadwal/createEvent/'.$u->id_jadwal); ?>"> 
-                      <i class="fa fa-check"></i> Buat Event
-                    </a>
-                    <?php //} ?> -->
+                    <?php } ?>
 
                   </td>
                 </tr>

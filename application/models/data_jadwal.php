@@ -88,6 +88,12 @@ class data_jadwal extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    // Mengubah status event di data jadwal
+    function update_event_status($id_jadwal, $data3) {
+        $this->db->where('id_jadwal', $id_jadwal);
+        $this->db->update('data_jadwal', $data3);
+    }
+
     // Membuat Event Scheduler
     function create_event($data, $data2) {               
         $this->db->query($data2);
