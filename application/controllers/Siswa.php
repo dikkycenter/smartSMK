@@ -37,7 +37,7 @@ class Siswa extends MY_Controller {
 		$data['delete'] = $this->data_siswa->delete_data($id);
 		$this->session->set_flashdata('sukses',"Data berhasil dihapus");
 
-		redirect('pengajar/index');
+		redirect('siswa/index');
 	}
 
 	public function tambahSiswa()
@@ -153,7 +153,7 @@ class Siswa extends MY_Controller {
 		$update_by			= $this->input->post('update_by');
 
 		if (!empty($_FILES['foto']['name'])) {
-			$config['upload_path'] = './assets/images/pengajar/';
+			$config['upload_path'] = './assets/images/siswa/';
 			/*add 777 permission to directory*/  
 			if (!is_dir($config['upload_path'])) {
 				mkdir($config['upload_path'], 0777, TRUE);

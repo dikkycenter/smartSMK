@@ -51,7 +51,7 @@
                   <th>Verifikasi By</th>
                   <th>Verifikasi Date</th>
                   <th>Presensi By</th>
-                  <th>Action</th>
+                  <!-- <th>Action</th> -->
                 </tr>
                 </thead>
                 <tbody>
@@ -74,17 +74,17 @@
                         }
                   ?>
                   </td>
-                  <td>
-                    <a class="btn" href="<?php echo site_url('jadwal/dataDetail/'.$u->pid); ?>">
+                  <!-- <td>
+                    <a class="btn" href="<?php //echo site_url('jadwal/dataDetail/'.$u->pid); ?>">
                       <i class="fa fa-eye"></i> Lihat
                     </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/updateJadwal/'.$u->pid); ?>">
+                    <a class="btn" href="<?php //echo site_url('jadwal/updateJadwal/'.$u->pid); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>
-                    <a class="btn" href="<?php echo site_url('jadwal/deleteJadwal/'.$u->pid); ?>"> 
+                    <a class="btn" href="<?php //echo site_url('jadwal/deleteJadwal/'.$u->pid); ?>"> 
                       <i class="fa fa-remove"></i> Hapus
                     </a>
-                  </td>
+                  </td> -->
                 </tr>
                 <?php $i++; endforeach; ?>
                 </tbody>
