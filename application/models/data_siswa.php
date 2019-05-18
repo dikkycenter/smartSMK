@@ -16,7 +16,7 @@ class data_siswa extends CI_Model
     }
 
     function delete_data($id) {
-        $this->db->delete('data_pengajar', array('nip_pengajar' => $id));
+        $this->db->delete('data_siswa', array('nis' => $id));
         $this->db->delete('user', array('username' => $id));
     }
 

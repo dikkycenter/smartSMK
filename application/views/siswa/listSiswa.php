@@ -82,7 +82,7 @@
                     <a class="btn" href="<?php echo site_url('siswa/updateSiswa/'.$u->nis); ?>">
                       <i class="fa fa-edit"></i> Edit
                     </a>
-                    <a class="btn" href="<?php //echo site_url('pengajar/deletePengajar/'.$u->nip_pengajar); ?>"> 
+                    <a class="btn" href="<?php echo site_url('siswa/deleteSiswa/'.$u->nis); ?>"> 
                       <i class="fa fa-remove"></i> Hapus
                     </a>
                   </td>
