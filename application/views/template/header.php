@@ -61,7 +61,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          
+          <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope-o"></i>
+              <span class="label label-success">4</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header"><a href="#"><i class="fa fa-send"></i>Kirim Pemberitahuan Ke Wali Siswa</a></li>              
+              <li class="footer"><a href="<?php echo site_url('checkPresensi/index'); ?>">Lihat Siswa Bermasalah</a></li>
+            </ul>
+          </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
