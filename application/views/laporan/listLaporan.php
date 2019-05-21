@@ -54,9 +54,9 @@
                     </a>
                   </div>
                   <div class = btn-group>
-                    <a href="<?php //echo site_url('laporan/email');?>">
+                    <!-- <a href="<?php //echo site_url('laporan/email');?>">
                       <button class="btn btn-primary pull-right" ><i class="fa fa-download"></i> Send Email</button>
-                    </a>
+                    </a> -->
                   </div>
                 </div>
             </div>
