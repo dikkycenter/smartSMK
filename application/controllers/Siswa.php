@@ -37,7 +37,7 @@ class Siswa extends MY_Controller {
 		$data['delete'] = $this->data_siswa->delete_data($id);
 		$this->session->set_flashdata('sukses',"Data berhasil dihapus");
 
-		redirect('pengajar/index');
+		redirect('siswa/index');
 	}
 
 	public function tambahSiswa()

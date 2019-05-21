@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
+              <span class="label label-success"><!-- 4 --></span>
             </a>
             <ul class="dropdown-menu">
               <li class="header"><a href="#"><i class="fa fa-send"></i>Kirim Pemberitahuan Ke Wali Siswa</a></li>              
