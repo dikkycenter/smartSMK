@@ -53,11 +53,11 @@
                       <button class="btn btn-primary pull-right" ><i class="fa fa-download"></i> Unduh</button>
                     </a>
                   </div>
-                  <div class = btn-group>
+                  <!-- <div class = btn-group>
                     <a href="<?php //echo site_url('laporan/email');?>">
                       <button class="btn btn-primary pull-right" ><i class="fa fa-download"></i> Send Email</button>
                     </a>
-                  </div>
+                  </div> -->
                 </div>
             </div>
 

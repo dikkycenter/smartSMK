@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
+  <title>Sistem Rekapitulasi | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -28,9 +28,9 @@
 <div class="login-box">
   <div class="login-logo">
   <div>
-      <img src="<?php echo base_url();?>assets/images/logo.png" width="150">
+      <img src="<?php echo base_url();?>assets/images/logo1.png" width="250">
     </div>
-    Smart<b>SMK</b>
+    Partai <b>NasDem</b>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -56,7 +56,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
         </div>
         <!-- /.col -->
       </div>
